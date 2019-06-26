@@ -26,6 +26,8 @@ A photo portfolio site with React and WordPress: http://inu.ro
 
 ### Hooks
 
+### Type checking
+
 ## Based on
 
 ### Modules (for React)

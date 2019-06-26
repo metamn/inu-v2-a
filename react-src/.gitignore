@@ -11,6 +11,9 @@
 # production
 /build
 
+# create-react-wptheme
+../static
+
 # misc
 .DS_Store
 .env.local
