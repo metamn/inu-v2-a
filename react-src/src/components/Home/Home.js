@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import gql from "graphql-tag";
 import PropTypes from "prop-types";
+import gql from "graphql-tag";
 import styled, { css } from "styled-components";
 import { Helmet } from "react-helmet";
 import { stringify } from "flatted";
@@ -36,6 +36,7 @@ const query = gql`
 `;
 
 // Displays site info in the document `<head>` with Helmet
+// NOTE: use this method instead of manually edit `public/index.php`
 const SiteInfo = props => {
   const { title, description, url } = props;
 
@@ -80,13 +81,7 @@ const Home = props => {
   return (
     <>
       <Reset />
-      <TypographicGrid
-        displayVerticalRhytm={false}
-        displayHorizontalRhytm={false}
-        numberOfHorizontalLines={100}
-        numberOfVerticalLines={100}
-        lineColor="#666"
-      />
+      <TypographicGrid />
       <SiteInfo {...siteInfo} />
     </>
   );

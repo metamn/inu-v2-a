@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 import { normalize } from "polished";
 
 // Global reset with `normalize.css`
+// Also adds custom resets
 const GlobalReset = createGlobalStyle`
 	${normalize()}
 
@@ -44,8 +45,8 @@ const GlobalReset = createGlobalStyle`
 		// Remove the extra bottom spacing for <img> inside <a>
 		// unfortunatelly in WP it breaks the figcaption ...
 		figure a {
-			// line-height: 0;
-			// display: inline-block;
+			line-height: 0;
+			display: inline-block;
 		}
 
 		a {
