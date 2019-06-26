@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import gql from "graphql-tag";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
@@ -10,44 +10,72 @@ import { useQuery } from "./../../hooks";
 import Reset from "../Reset";
 import TypographicGrid from "../TypographicGrid";
 
-// Global settings
+// Defines the types of the global settings
 const Props = {
   title: PropTypes.string,
   description: PropTypes.string,
   url: PropTypes.string
 };
 
-// Default global settings
+// Defines the default values for the global settings
 const DefaultProps = {
-  title: "Ioan Chivu xx",
-  description: "Photo traveler xx",
+  title: "Ioan Chivu",
+  description: "Photo traveler",
   url: "http://inu.ro"
 };
 
-// Query for site info
+// Queries the database for site information
 const query = gql`
   query siteInfo {
     generalSettings {
       title
-      url
       description
+      url
     }
   }
 `;
 
-const Home = props => {
-  // Set up the site info
-  let { title, description } = props;
+// Displays site info in the document `<head>` with Helmet
+const SiteInfo = props => {
+  const { title, description, url } = props;
 
+  return (
+    <Helmet>
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <link rel="canonical" href={url} />
+    </Helmet>
+  );
+};
+
+// Displays the Homepage
+const Home = props => {
+  // Setting up the site info is a good example how Hooks work in React
+  // - The db query is async which means we'll have to wait for the real data
+  // - Meantime we set up a state variable with default values coming from `props`
+  // - Then we'll update the state var in `useEffect` when the data becomes ready
+  // - And the `<SiteInfo/>` component will be re-rendered automatically
+  //
+  // This is also a good example for typechecking / props usage
+  // - Throughout the entire code we pass the same props structure:
+  //  - `useState(props)`
+  //  - `useQuery(query)`
+  //  - `setSiteInfo(data.generalSettings)`
+  //  - `<SiteInfo {...siteInfo} />`
+  // - And we decompose props only when they are finally displayed:
+  //  - `const { title, description, url } = props;`
+
+  const [siteInfo, setSiteInfo] = useState(props);
   const { data } = useQuery(query);
 
-  useEffect(() => {
-    console.log("data:" + stringify(data));
-    if (data.generalSettings) {
-      let { title, description } = data.generalSettings;
-      console.log("title2:" + title);
-    }
-  });
+  useEffect(
+    () => {
+      if (data.generalSettings) {
+        setSiteInfo(data.generalSettings);
+      }
+    },
+    [data.generalSettings]
+  );
 
   return (
     <>
@@ -59,10 +87,7 @@ const Home = props => {
         numberOfVerticalLines={100}
         lineColor="#666"
       />
-      <Helmet>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-      </Helmet>
+      <SiteInfo {...siteInfo} />
     </>
   );
 };
