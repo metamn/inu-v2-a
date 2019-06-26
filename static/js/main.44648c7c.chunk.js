@@ -59,11 +59,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const Props = {//
+};
+const DefaultProps = {//
+};
 
 const Home = () => {
   return "Home";
 };
 
+Home.propTypes = Props;
+Home.defaultProps = DefaultProps;
 /* harmony default export */ __webpack_exports__["default"] = (Home);
 
 /***/ }),
@@ -234,5 +240,5 @@ module.exports = __webpack_require__(/*! /home/cs/work/inu-v2-a/react-src/src/in
 
 /***/ })
 
-},[[0,"runtime~main",0]]]);
-//# sourceMappingURL=main.082426d2.chunk.js.map
+},[[0,"runtime~main",1]]]);
+//# sourceMappingURL=main.44648c7c.chunk.js.map

@@ -12,7 +12,17 @@ A photo portfolio site with React and WordPress: http://inu.ro
 - Inserted into the post
 - As associated media to the post
 
+## Design
+
+### CSS Reset
+
+### Typographic grid
+
 ### Custom cursor
+
+## Best practices
+
+### Colocation
 
 ## Based on
 
@@ -21,7 +31,10 @@ A photo portfolio site with React and WordPress: http://inu.ro
 - [create-react-wptheme](https://github.com/devloco/create-react-wptheme) based on `create-react-app` (CRA)
 - [react-apollo-hooks](https://github.com/trojanowski/react-apollo-hooks) - to interact with `WP GraphQL` using the [Apollo GraphQL](https://github.com/apollographql/react-apollo) stack
 - [styled-components](https://www.styled-components.com/) - for styling
+- [polished](https://polished.js.org/) - styling helpers
+- [prop-types](https://reactjs.org/docs/typechecking-with-proptypes.html) - for basic typechecking
 - [react-axe](https://www.npmjs.com/package/react-axe) - for testing accessibility
+- [react-helmet](https://github.com/nfl/react-helmet) - to manage the document head
 
 ### Plugins (for WordPress)
 
