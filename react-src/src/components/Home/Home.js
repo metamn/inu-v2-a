@@ -1,4 +1,5 @@
 import React from "react";
+import gql from "graphql-tag";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { Helmet } from "react-helmet";
@@ -6,15 +7,34 @@ import { Helmet } from "react-helmet";
 import Reset from "../Reset";
 import TypographicGrid from "../TypographicGrid";
 
+// Global settings
 const Props = {
-  //
+  siteTitle: PropTypes.string,
+  siteDescription: PropTypes.string,
+  siteURL: PropTypes.string
 };
 
+// Default global settings
 const DefaultProps = {
-  //
+  siteTitle: "Ioan Chivu",
+  siteDescription: "Photo traveler",
+  siteURL: "http://inu.ro"
 };
 
-const Home = () => {
+// Query for site info
+const Query = gql`
+  query allSettings {
+    allSettings {
+      generalSettingsTitle
+      generalSettingsUrl
+      generalSettingsDescription
+    }
+  }
+`;
+
+const Home = props => {
+  const { siteTitle, siteDescription } = props;
+
   return (
     <>
       <Reset />
@@ -26,8 +46,8 @@ const Home = () => {
         lineColor="#666"
       />
       <Helmet>
-        <title>My Title</title>
-        <meta name="description" content="Portfolio" />
+        <title>{siteTitle}</title>
+        <meta name="description" content={siteDescription} />
       </Helmet>
     </>
   );
