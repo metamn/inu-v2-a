@@ -3,9 +3,16 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-        "@devloco\/react-scripts-wptheme": "3.0.1-wptheme-3.0.5",
+        "@devloco/react-scripts-wptheme": "3.0.1-wptheme-3.0.5",
+        "apollo-boost": "^0.4.3",
+        "graphql": "^14.3.1",
+        "graphql-tag": "^2.10.1",
         "react": "^16.8.6",
-        "react-dom": "^16.8.6"
+        "react-apollo": "^2.5.8",
+        "react-apollo-hooks": "^0.4.5",
+        "react-axe": "^3.1.0",
+        "react-dom": "^16.8.6",
+        "styled-components": "^4.3.2"
     },
     "scripts": {
         "crabuild": "react-scripts build",
@@ -32,6 +39,6 @@
             "last 1 safari version"
         ]
     },
-    "homepage": "\/react-wp\/wp-content\/themes\/inu-v2-a",
-    "browserLaunchTo": "http:\/\/localhost\/react-wp"
+    "homepage": "/react-wp/wp-content/themes/inu-v2-a",
+    "browserLaunchTo": "http://localhost/react-wp"
 }
