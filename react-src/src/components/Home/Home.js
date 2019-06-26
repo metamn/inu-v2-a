@@ -1,39 +1,53 @@
-import React from "react";
+import React, { useEffect } from "react";
 import gql from "graphql-tag";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { Helmet } from "react-helmet";
+import { stringify } from "flatted";
+
+import { useQuery } from "./../../hooks";
 
 import Reset from "../Reset";
 import TypographicGrid from "../TypographicGrid";
 
 // Global settings
 const Props = {
-  siteTitle: PropTypes.string,
-  siteDescription: PropTypes.string,
-  siteURL: PropTypes.string
+  title: PropTypes.string,
+  description: PropTypes.string,
+  url: PropTypes.string
 };
 
 // Default global settings
 const DefaultProps = {
-  siteTitle: "Ioan Chivu",
-  siteDescription: "Photo traveler",
-  siteURL: "http://inu.ro"
+  title: "Ioan Chivu xx",
+  description: "Photo traveler xx",
+  url: "http://inu.ro"
 };
 
 // Query for site info
-const Query = gql`
-  query allSettings {
-    allSettings {
-      generalSettingsTitle
-      generalSettingsUrl
-      generalSettingsDescription
+const query = gql`
+  query siteInfo {
+    generalSettings {
+      title
+      url
+      description
     }
   }
 `;
 
 const Home = props => {
-  const { siteTitle, siteDescription } = props;
+  // Set up the site info
+  let { title, description } = props;
+
+  const { data } = useQuery(query);
+
+  useEffect(() => {
+    console.log("data:" + stringify(data));
+    if (data.generalSettings) {
+      let { title, description } = data.generalSettings;
+      console.log("title2:" + title);
+    }
+  });
 
   return (
     <>
@@ -46,8 +60,8 @@ const Home = props => {
         lineColor="#666"
       />
       <Helmet>
-        <title>{siteTitle}</title>
-        <meta name="description" content={siteDescription} />
+        <title>{title}</title>
+        <meta name="description" content={description} />
       </Helmet>
     </>
   );

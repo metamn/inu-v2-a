@@ -42,5 +42,8 @@
         ]
     },
     "homepage": "/react-wp/wp-content/themes/inu-v2-a",
-    "browserLaunchTo": "http://localhost/react-wp"
+    "browserLaunchTo": "http://localhost/react-wp",
+    "devDependencies": {
+        "flatted": "^2.0.1"
+    }
 }
