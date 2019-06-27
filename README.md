@@ -16,13 +16,17 @@ A photo portfolio site with React and WordPress: http://inu.ro
 
 ### Single responsibility principle
 
-### Colocation
+### Co-location
+
+- GraphQL fragments
 
 ### Hooks
 
 ### Type checking
 
 ### Passing flat props
+
+### Naming conventions
 
 ## Design
 

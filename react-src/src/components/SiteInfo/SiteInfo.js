@@ -17,16 +17,16 @@ const defaultProps = {
   url: "http://inu.ro"
 };
 
-// Queries the database for site information
-export const query = gql`
-  query siteInfo {
-    generalSettings {
+// Defines the query fragment needed by the component
+const queryFragment = {
+  settings: gql`
+    fragment SiteInfoSettings on GeneralSettings {
       title
       description
       url
     }
-  }
-`;
+  `
+};
 
 // Displays site info in the document `<head>` with Helmet
 // NOTE: use this method instead of manually edit `public/index.php`
@@ -44,5 +44,6 @@ const SiteInfo = props => {
 
 SiteInfo.propTypes = propTypes;
 SiteInfo.defaultProps = defaultProps;
+SiteInfo.fragments = queryFragment;
 
 export default SiteInfo;

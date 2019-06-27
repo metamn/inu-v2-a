@@ -1,24 +1,32 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import gql from "graphql-tag";
-import styled, { css } from "styled-components";
-import { stringify } from "flatted";
 
 import { useQuery } from "./../../hooks";
 
-import SiteInfo, { siteInfoQuery } from "../SiteInfo";
 import Reset from "../Reset";
 import TypographicGrid from "../TypographicGrid";
+import SiteInfo from "../SiteInfo";
 
-// Defines the types of the global settings
+// Defines the prop types of the component
 const Props = {
   ...SiteInfo.propTypes
 };
 
-// Defines the default values for the global settings
+// Defines the default props
 const DefaultProps = {
   ...SiteInfo.defaultProps
 };
+
+// Defines the query
+const query = gql`
+  query siteInfo {
+    generalSettings {
+      ...SiteInfoSettings
+    }
+  }
+  ${SiteInfo.fragments.settings}
+`;
 
 // Displays the Homepage
 const Home = props => {
@@ -38,7 +46,7 @@ const Home = props => {
   //  - `const { title, description, url } = props;`
 
   const [siteInfo, setSiteInfo] = useState(props);
-  const { data } = useQuery(siteInfoQuery);
+  const { data } = useQuery(query);
 
   useEffect(
     () => {
