@@ -2,51 +2,22 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import gql from "graphql-tag";
 import styled, { css } from "styled-components";
-import { Helmet } from "react-helmet";
 import { stringify } from "flatted";
 
 import { useQuery } from "./../../hooks";
 
+import SiteInfo, { siteInfoQuery } from "../SiteInfo";
 import Reset from "../Reset";
 import TypographicGrid from "../TypographicGrid";
 
 // Defines the types of the global settings
 const Props = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  url: PropTypes.string
+  ...SiteInfo.propTypes
 };
 
 // Defines the default values for the global settings
 const DefaultProps = {
-  title: "Ioan Chivu",
-  description: "Photo traveler",
-  url: "http://inu.ro"
-};
-
-// Queries the database for site information
-const query = gql`
-  query siteInfo {
-    generalSettings {
-      title
-      description
-      url
-    }
-  }
-`;
-
-// Displays site info in the document `<head>` with Helmet
-// NOTE: use this method instead of manually edit `public/index.php`
-const SiteInfo = props => {
-  const { title, description, url } = props;
-
-  return (
-    <Helmet>
-      <title>{title}</title>
-      <meta name="description" content={description} />
-      <link rel="canonical" href={url} />
-    </Helmet>
-  );
+  ...SiteInfo.defaultProps
 };
 
 // Displays the Homepage
@@ -67,7 +38,7 @@ const Home = props => {
   //  - `const { title, description, url } = props;`
 
   const [siteInfo, setSiteInfo] = useState(props);
-  const { data } = useQuery(query);
+  const { data } = useQuery(siteInfoQuery);
 
   useEffect(
     () => {

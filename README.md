@@ -12,6 +12,18 @@ A photo portfolio site with React and WordPress: http://inu.ro
 - Inserted into the post
 - As associated media to the post
 
+## Best practices
+
+### Single responsibility principle
+
+### Colocation
+
+### Hooks
+
+### Type checking
+
+### Passing flat props
+
 ## Design
 
 ### CSS Reset
@@ -19,14 +31,6 @@ A photo portfolio site with React and WordPress: http://inu.ro
 ### Typographic grid
 
 ### Custom cursor
-
-## Best practices
-
-### Colocation
-
-### Hooks
-
-### Type checking
 
 ## Based on
 
