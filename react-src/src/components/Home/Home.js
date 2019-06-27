@@ -1,15 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 import gql from "graphql-tag";
+import WebFont from "webfontloader";
 
 import { useQuery } from "./../../hooks";
+import {
+  ThemeContext,
+  switchThemeTo,
+  switchThemeFrom
+} from "../../themes/default.js";
+import { useLocalStorage, usePrefersDarkMode } from "../../hooks";
 
 import Reset from "../Reset";
 import TypographicGrid from "../TypographicGrid";
 import SiteInfo from "../SiteInfo";
 import Logo from "../Logo";
 
-/** Defines the prop types of the component */
+// Loads web fonts
+// NOTE: When changing font also the `theme` has to be updated
+WebFont.load({
+  google: {
+    families: ["Major+Mono+Display"]
+  }
+});
+
+// Defines the prop types of the component
 const Props = {
   ...SiteInfo.propTypes
 };
@@ -29,9 +45,44 @@ const query = gql`
   ${SiteInfo.fragments.settings}
 `;
 
+// Styles the main container
+const Container = styled.div`
+  background: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.text};
+  font-family: ${props => props.theme.fonts.default};
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100vh;
+`;
+
 // Displays the Homepage
 const Home = props => {
-  // Setting up the site info is a good example how Hooks work in React
+  // Theming
+  //
+  // - Checks if the user / browser prefers dark mode
+  // - Checks if the browser has stored a preference for a theme
+  // - Based on above the theme context can be set up with the desired theme
+  // - Then saved into a state var to make it switchable
+  const prefersDarkMode = usePrefersDarkMode();
+  const [currentThemeSaved, setCurrentThemeSaved] = useLocalStorage(
+    "current-theme"
+  );
+  const starterColorScheme =
+    typeof currentThemeSaved !== "undefined"
+      ? currentThemeSaved
+      : prefersDarkMode
+      ? "dark"
+      : "light";
+
+  let themeContext = useContext(ThemeContext);
+  themeContext = switchThemeTo(starterColorScheme);
+  const [currentTheme, setCurrentTheme] = useState(themeContext);
+
+  // Site info
+  //
+  // This is a good example how Hooks work in React
   // - The db query is async which means we'll have to wait for the real data
   // - Meantime we set up a state variable with default values coming from `props`
   // - Then we'll update the state var in `useEffect` when the data becomes ready
@@ -63,7 +114,11 @@ const Home = props => {
       <Reset />
       <TypographicGrid />
       <SiteInfo {...siteInfo} />
-      <Logo {...siteInfo} />
+      <ThemeContext.Provider value={currentTheme}>
+        <Container theme={currentTheme.theme}>
+          <Logo {...siteInfo} />
+        </Container>
+      </ThemeContext.Provider>
     </>
   );
 };

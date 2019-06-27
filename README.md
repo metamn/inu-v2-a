@@ -36,6 +36,8 @@ A photo portfolio site with React and WordPress: http://inu.ro
 
 ### Custom cursor
 
+### Loading webfonts with `webfontloader`
+
 ## Based on
 
 ### Modules (for React)
