@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
+import { ThemeContext } from "../../themes/default.js";
+
 import SiteInfo from "../SiteInfo";
 import Link from "../Link";
 import Media from "../Media";
@@ -42,14 +44,16 @@ const Line = styled.div`
 // Displays the site logo
 const Logo = props => {
   const { title, description, url } = props;
+  const themeContext = useContext(ThemeContext);
+  const { theme } = themeContext;
 
   return (
     <Container>
       <Links>
-        <Link url={url} title={title}>
+        <Link theme={theme} url={url} title={title}>
           {title}
         </Link>
-        <Link url={url} title={description}>
+        <Link theme={theme} url={url} title={description}>
           {description}
         </Link>
       </Links>

@@ -1,4 +1,5 @@
 import React from "react";
+import { modularScale } from "polished";
 
 // Defines colors
 const white = "white";
@@ -29,18 +30,34 @@ const colorSchemes = {
   }
 };
 
+// Defines text styles
+const textStyles = {
+  default: {
+    fontSize: "100%",
+    lineHeight: "1.25",
+    lem: "1.25em"
+  },
+  large: {
+    fontSize: modularScale(2)
+  }
+};
+
+// Defines fonts
+// NOTE:  When changing font also the `WebFont.load` has to be updated
+const fonts = {
+  default: "'Major Mono Display', sans-serif;"
+};
+
 // Gets a color scheme
 const getColorScheme = colorScheme =>
   colorScheme === "light" ? colorSchemes.light : colorSchemes.dark;
 
 // Gets a theme with colors, fonts etc
-// NOTE:  When changing font also the `WebFont.load` has to be updated
 const getTheme = colorScheme => {
   return {
     colors: getColorScheme(colorScheme),
-    fonts: {
-      default: "'Major Mono Display', sans-serif;"
-    }
+    fonts: fonts,
+    textStyles: textStyles
   };
 };
 

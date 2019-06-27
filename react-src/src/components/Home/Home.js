@@ -112,9 +112,9 @@ const Home = props => {
   return (
     <>
       <Reset />
-      <TypographicGrid />
       <SiteInfo {...siteInfo} />
       <ThemeContext.Provider value={currentTheme}>
+        <TypographicGrid />
         <Container theme={currentTheme.theme}>
           <Logo {...siteInfo} />
         </Container>

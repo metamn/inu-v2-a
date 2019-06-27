@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
 import Repeat from "../Repeat";
+
+import { ThemeContext } from "../../themes/default.js";
 
 // Defines the component prop types
 const Props = {
@@ -21,13 +23,54 @@ const DefaultProps = {
   lineColor: "gray"
 };
 
-// Makes typographic settings globally available via CSS vars
+// Defines default values for typographic grid
+const DefaultTypographicGrid = css`
+  body {
+    font-size: 100%;
+    line-height: 1.25;
+    --lem: 1.25em;
+  }
+`;
+
+// Sets up the typographic grid from theme
+const TypographicGridFromTheme = css`
+  ${props =>
+    props.theme.textStyles.default.fontSize &&
+    css`
+      font-size: ${props.theme.textStyles.default.fontSize};
+    `}
+
+  ${props =>
+    props.theme.textStyles.default.lineHeight &&
+    css`
+      line-height: ${props.theme.textStyles.default.lineHeight};
+    `}
+
+	${props =>
+    props.theme.textStyles.default.lem &&
+    css`
+      --lem: ${props.theme.textStyles.default.lem};
+    `}
+`;
+
+// Sets up the typographic grid
+// TODO: this would be more correct, but not supported by styled components...
+/**
+ * ```
+ * ${props =>
+ props.theme.textStyles.default
+   ? css`
+	   ${TypographicGridFromTheme}
+	 `
+   : css`
+	   ${DefaultTypographicGrid}
+	 `}
+	```
+ *
+ */
 const GlobalStyle = createGlobalStyle`
-	body {
-		font-size: 100%;
-		line-height: 1.25;
-		--lem: 1.25em;
-	}
+	${DefaultTypographicGrid}
+	${TypographicGridFromTheme}
 `;
 
 // Common settings for the rhythm containers
@@ -87,9 +130,13 @@ const TypographicGrid = props => {
     lineColor
   } = props;
 
+  const themeContext = useContext(ThemeContext);
+  const { theme } = themeContext;
+  console.log("theme:" + theme.textStyles.default.fontSize);
+
   return (
     <>
-      <GlobalStyle />
+      <GlobalStyle theme={theme} />
       {(displayHorizontalRhytm || displayVerticalRhytm) && (
         <Container className="typographic-grid">
           {displayHorizontalRhytm && (
