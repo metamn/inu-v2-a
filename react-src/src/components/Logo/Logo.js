@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { ThemeContext } from "../../themes/default.js";
 
@@ -30,6 +30,11 @@ const Links = styled.div`
   flex-direction: column;
 `;
 
+// Styles the link
+const StyledLink = styled.div(props => ({
+  fontSize: props.theme.textStyles.large.fontSize
+}));
+
 // Styles for the line
 const Line = styled.div`
   width: calc(var(--lem) * 8);
@@ -50,12 +55,12 @@ const Logo = props => {
   return (
     <Container>
       <Links>
-        <Link theme={theme} url={url} title={title}>
+        <StyledLink theme={theme} url={url} title={title}>
           {title}
-        </Link>
-        <Link theme={theme} url={url} title={description}>
+        </StyledLink>
+        <StyledLink theme={theme} url={url} title={description}>
           {description}
-        </Link>
+        </StyledLink>
       </Links>
       <Line />
     </Container>

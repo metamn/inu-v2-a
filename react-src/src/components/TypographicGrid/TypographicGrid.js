@@ -25,52 +25,47 @@ const DefaultProps = {
 
 // Defines default values for typographic grid
 const DefaultTypographicGrid = css`
-  body {
-    font-size: 100%;
-    line-height: 1.25;
-    --lem: 1.25em;
-  }
+  font-size: 100%;
+  line-height: 1.25;
+  --lem: 1.25em;
 `;
 
 // Sets up the typographic grid from theme
 const TypographicGridFromTheme = css`
-  ${props =>
-    props.theme.textStyles.default.fontSize &&
-    css`
-      font-size: ${props.theme.textStyles.default.fontSize};
-    `}
+${props =>
+  props.theme.textStyles.default.fontSize &&
+  css`
+    font-size: ${props.theme.textStyles.default.fontSize};
+  `}
+
+${props =>
+  props.theme.textStyles.default.lineHeight &&
+  css`
+    line-height: ${props.theme.textStyles.default.lineHeight};
+  `}
 
   ${props =>
-    props.theme.textStyles.default.lineHeight &&
-    css`
-      line-height: ${props.theme.textStyles.default.lineHeight};
-    `}
-
-	${props =>
     props.theme.textStyles.default.lem &&
     css`
       --lem: ${props.theme.textStyles.default.lem};
     `}
 `;
 
-// Sets up the typographic grid
-// TODO: this would be more correct, but not supported by styled components...
-/**
- * ```
- * ${props =>
- props.theme.textStyles.default
-   ? css`
-	   ${TypographicGridFromTheme}
-	 `
-   : css`
-	   ${DefaultTypographicGrid}
-	 `}
-	```
- *
- */
+const TypographicGridFromTheme2 = css(props => ({
+  ...props.theme.textStyles.default
+}));
+
 const GlobalStyle = createGlobalStyle`
-	${DefaultTypographicGrid}
-	${TypographicGridFromTheme}
+	body {
+		${props =>
+      props.theme.textStyles.default
+        ? css`
+            ${TypographicGridFromTheme2}
+          `
+        : css`
+            ${DefaultTypographicGrid}
+          `}
+	}
 `;
 
 // Common settings for the rhythm containers

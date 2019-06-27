@@ -35,10 +35,10 @@ const textStyles = {
   default: {
     fontSize: "100%",
     lineHeight: "1.25",
-    lem: "1.25em"
+    --lem: "1.25em"
   },
   large: {
-    fontSize: modularScale(2)
+    fontSize: modularScale(1)
   }
 };
 

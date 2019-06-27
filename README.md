@@ -63,19 +63,56 @@ A photo portfolio site with React and WordPress: http://inu.ro
 
 ### Styled components
 
-Styled components are the weakest part of the stack but there is no better yet ...
-It can't do things like:
+Styled components are the weakest part of the stack but [there is no better yet ...](https://2019.stateofcss.com/technologies/)
+
+Probably using style objects vs tagged template literals is better: https://www.jakewiesler.com/blog/using-styled-components-without-template-literals/
+
+We can have ... style spreads !!!:
 
 ```
-${props =>
-props.theme.textStyles.default
-  ? css`
-	  ${TypographicGridFromTheme}
-	`
-  : css`
-	  ${DefaultTypographicGrid}
-	`}
+// Defines text styles
+const textStyles = {
+  default: {
+    fontSize: "100%",
+    lineHeight: "1.25",
+    --lem: "1.25em"
+  },
+  large: {
+    fontSize: modularScale(1)
+  }
+};
+
+const TypographicGridFromTheme2 = css(props => ({
+  ...props.theme.textStyles.default
+}));
 ```
+
+instead of
+
+```
+// Sets up the typographic grid from theme
+const TypographicGridFromTheme = css`
+${props =>
+  props.theme.textStyles.default.fontSize &&
+  css`
+    font-size: ${props.theme.textStyles.default.fontSize};
+  `}
+
+${props =>
+  props.theme.textStyles.default.lineHeight &&
+  css`
+    line-height: ${props.theme.textStyles.default.lineHeight};
+  `}
+
+  ${props =>
+    props.theme.textStyles.default.lem &&
+    css`
+      --lem: ${props.theme.textStyles.default.lem};
+    `}
+`;
+```
+
+It can't do things like:
 
 ```
 import { Link as _Link } from "../Link";
