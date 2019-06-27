@@ -7,6 +7,7 @@ import { useQuery } from "./../../hooks";
 import Reset from "../Reset";
 import TypographicGrid from "../TypographicGrid";
 import SiteInfo from "../SiteInfo";
+import Logo from "../Logo";
 
 // Defines the prop types of the component
 const Props = {
@@ -62,6 +63,7 @@ const Home = props => {
       <Reset />
       <TypographicGrid />
       <SiteInfo {...siteInfo} />
+      <Logo {...siteInfo} />
     </>
   );
 };
