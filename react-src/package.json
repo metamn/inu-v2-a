@@ -1,49 +1,51 @@
 {
-    "name": "inu-v2-a",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-        "@devloco/react-scripts-wptheme": "3.0.1-wptheme-3.0.5",
-        "apollo-boost": "^0.4.3",
-        "graphql": "^14.3.1",
-        "graphql-tag": "^2.10.1",
-        "polished": "^3.4.1",
-        "react": "^16.8.6",
-        "react-apollo": "^2.5.8",
-        "react-apollo-hooks": "^0.4.5",
-        "react-axe": "^3.1.0",
-        "react-dom": "^16.8.6",
-        "react-helmet": "^5.2.1",
-        "styled-components": "^4.3.2"
-    },
-    "scripts": {
-        "crabuild": "react-scripts build",
-        "craeject": "react-scripts eject",
-        "crastart": "react-scripts start",
-        "cratest": "react-scripts test",
-        "build": "wptheme-scripts build",
-        "start": "wptheme-scripts start",
-        "wpbuild": "wptheme-scripts wpbuild",
-        "wpstart": "wptheme-scripts wpstart"
-    },
-    "eslintConfig": {
-        "extends": "react-app"
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
-    "homepage": "/react-wp/wp-content/themes/inu-v2-a",
-    "browserLaunchTo": "http://localhost/react-wp",
-    "devDependencies": {
-        "flatted": "^2.0.1"
-    }
+  "name": "inu-v2-a",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@devloco/react-scripts-wptheme": "3.0.1-wptheme-3.0.5",
+    "apollo-boost": "^0.4.3",
+    "graphql": "^14.3.1",
+    "graphql-tag": "^2.10.1",
+    "polished": "^3.4.1",
+    "react": "^16.8.6",
+    "react-apollo": "^2.5.8",
+    "react-apollo-hooks": "^0.4.5",
+    "react-axe": "^3.1.0",
+    "react-dom": "^16.8.6",
+    "react-helmet": "^5.2.1",
+    "styled-components": "^4.3.2"
+  },
+  "scripts": {
+    "crabuild": "react-scripts build",
+    "craeject": "react-scripts eject",
+    "crastart": "react-scripts start",
+    "cratest": "react-scripts test",
+    "build": "wptheme-scripts build",
+    "start": "wptheme-scripts start",
+    "wpbuild": "wptheme-scripts wpbuild",
+    "wpstart": "wptheme-scripts wpstart",
+    "doc": "react-docgen"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "homepage": "/react-wp/wp-content/themes/inu-v2-a",
+  "browserLaunchTo": "http://localhost/react-wp",
+  "devDependencies": {
+    "flatted": "^2.0.1",
+    "react-docgen": "^4.1.1"
+  }
 }

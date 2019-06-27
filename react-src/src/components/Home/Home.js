@@ -9,7 +9,7 @@ import TypographicGrid from "../TypographicGrid";
 import SiteInfo from "../SiteInfo";
 import Logo from "../Logo";
 
-// Defines the prop types of the component
+/** Defines the prop types of the component */
 const Props = {
   ...SiteInfo.propTypes
 };

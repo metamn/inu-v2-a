@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import SiteInfo from "../SiteInfo";
 import Link from "../Link";
+import Media from "../Media";
 
 // Defines the prop types of the component
 const propTypes = {
@@ -16,10 +17,27 @@ const defaultProps = {
 };
 
 // Styles for the main container
-const Container = styled.section``;
+const Container = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+// Styles for the links
+const Links = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 // Styles for the line
-const Line = styled.div``;
+const Line = styled.div`
+  width: calc(var(--lem) * 8);
+  height: var(--lem);
+  border-bottom: 1px solid;
+  transform: rotate(-65deg) translateX(calc(var(--lem) * -2));
+
+  ${Media.mobile`display: none`}
+  ${Media.tablet`display: flex`}
+`;
 
 // Displays the site logo
 const Logo = props => {
@@ -27,12 +45,14 @@ const Logo = props => {
 
   return (
     <Container>
-      <Link url={url} title={title}>
-        {title}
-      </Link>
-      <Link url={url} title={description}>
-        {description}
-      </Link>
+      <Links>
+        <Link url={url} title={title}>
+          {title}
+        </Link>
+        <Link url={url} title={description}>
+          {description}
+        </Link>
+      </Links>
       <Line />
     </Container>
   );
