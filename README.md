@@ -53,6 +53,7 @@ A photo portfolio site with React and WordPress: http://inu.ro
 - [prop-types](https://reactjs.org/docs/typechecking-with-proptypes.html) - for basic typechecking
 - [react-axe](https://www.npmjs.com/package/react-axe) - for testing accessibility
 - [react-helmet](https://github.com/nfl/react-helmet) - to manage the document head
+- [react-docgen](https://github.com/reactjs/react-docgen) - to verify code documentation
 
 ### Plugins (for WordPress)
 
