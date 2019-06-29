@@ -6,6 +6,7 @@ import { ThemeContext } from "../../themes/default.js";
 
 // Defines the prop types of the component
 const propTypes = {
+  className: PropTypes.string,
   url: PropTypes.string,
   title: PropTypes.string,
   children: PropTypes.node
@@ -13,6 +14,7 @@ const propTypes = {
 
 // Defines the default props
 const defaultProps = {
+  className: "link",
   url: "http://example.com",
   title: "http://example.com",
   children: "http://example.com"
@@ -40,12 +42,12 @@ const Container = styled.a`
 
 // Displays a HTML link element
 const Link = props => {
-  const { url, title, children } = props;
+  const { children } = props;
   const themeContext = useContext(ThemeContext);
   const { theme } = themeContext;
 
   return (
-    <Container theme={theme} href={url} title={title}>
+    <Container theme={theme} {...props}>
       {children}
     </Container>
   );

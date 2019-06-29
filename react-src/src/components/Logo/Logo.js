@@ -10,11 +10,13 @@ import Media from "../Media";
 
 // Defines the prop types of the component
 const propTypes = {
+  className: PropTypes.string,
   ...SiteInfo.propTypes
 };
 
 // Defines the default props
 const defaultProps = {
+  className: "logo",
   ...SiteInfo.defaultProps
 };
 
@@ -31,7 +33,7 @@ const Links = styled.div`
 `;
 
 // Styles the link
-const StyledLink = styled.div(props => ({
+const StyledLink = styled(Link)(props => ({
   fontSize: props.theme.textStyles.large.fontSize
 }));
 
@@ -48,21 +50,21 @@ const Line = styled.div`
 
 // Displays the site logo
 const Logo = props => {
-  const { title, description, url } = props;
+  const { className, title, description, url } = props;
   const themeContext = useContext(ThemeContext);
   const { theme } = themeContext;
 
   return (
-    <Container>
-      <Links>
-        <StyledLink theme={theme} url={url} title={title}>
+    <Container className={className}>
+      <Links className="links">
+        <StyledLink theme={theme} {...props}>
           {title}
         </StyledLink>
-        <StyledLink theme={theme} url={url} title={description}>
+        <StyledLink theme={theme} {...props}>
           {description}
         </StyledLink>
       </Links>
-      <Line />
+      <Line className="line" />
     </Container>
   );
 };
