@@ -39,6 +39,8 @@ A photo portfolio site with React and WordPress: http://inu.ro
 - Just the first steps, needs more attention
 - Styleguidist or Storybook will be added later
 
+### Outlined semantic HTML elements
+
 ## Design
 
 ### CSS Reset
