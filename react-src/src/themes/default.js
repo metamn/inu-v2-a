@@ -1,14 +1,18 @@
 import React from "react";
 import { modularScale } from "polished";
 
-// Defines colors
+/**
+ * Color definitions
+ */
 const white = "white";
 const black = "black";
 const gray = "#666";
 const lightgray = "lightgray";
 const darkgray = "#333";
 
-// Defines color schemes
+/**
+ * Color schemes
+ */
 const colorSchemes = {
   light: {
     text: black,
@@ -30,7 +34,10 @@ const colorSchemes = {
   }
 };
 
-// Defines text styles
+/**
+ * Text styles
+ * @type {Object}
+ */
 const textStyles = {
   default: {
     fontSize: "100%",
@@ -42,17 +49,31 @@ const textStyles = {
   }
 };
 
-// Defines fonts
-// NOTE:  When changing font also the `WebFont.load` has to be updated
+/**
+ * Fonts
+ * NOTE:  When changing font also the `WebFont.load` has to be updated
+ *
+ * @type {Object}
+ */
 const fonts = {
   default: "'Major Mono Display', sans-serif;"
 };
 
-// Gets a color scheme
+/**
+ * Returns a color scheme
+ *
+ * @param  String colorScheme The name of the color scheme
+ * @return Object             The color scheme
+ */
 const getColorScheme = colorScheme =>
   colorScheme === "light" ? colorSchemes.light : colorSchemes.dark;
 
-// Gets a theme with colors, fonts etc
+/**
+ * Returns a complete theme with colors, fonts etc
+ *
+ * @param  String colorScheme The name of the color scheme
+ * @return Object             The theme
+ */
 const getTheme = colorScheme => {
   return {
     colors: getColorScheme(colorScheme),
@@ -61,20 +82,33 @@ const getTheme = colorScheme => {
   };
 };
 
-// Switches from a color scheme to another
-// Useful when clicking the theme switcher button
+/**
+ * Switches from a color scheme to another
+ * Useful when clicking the theme switcher button
+ *
+ * @param  String colorScheme The name of the color scheme from switch
+ * @return Object             The theme and the color scheme name
+ */
 const switchThemeFrom = colorScheme => {
   return colorScheme === "light"
     ? { colorScheme: "dark", theme: getTheme("dark") }
     : { colorScheme: "light", theme: getTheme("light") };
 };
 
-// Switches to a color scheme
+/**
+ * Switches to a color scheme
+ *
+ * @param  String colorScheme The name of the color scheme to switch
+ * @return Object             The theme and the color scheme name
+ */
 const switchThemeTo = colorScheme => {
   return { colorScheme: colorScheme, theme: getTheme(colorScheme) };
 };
 
-// Creates a theme context
+/**
+ * Creates a theme context
+ * @type {[type]}
+ */
 const ThemeContext = React.createContext(switchThemeTo("light"));
 
 export { getTheme, switchThemeFrom, switchThemeTo, ThemeContext };
