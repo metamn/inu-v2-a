@@ -27,11 +27,13 @@ WebFont.load({
 
 // Defines the prop types of the component
 const Props = {
+  className: PropTypes.string,
   ...SiteInfo.propTypes
 };
 
 // Defines the default props
 const DefaultProps = {
+  className: "home",
   ...SiteInfo.defaultProps
 };
 
@@ -109,13 +111,16 @@ const Home = props => {
     [data.generalSettings]
   );
 
+  // Every component must have a className otherwise it can't be re-styled with `styled-components`
+  const { className } = props;
+
   return (
     <>
       <Reset />
       <SiteInfo {...siteInfo} />
       <ThemeContext.Provider value={currentTheme}>
         <TypographicGrid />
-        <Container theme={currentTheme.theme}>
+        <Container className={className} theme={currentTheme.theme}>
           <Logo {...siteInfo} />
         </Container>
       </ThemeContext.Provider>
