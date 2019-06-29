@@ -1,5 +1,3 @@
-import { css } from "styled-components";
-
 /**
  * Defines the breakpoints
  * NOTE: Best use with the `min-width` technique

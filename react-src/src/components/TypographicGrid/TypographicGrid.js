@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import styled, { createGlobalStyle, css } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import Repeat from "../Repeat";
 
 import { ThemeContext } from "../../themes/default.js";
@@ -37,8 +37,8 @@ const propTypes = {
  * @type Object
  */
 const defaultProps = {
-  displayVerticalRhytm: false,
-  displayHorizontalRhytm: false,
+  displayVerticalRhytm: true,
+  displayHorizontalRhytm: true,
   numberOfHorizontalLines: 100,
   numberOfVerticalLines: 100,
   lineColor: "gray"
@@ -52,6 +52,7 @@ const className = "typographic-grid";
 
 /**
  * Sets up the typographic grid
+ * It's hand coded since `createGlobalStyle` doesn't supports yet object notation
  * @type String
  */
 const GlobalStyle = createGlobalStyle`
@@ -66,66 +67,67 @@ const GlobalStyle = createGlobalStyle`
  * Shared settings for the rhythm containers
  * @type String
  */
-const Rhythm = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-`;
+const Rhythm = styled("div")([], {
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%"
+});
 
 /**
  * The vertical rhythm container
  * @type String
  */
-const VerticalRhythm = styled(Rhythm)`
-  display: ${props => (props.displayVerticalRhytm ? "flex" : "none")};
-  flex-wrap: wrap;
-`;
+const VerticalRhythm = styled(Rhythm)(props => ({
+  display: props.displayVerticalRhytm ? "flex" : "none",
+  flexWrap: "wrap"
+}));
 
 /**
  * The horizontal rhythm container
  * @type String
  */
-const HorizontalRhythm = styled(Rhythm)`
-  display: ${props => (props.displayHorizontalRhytm ? "block" : "none")};
-`;
+const HorizontalRhythm = styled(Rhythm)(props => ({
+  display: props.displayHorizontalRhytm ? "flex" : "none",
+  flexWrap: "wrap"
+}));
 
 /**
  * Shared settings for the rhythm lines
  * @type String
  */
-const Line = styled.div`
-  box-sizing: border-box;
-  border-color: ${props => (props.lineColor ? props.lineColor : "transparent")};
-  border-width: 1px;
-`;
+const Line = styled.div(props => ({
+  boxSizing: "border-box",
+  borderColor: props.lineColor ? props.lineColor : "transparent",
+  borderWidth: "1px"
+}));
 
 /**
  * The vertical rhythm line
  * @type String
  */
-const VerticalRhythmLine = styled(Line)`
-  width: var(--lem);
-  height: 100%;
-  border-right-style: solid;
-`;
+const VerticalRhythmLine = styled(Line)([], {
+  width: "var(--lem)",
+  height: "100%",
+  borderRightStyle: "solid"
+});
 
 /**
  * The horizontal rhythm line
  * @type String
  */
-const HorizontalRhythmLine = styled(Line)`
-  width: 100%;
-  height: var(--lem);
-  border-bottom-style: solid;
-`;
+const HorizontalRhythmLine = styled(Line)([], {
+  width: "100%",
+  height: "var(--lem)",
+  borderBottomStyle: "solid"
+});
 
 /**
  * The main container
  * @type Sting
  */
-const Container = styled.div``;
+const Container = styled.div([]);
 
 /**
  * Displays horizontal and vertical lines across the page
