@@ -17,7 +17,7 @@ const Breakpoints = {
  * Inspiration: https://www.styled-components.com/docs/advanced/#media-templates
  * @type string
  */
-const Media = Object.keys(Breakpoints).reduce((acc, label) => {
+const Media2 = Object.keys(Breakpoints).reduce((acc, label) => {
   acc[label] = (...args) => css`
     @media (min-width: ${Breakpoints[label] / 16}em) {
       ${css(...args)}
@@ -26,5 +26,7 @@ const Media = Object.keys(Breakpoints).reduce((acc, label) => {
 
   return acc;
 }, {});
+
+const Media = "@media (min-width: 1024px)";
 
 export default Media;

@@ -60,11 +60,23 @@ const StyledLink = styled(Link)(props => ({
   ...props.theme.textStyles.large
 }));
 
+/**
+ * Styles the line
+ * @type {[type]}
+ */
 const Line = styled("div")([], {
   width: "calc(var(--lem) * 8)",
   height: "var(--lem)",
   borderBottom: "1px solid",
-  transform: "rotate(-65deg) translateX(calc(var(--lem) * -2))"
+  transform: "rotate(-65deg) translateX(calc(var(--lem) * -2))",
+
+  "@media (min-width: 320px)": {
+    display: "none"
+  },
+
+  "@media (min-width: 768px)": {
+    display: "flex"
+  }
 });
 
 /**

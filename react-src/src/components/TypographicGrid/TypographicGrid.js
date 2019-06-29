@@ -51,54 +51,14 @@ const defaultProps = {
 const className = "typographic-grid";
 
 /**
- * Sets up the default typographic grid
- * This is a fallback solution when the theme doesn't defines the grid
- * @type String
- */
-const DefaultTypographicGrid = css`
-  font-size: 100%;
-  line-height: 1.25;
-  --lem: 1.25em;
-`;
-
-/**
- * Sets up the typographic grid from theme
- * @type String
- */
-const TypographicGridFromTheme = css`
-${props =>
-  props.theme.textStyles.default.fontSize &&
-  css`
-    font-size: ${props.theme.textStyles.default.fontSize};
-  `}
-
-${props =>
-  props.theme.textStyles.default.lineHeight &&
-  css`
-    line-height: ${props.theme.textStyles.default.lineHeight};
-  `}
-
-  ${props =>
-    props.theme.textStyles.default.lem &&
-    css`
-      --lem: ${props.theme.textStyles.default.lem};
-    `}
-`;
-
-/**
- * Sets up the typographic grid either from theme or with default values
+ * Sets up the typographic grid
  * @type String
  */
 const GlobalStyle = createGlobalStyle`
 	body {
-		${props =>
-      props.theme.textStyles.default
-        ? css`
-            ${TypographicGridFromTheme}
-          `
-        : css`
-            ${DefaultTypographicGrid}
-          `}
+		font-size: 100%;
+	    line-height: 1.25;
+	    --lem: 1.25em;
 	}
 `;
 
