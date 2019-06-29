@@ -1,6 +1,7 @@
 /**
  * Imitates the for loop inside JSX
  * - https://reactjs.org/docs/jsx-in-depth.html
+ * @param Object props The component properties
  */
 const Repeat = props => {
   let ret = [];

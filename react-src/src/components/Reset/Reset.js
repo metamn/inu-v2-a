@@ -2,8 +2,11 @@ import React from "react";
 import { createGlobalStyle } from "styled-components";
 import { normalize } from "polished";
 
-// Global reset with `normalize.css`
-// Also adds custom resets
+/**
+ * Global reset with `normalize.css`
+ * Also adds custom resets
+ * @type Object
+ */
 const GlobalReset = createGlobalStyle`
 	${normalize()}
 
@@ -62,6 +65,9 @@ const GlobalReset = createGlobalStyle`
 	}
 `;
 
+/**
+ * Resets the browser
+ */
 const Reset = () => {
   return <GlobalReset />;
 };

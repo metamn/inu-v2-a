@@ -1,7 +1,10 @@
 import { css } from "styled-components";
 
-// Defines the breakpoints
-// NOTE: Use breakpoints with the `min-width` technique
+/**
+ * Defines the breakpoints
+ * NOTE: Use breakpoints with the `min-width` technique
+ * @type Object
+ */
 const Breakpoints = {
   mobile: 320,
   tablet: 768,
@@ -9,8 +12,11 @@ const Breakpoints = {
   desktop: 1440
 };
 
-// Defines a media query mixin
-// Inspiration: https://www.styled-components.com/docs/advanced/#media-templates
+/**
+ * Defines a media query mixin
+ * Inspiration: https://www.styled-components.com/docs/advanced/#media-templates
+ * @type string
+ */
 const Media = Object.keys(Breakpoints).reduce((acc, label) => {
   acc[label] = (...args) => css`
     @media (min-width: ${Breakpoints[label] / 16}em) {

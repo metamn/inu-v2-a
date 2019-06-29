@@ -5,17 +5,38 @@ import Repeat from "../Repeat";
 
 import { ThemeContext } from "../../themes/default.js";
 
-// Defines the component prop types
-const Props = {
+/**
+ * Defines the component prop types
+ * @type Object
+ */
+const propTypes = {
+  /**
+   * Display vertical rhythm lines?
+   */
   displayVerticalRhytm: PropTypes.bool,
+  /**
+   * Display horizontal rhythm lines?
+   */
   displayHorizontalRhytm: PropTypes.bool,
+  /**
+   * The number of horizontal rhythm lines
+   */
   numberOfHorizontalLines: PropTypes.number,
+  /**
+   * The number of vertical rhythm lines
+   */
   numberOfVerticalLines: PropTypes.number,
+  /**
+   * The color of the rhythm lines
+   */
   lineColor: PropTypes.string
 };
 
-// Defines the default prop types
-const DefaultProps = {
+/**
+ * Defines the default props
+ * @type Object
+ */
+const defaultProps = {
   displayVerticalRhytm: false,
   displayHorizontalRhytm: false,
   numberOfHorizontalLines: 100,
@@ -23,17 +44,27 @@ const DefaultProps = {
   lineColor: "gray"
 };
 
-// Defines the component name
-const ClassName = "typographic-grid";
+/**
+ * Defines the component name
+ * @type String
+ */
+const className = "typographic-grid";
 
-// Defines default values for typographic grid
+/**
+ * Sets up the default typographic grid
+ * This is a fallback solution when the theme doesn't defines the grid
+ * @type String
+ */
 const DefaultTypographicGrid = css`
   font-size: 100%;
   line-height: 1.25;
   --lem: 1.25em;
 `;
 
-// Sets up the typographic grid from theme
+/**
+ * Sets up the typographic grid from theme
+ * @type String
+ */
 const TypographicGridFromTheme = css`
 ${props =>
   props.theme.textStyles.default.fontSize &&
@@ -54,6 +85,10 @@ ${props =>
     `}
 `;
 
+/**
+ * Sets up the typographic grid either from theme or with default values
+ * @type String
+ */
 const GlobalStyle = createGlobalStyle`
 	body {
 		${props =>
@@ -67,7 +102,10 @@ const GlobalStyle = createGlobalStyle`
 	}
 `;
 
-// Common settings for the rhythm containers
+/**
+ * Shared settings for the rhythm containers
+ * @type String
+ */
 const Rhythm = styled.div`
   position: absolute;
   top: 0;
@@ -76,45 +114,65 @@ const Rhythm = styled.div`
   height: 100%;
 `;
 
-// The vertical rhythm container
+/**
+ * The vertical rhythm container
+ * @type String
+ */
 const VerticalRhythm = styled(Rhythm)`
   display: ${props => (props.displayVerticalRhytm ? "flex" : "none")};
   flex-wrap: wrap;
 `;
 
-// The horizontal rhythm container
+/**
+ * The horizontal rhythm container
+ * @type String
+ */
 const HorizontalRhythm = styled(Rhythm)`
   display: ${props => (props.displayHorizontalRhytm ? "block" : "none")};
 `;
 
-// Common settings for the rhythm lines
+/**
+ * Shared settings for the rhythm lines
+ * @type String
+ */
 const Line = styled.div`
   box-sizing: border-box;
   border-color: ${props => (props.lineColor ? props.lineColor : "transparent")};
   border-width: 1px;
 `;
 
-// The vertical rhythm line
+/**
+ * The vertical rhythm line
+ * @type String
+ */
 const VerticalRhythmLine = styled(Line)`
   width: var(--lem);
   height: 100%;
   border-right-style: solid;
 `;
 
-// The horizontal rhythm line
+/**
+ * The horizontal rhythm line
+ * @type String
+ */
 const HorizontalRhythmLine = styled(Line)`
   width: 100%;
   height: var(--lem);
   border-bottom-style: solid;
 `;
 
-// The main container
+/**
+ * The main container
+ * @type Sting
+ */
 const Container = styled.div``;
 
-// The main component
-// - Displays horizontal and vertical lines across the page
-// - It helps verify elements are perfectly aligned to the grid
-// - See: http://metamn.io/mr-ui
+/**
+ * Displays horizontal and vertical lines across the page
+ * It helps to verify elements are all perfectly aligned to the grid
+ * See: http://metamn.io/mr-ui
+ * @param Object props The component properties
+ */
 const TypographicGrid = props => {
   const {
     displayVerticalRhytm,
@@ -131,7 +189,7 @@ const TypographicGrid = props => {
     <>
       <GlobalStyle theme={theme} />
       {(displayHorizontalRhytm || displayVerticalRhytm) && (
-        <Container className={ClassName}>
+        <Container className={className}>
           {displayHorizontalRhytm && (
             <HorizontalRhythm
               className="horizontal-lines"
@@ -158,7 +216,7 @@ const TypographicGrid = props => {
   );
 };
 
-TypographicGrid.propTypes = Props;
-TypographicGrid.defaultProps = DefaultProps;
+TypographicGrid.propTypes = propTypes;
+TypographicGrid.defaultProps = defaultProps;
 
 export default TypographicGrid;
