@@ -70,11 +70,11 @@ const Line = styled("div")([], {
   borderBottom: "1px solid",
   transform: "rotate(-65deg) translateX(calc(var(--lem) * -2))",
 
-  "@media (min-width: 320px)": {
+  [`${Media.mobile}`]: {
     display: "none"
   },
 
-  "@media (min-width: 768px)": {
+  [`${Media.tablet}`]: {
     display: "flex"
   }
 });
