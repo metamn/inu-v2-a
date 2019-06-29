@@ -30,6 +30,13 @@ A photo portfolio site with React and WordPress: http://inu.ro
 
 ### Naming conventions
 
+### Style objects for better composition
+
+### Documentation
+
+- Just the first steps, needs more attention
+- Styleguidist or Storybook will be added later
+
 ## Design
 
 ### CSS Reset

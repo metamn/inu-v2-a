@@ -37,7 +37,7 @@ const colorSchemes = {
 /**
  * Color pairs
  * Colors come in pairs. And with an accessible contrast ratio.
- * We don't set a single color, we always set a pair of colors, one for the background, the other for the text
+ * We don't set a single color, we always set a pair of colors, one for the background, the other for the text, and make sure when they are paired their color contrast ratio is checked first
  *
  * @param  Object colors A set of colors of a color scheme
  * @return Object        A set of color pairs
@@ -60,12 +60,23 @@ const getColorPairs = colors => {
  */
 const textStyles = {
   default: {
-    fontSize: "100%",
-    lineHeight: "1.25",
-    lem: "1.25em"
+    fontSize: "100%"
   },
   large: {
     fontSize: modularScale(1)
+  }
+};
+
+/**
+ * Link styles
+ * @type {Object}
+ */
+const links = {
+  default: {
+    textDecoration: "none",
+    "&:hover": {
+      textDecoration: "line-through"
+    }
   }
 };
 
@@ -103,7 +114,8 @@ const getTheme = colorScheme => {
     colors: colors,
     colorPairs: getColorPairs(colors),
     fonts: fonts,
-    textStyles: textStyles
+    textStyles: textStyles,
+    links: links
   };
 };
 

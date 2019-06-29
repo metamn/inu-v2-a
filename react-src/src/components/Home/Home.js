@@ -66,6 +66,8 @@ const query = gql`
 
 /**
  * Styles the main container
+ * Wherever possible the object notation is used to enable composition by spreading and reduce the ugly, long `{$props => ...}` syntax with template literals
+ *
  * @type {[type]}
  */
 const Container = styled("section")(props => ({

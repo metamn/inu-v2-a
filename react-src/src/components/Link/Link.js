@@ -20,7 +20,11 @@ const propTypes = {
   /**
    * The link content
    */
-  children: PropTypes.node
+  children: PropTypes.node,
+  /**
+   * The link style
+   */
+  linkStyle: PropTypes.string
 };
 
 /**
@@ -30,7 +34,8 @@ const propTypes = {
 const defaultProps = {
   url: "http://example.com",
   title: "http://example.com",
-  children: "http://example.com"
+  children: "http://example.com",
+  linkStyle: "default"
 };
 
 /**
@@ -39,25 +44,14 @@ const defaultProps = {
  */
 const className = "link";
 
-// Styles the default link
-const DefaultLink = css`
-  text-decoration: none;
-
-  ${props =>
-    props.theme.colors.text &&
-    css`
-      color: ${props.theme.colors.text};
-    `};
-
-  &:hover {
-    text-decoration: line-through;
-  }
-`;
-
-// Styles the link
-const Container = styled.a`
-  ${DefaultLink}
-`;
+/**
+ * Styles the link
+ * @type {[type]}
+ */
+const Container = styled("a")(props => ({
+  ...props.theme.links.default,
+  ...props.theme.colorPairs.default
+}));
 
 /**
  * Displays a HTML link element

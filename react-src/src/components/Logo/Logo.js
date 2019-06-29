@@ -34,33 +34,38 @@ const defaultProps = {
  */
 const className = "logo";
 
-// Styles for the main container
-const Container = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-`;
+/**
+ * Styles for the main container
+ * @type {[type]}
+ */
+const Container = styled("section")([], {
+  display: "flex",
+  flexWrap: "wrap"
+});
 
-// Styles for the links
-const Links = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+/**
+ * Styles for the links
+ * @type {[type]}
+ */
+const Links = styled("div")([], {
+  display: "flex",
+  flexDirection: "column"
+});
 
-// Styles the link
+/**
+ * Styles the link
+ * @type {[type]}
+ */
 const StyledLink = styled(Link)(props => ({
-  fontSize: props.theme.textStyles.large.fontSize
+  ...props.theme.textStyles.large
 }));
 
-// Styles for the line
-const Line = styled.div`
-  width: calc(var(--lem) * 8);
-  height: var(--lem);
-  border-bottom: 1px solid;
-  transform: rotate(-65deg) translateX(calc(var(--lem) * -2));
-
-  ${Media.mobile`display: none`}
-  ${Media.tablet`display: flex`}
-`;
+const Line = styled("div")([], {
+  width: "calc(var(--lem) * 8)",
+  height: "var(--lem)",
+  borderBottom: "1px solid",
+  transform: "rotate(-65deg) translateX(calc(var(--lem) * -2))"
+});
 
 /**
  * Displays the site logo
