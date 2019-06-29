@@ -81,7 +81,7 @@ const Container = styled.div`
 
 /**
  * Displays the Homepage
- * @param {Object} props Props
+ * @param {Object} props The component properties
  */
 const Home = props => {
   /**

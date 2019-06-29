@@ -67,17 +67,17 @@ const Line = styled.div`
  * @param Object props The component properties
  */
 const Logo = props => {
-  const { className, title, description, url } = props;
+  const { title, description } = props;
   const themeContext = useContext(ThemeContext);
   const { theme } = themeContext;
 
   return (
     <Container className={className}>
       <Links className="links">
-        <StyledLink theme={theme} {...props}>
+        <StyledLink className="link" theme={theme} {...props}>
           {title}
         </StyledLink>
-        <StyledLink theme={theme} {...props}>
+        <StyledLink className="link" theme={theme} {...props}>
           {description}
         </StyledLink>
       </Links>
