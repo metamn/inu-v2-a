@@ -4,18 +4,18 @@ import styled from "styled-components";
 import gql from "graphql-tag";
 import WebFont from "webfontloader";
 
-import { useQuery } from "./../../hooks";
+import { useQuery, useLocalStorage, usePrefersDarkMode } from "./../../hooks";
 import {
   ThemeContext,
   switchThemeTo,
   switchThemeFrom
 } from "../../themes/default.js";
-import { useLocalStorage, usePrefersDarkMode } from "../../hooks";
 
 import Reset from "../Reset";
 import TypographicGrid from "../TypographicGrid";
 import SiteInfo from "../SiteInfo";
 import Logo from "../Logo";
+import { Section as _Section } from "../SemanticHTML";
 
 /**
  * Loads web fonts
@@ -70,7 +70,7 @@ const query = gql`
  *
  * @type {[type]}
  */
-const Container = styled("section")(props => ({
+const Section = styled(_Section)(props => ({
   ...props.theme.colorPairs.default,
   ...props.theme.fonts.default,
   display: "flex",
@@ -144,9 +144,9 @@ const Home = props => {
       <SiteInfo {...siteInfo} />
       <ThemeContext.Provider value={currentTheme}>
         <TypographicGrid />
-        <Container className={className} theme={currentTheme.theme}>
+        <Section className={className} title="Home" theme={currentTheme.theme}>
           <Logo {...siteInfo} />
-        </Container>
+        </Section>
       </ThemeContext.Provider>
     </>
   );

@@ -5,8 +5,9 @@ import styled from "styled-components";
 import { ThemeContext } from "../../themes/default.js";
 
 import SiteInfo from "../SiteInfo";
-import Link from "../Link";
+import { default as _Link } from "../Link";
 import Media from "../Media";
+import { Section as _Section } from "../SemanticHTML";
 
 /**
  * Defines the prop types of the component
@@ -38,7 +39,7 @@ const className = "logo";
  * Styles for the main container
  * @type {[type]}
  */
-const Container = styled("section")([], {
+const Section = styled(_Section)([], {
   display: "flex",
   flexWrap: "wrap"
 });
@@ -56,7 +57,7 @@ const Links = styled("div")([], {
  * Styles the link
  * @type {[type]}
  */
-const StyledLink = styled(Link)(props => ({
+const Link = styled(_Link)(props => ({
   ...props.theme.textStyles.large
 }));
 
@@ -89,17 +90,17 @@ const Logo = props => {
   const { theme } = themeContext;
 
   return (
-    <Container className={className}>
+    <Section className={className} title="Logo">
       <Links className="links">
-        <StyledLink className="link" theme={theme} {...props}>
+        <Link className="link" theme={theme} {...props}>
           {title}
-        </StyledLink>
-        <StyledLink className="link" theme={theme} {...props}>
+        </Link>
+        <Link className="link" theme={theme} {...props}>
           {description}
-        </StyledLink>
+        </Link>
       </Links>
       <Line className="line" />
-    </Container>
+    </Section>
   );
 };
 

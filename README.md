@@ -32,6 +32,8 @@ A photo portfolio site with React and WordPress: http://inu.ro
 
 ### Style objects for better composition
 
+### Function components
+
 ### Documentation
 
 - Just the first steps, needs more attention
