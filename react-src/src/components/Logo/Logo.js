@@ -20,6 +20,9 @@ const defaultProps = {
   ...SiteInfo.defaultProps
 };
 
+// Defines the component name
+const ClassName = "logo";
+
 // Styles for the main container
 const Container = styled.section`
   display: flex;
@@ -55,7 +58,7 @@ const Logo = props => {
   const { theme } = themeContext;
 
   return (
-    <Container className={className}>
+    <Container className={ClassName}>
       <Links className="links">
         <StyledLink theme={theme} {...props}>
           {title}

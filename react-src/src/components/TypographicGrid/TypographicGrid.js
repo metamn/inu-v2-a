@@ -23,6 +23,9 @@ const DefaultProps = {
   lineColor: "gray"
 };
 
+// Defines the component name
+const ClassName = "typographic-grid";
+
 // Defines default values for typographic grid
 const DefaultTypographicGrid = css`
   font-size: 100%;
@@ -51,16 +54,12 @@ ${props =>
     `}
 `;
 
-const TypographicGridFromTheme2 = css(props => ({
-  ...props.theme.textStyles.default
-}));
-
 const GlobalStyle = createGlobalStyle`
 	body {
 		${props =>
       props.theme.textStyles.default
         ? css`
-            ${TypographicGridFromTheme2}
+            ${TypographicGridFromTheme}
           `
         : css`
             ${DefaultTypographicGrid}
@@ -127,13 +126,12 @@ const TypographicGrid = props => {
 
   const themeContext = useContext(ThemeContext);
   const { theme } = themeContext;
-  console.log("theme:" + theme.textStyles.default.fontSize);
 
   return (
     <>
       <GlobalStyle theme={theme} />
       {(displayHorizontalRhytm || displayVerticalRhytm) && (
-        <Container className="typographic-grid">
+        <Container className={ClassName}>
           {displayHorizontalRhytm && (
             <HorizontalRhythm
               className="horizontal-lines"
