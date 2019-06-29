@@ -68,16 +68,13 @@ const query = gql`
  * Styles the main container
  * @type {[type]}
  */
-const Container = styled.div`
-  background: ${props => props.theme.colors.background};
-  color: ${props => props.theme.colors.text};
-  font-family: ${props => props.theme.fonts.default};
-
-  display: flex;
-  flex-direction: column;
-
-  min-height: 100vh;
-`;
+const Container = styled("section")(props => ({
+  ...props.theme.colorPairs.default,
+  ...props.theme.fonts.default,
+  display: "flex",
+  flexDirection: "column",
+  minHeight: "100vh"
+}));
 
 /**
  * Displays the Homepage

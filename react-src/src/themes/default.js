@@ -35,6 +35,26 @@ const colorSchemes = {
 };
 
 /**
+ * Color pairs
+ * Colors come in pairs. And with an accessible contrast ratio.
+ * We don't set a single color, we always set a pair of colors, one for the background, the other for the text
+ *
+ * @param  Object colors A set of colors of a color scheme
+ * @return Object        A set of color pairs
+ */
+const getColorPairs = colors => {
+  const { text, background } = colors;
+
+  return {
+    default: {
+      color: text,
+      backgroundColor: background
+    },
+    inverted: { color: background, backgroundColor: text }
+  };
+};
+
+/**
  * Text styles
  * @type {Object}
  */
@@ -56,7 +76,9 @@ const textStyles = {
  * @type {Object}
  */
 const fonts = {
-  default: "'Major Mono Display', sans-serif;"
+  default: {
+    fontFamily: "'Major Mono Display', sans-serif;"
+  }
 };
 
 /**
@@ -75,8 +97,11 @@ const getColorScheme = colorScheme =>
  * @return Object             The theme
  */
 const getTheme = colorScheme => {
+  const colors = getColorScheme(colorScheme);
+
   return {
-    colors: getColorScheme(colorScheme),
+    colors: colors,
+    colorPairs: getColorPairs(colors),
     fonts: fonts,
     textStyles: textStyles
   };
