@@ -59,7 +59,7 @@ const getColorPairs = colors => {
  * @type {Object}
  */
 const textStyles = {
-  // Grid is set up manually since createGlobalStyle supports only tagged liters
+  // Grid is set up elsewhere manually since createGlobalStyle supports only tagged liters
   default: {
     fontSize: "100%"
   },

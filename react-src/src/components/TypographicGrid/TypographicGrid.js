@@ -37,8 +37,8 @@ const propTypes = {
  * @type Object
  */
 const defaultProps = {
-  displayVerticalRhytm: true,
-  displayHorizontalRhytm: true,
+  displayVerticalRhytm: false,
+  displayHorizontalRhytm: false,
   numberOfHorizontalLines: 100,
   numberOfVerticalLines: 100,
   lineColor: "gray"
