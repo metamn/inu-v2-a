@@ -31,7 +31,7 @@ WebFont.load({
  * Defines the prop types of the component
  * @type Object
  */
-const Props = {
+const propTypes = {
   ...SiteInfo.propTypes
 };
 
@@ -39,7 +39,7 @@ const Props = {
  * Defines the default props
  * @type Object
  */
-const DefaultProps = {
+const defaultProps = {
   ...SiteInfo.defaultProps
 };
 
@@ -49,7 +49,7 @@ const DefaultProps = {
   NOTE: This is not a prop which can be passed over to child components then overwrite their classname prop ...
  * @type String
  */
-const ClassName = "home";
+const className = "home";
 
 /**
  * Defines the query
@@ -143,7 +143,7 @@ const Home = props => {
       <SiteInfo {...siteInfo} />
       <ThemeContext.Provider value={currentTheme}>
         <TypographicGrid />
-        <Container className={ClassName} theme={currentTheme.theme}>
+        <Container className={className} theme={currentTheme.theme}>
           <Logo {...siteInfo} />
         </Container>
       </ThemeContext.Provider>
@@ -151,7 +151,7 @@ const Home = props => {
   );
 };
 
-Home.propTypes = Props;
-Home.defaultProps = DefaultProps;
+Home.propTypes = propTypes;
+Home.defaultProps = defaultProps;
 
 export default Home;
