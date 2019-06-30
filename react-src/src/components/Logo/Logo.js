@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { stringify } from "flatted";
 
 import { useTheme, Media } from "../../hooks";
 
@@ -27,12 +28,6 @@ const propTypes = {
 const defaultProps = {
   ...SiteInfo.defaultProps
 };
-
-/**
- * Defines the component name
- * @type String
- */
-const className = "logo";
 
 /**
  * Styles for the main container
@@ -85,10 +80,10 @@ const Line = styled("div")([], {
  */
 const Logo = props => {
   const { title, description } = props;
-  const [theme] = useTheme();
+  const { theme } = useTheme();
 
   return (
-    <Section className={className} title="Logo">
+    <Section className="logo" title="Logo">
       <Links className="links">
         <Link className="link" theme={theme} {...props}>
           {title}

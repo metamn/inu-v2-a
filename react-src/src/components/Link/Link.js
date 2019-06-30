@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
@@ -39,12 +39,6 @@ const defaultProps = {
 };
 
 /**
- * Defines the component name
- * @type String
- */
-const className = "link";
-
-/**
  * Styles the link
  * @type {[type]}
  */
@@ -59,11 +53,11 @@ const Container = styled("a")(props => ({
  */
 const Link = props => {
   const { url, title, children } = props;
-  const [theme] = useTheme();
+  const { theme } = useTheme();
 
   return (
     <Container
-      className={className}
+      className="link"
       href={url}
       title={title}
       theme={theme}

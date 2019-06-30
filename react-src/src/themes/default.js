@@ -149,4 +149,6 @@ const switchThemeTo = colorScheme => {
  */
 const ThemeContext = React.createContext(switchThemeTo("light"));
 
+//const themeContext = useContext(ThemeContext);
+
 export { getTheme, switchThemeFrom, switchThemeTo, ThemeContext };

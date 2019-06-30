@@ -6,7 +6,7 @@ import WebFont from "webfontloader";
 import { FiSun } from "react-icons/fi";
 
 import { useQuery, useTheme, useData } from "./../../hooks";
-//import { stringify } from "flatted";
+import { stringify } from "flatted";
 
 import Reset from "../Reset";
 import TypographicGrid from "../TypographicGrid";
@@ -42,14 +42,6 @@ const defaultProps = {
 };
 
 /**
- * Defines the component className
- * NOTE: Every component must have a className otherwise it can't be re-styled with `styled-components`
- * NOTE: This is not a prop which can be passed over to child components then overwrite their classname prop ...
- * @type String
- */
-const className = "home";
-
-/**
  * Defines the query
  * @type {[type]}
  */
@@ -82,7 +74,7 @@ const Section = styled(_Section)(props => ({
  */
 const Home = props => {
   // Theming
-  const [theme, switchTheme, ThemeContext] = useTheme();
+  const { currentTheme, switchTheme, ThemeContext } = useTheme();
 
   // Site info
   const siteInfo = useData(props, query, "generalSettings");
@@ -91,9 +83,9 @@ const Home = props => {
     <>
       <Reset />
       <SiteInfo {...siteInfo} />
-      <ThemeContext.Provider value={theme}>
+      <ThemeContext.Provider value={currentTheme}>
         <TypographicGrid />
-        <Section title="Home" className={className} theme={theme}>
+        <Section title="Home" className="home" theme={currentTheme.theme}>
           <Logo {...siteInfo} />
           <Icon>
             <FiSun onClick={() => switchTheme()} />
