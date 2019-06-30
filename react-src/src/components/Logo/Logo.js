@@ -14,7 +14,7 @@ import { Section as _Section } from "../SemanticHTML";
  */
 const propTypes = {
   /**
-   * Inherints from SiteInfo
+   * Inherits from SiteInfo
    * @type Object
    */
   ...SiteInfo.propTypes

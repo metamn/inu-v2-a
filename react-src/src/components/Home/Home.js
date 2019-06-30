@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import gql from "graphql-tag";
 import WebFont from "webfontloader";
+import { FiSun } from "react-icons/fi";
 
 import { useQuery, useTheme, useData } from "./../../hooks";
 //import { stringify } from "flatted";
@@ -11,6 +12,7 @@ import Reset from "../Reset";
 import TypographicGrid from "../TypographicGrid";
 import SiteInfo from "../SiteInfo";
 import Logo from "../Logo";
+import Icon from "../Icon";
 import { Section as _Section } from "../SemanticHTML";
 
 /**
@@ -91,8 +93,11 @@ const Home = props => {
       <SiteInfo {...siteInfo} />
       <ThemeContext.Provider value={theme}>
         <TypographicGrid />
-        <Section className={className} title="Home" theme={theme}>
+        <Section title="Home" className={className} theme={theme}>
           <Logo {...siteInfo} />
+          <Icon>
+            <FiSun />
+          </Icon>
         </Section>
       </ThemeContext.Provider>
     </>
