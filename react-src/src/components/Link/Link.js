@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import { ThemeContext } from "../../themes/default.js";
+import { useTheme } from "../../hooks";
 
 /**
  * Defines the prop types of the component
@@ -59,8 +59,7 @@ const Container = styled("a")(props => ({
  */
 const Link = props => {
   const { children } = props;
-  const themeContext = useContext(ThemeContext);
-  const { theme } = themeContext;
+  const [theme] = useTheme();
 
   return (
     <Container className={className} theme={theme} {...props}>

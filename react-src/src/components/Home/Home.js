@@ -4,12 +4,7 @@ import styled from "styled-components";
 import gql from "graphql-tag";
 import WebFont from "webfontloader";
 
-import { useQuery, useLocalStorage, usePrefersDarkMode } from "./../../hooks";
-import {
-  ThemeContext,
-  switchThemeTo,
-  switchThemeFrom
-} from "../../themes/default.js";
+import { useQuery, useTheme } from "./../../hooks";
 
 import Reset from "../Reset";
 import TypographicGrid from "../TypographicGrid";
@@ -83,29 +78,8 @@ const Section = styled(_Section)(props => ({
  * @param Object props The component properties
  */
 const Home = props => {
-  /**
-   * Theming
-   *
-   * - Checks if the user / browser prefers dark mode
-   * - Checks if the browser has stored a preference for a theme
-   * - Based on above the theme context can be set up with the desired theme
-   * - Then saved into a state var to make it switchable
-   */
-
-  const prefersDarkMode = usePrefersDarkMode();
-  const [currentThemeSaved, setCurrentThemeSaved] = useLocalStorage(
-    "current-theme"
-  );
-  const starterColorScheme =
-    typeof currentThemeSaved !== "undefined"
-      ? currentThemeSaved
-      : prefersDarkMode
-      ? "dark"
-      : "light";
-
-  let themeContext = useContext(ThemeContext);
-  themeContext = switchThemeTo(starterColorScheme);
-  const [currentTheme, setCurrentTheme] = useState(themeContext);
+  // Theming
+  const [theme, setTheme, ThemeContext] = useTheme();
 
   /**
    * Site Info
@@ -142,9 +116,9 @@ const Home = props => {
     <>
       <Reset />
       <SiteInfo {...siteInfo} />
-      <ThemeContext.Provider value={currentTheme}>
+      <ThemeContext.Provider value={theme}>
         <TypographicGrid />
-        <Section className={className} title="Home" theme={currentTheme.theme}>
+        <Section className={className} title="Home" theme={theme}>
           <Logo {...siteInfo} />
         </Section>
       </ThemeContext.Provider>

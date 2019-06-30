@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import { ThemeContext } from "../../themes/default.js";
+import { useTheme } from "../../hooks";
 
 import SiteInfo from "../SiteInfo";
 import { default as _Link } from "../Link";
@@ -86,8 +86,7 @@ const Line = styled("div")([], {
  */
 const Logo = props => {
   const { title, description } = props;
-  const themeContext = useContext(ThemeContext);
-  const { theme } = themeContext;
+  const [theme] = useTheme();
 
   return (
     <Section className={className} title="Logo">
