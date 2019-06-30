@@ -82,7 +82,7 @@ const Section = styled(_Section)(props => ({
  */
 const Home = props => {
   // Theming
-  const [theme, setTheme, ThemeContext] = useTheme();
+  const [theme, switchTheme, ThemeContext] = useTheme();
 
   // Site info
   const siteInfo = useData(props, query, "generalSettings");
@@ -96,7 +96,7 @@ const Home = props => {
         <Section title="Home" className={className} theme={theme}>
           <Logo {...siteInfo} />
           <Icon>
-            <FiSun />
+            <FiSun onClick={() => switchTheme()} />
           </Icon>
         </Section>
       </ThemeContext.Provider>

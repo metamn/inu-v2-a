@@ -1,6 +1,10 @@
 import { useState, useContext } from "react";
 import { useLocalStorage, usePrefersDarkMode } from "./index";
-import { ThemeContext, switchThemeTo } from "../themes/default.js";
+import {
+  ThemeContext,
+  switchThemeTo,
+  switchThemeFrom
+} from "../themes/default.js";
 
 /**
  * The theme hook
@@ -19,7 +23,7 @@ const useTheme = () => {
     "current-theme"
   );
 
-  /** Sets the theme based on above */
+  /** Sets the theme based on the above preferences */
   const starterColorScheme =
     typeof currentThemeSaved !== "undefined"
       ? currentThemeSaved
@@ -33,7 +37,16 @@ const useTheme = () => {
   /** Saves theme into a state */
   const [currentTheme, setCurrentTheme] = useState(themeContext);
 
-  return [currentTheme.theme, setCurrentTheme, ThemeContext];
+  /**
+   * Swicth theme
+   * @return {[type]} [description]
+   */
+  const switchTheme = () => {
+    const newTheme = switchThemeFrom(currentTheme.colorScheme);
+    setCurrentTheme(newTheme);
+  };
+
+  return [currentTheme.theme, switchTheme, ThemeContext];
 };
 
 export default useTheme;
