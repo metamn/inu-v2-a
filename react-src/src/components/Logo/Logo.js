@@ -6,7 +6,6 @@ import { useTheme, Media } from "../../hooks";
 
 import SiteInfo from "../SiteInfo";
 import { default as _Link } from "../Link";
-//import Media from "../Media";
 import { Section as _Section } from "../SemanticHTML";
 
 /**

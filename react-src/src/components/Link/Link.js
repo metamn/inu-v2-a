@@ -12,7 +12,7 @@ const propTypes = {
   /**
    * The link url
    */
-  url: PropTypes.string,
+  url: PropTypes.string.isrequired,
   /**
    * The link title
    */
@@ -20,7 +20,7 @@ const propTypes = {
   /**
    * The link content
    */
-  children: PropTypes.node,
+  children: PropTypes.node.isrequired,
   /**
    * The link style
    */
@@ -58,11 +58,17 @@ const Container = styled("a")(props => ({
  * @param Object props The component properties
  */
 const Link = props => {
-  const { children } = props;
+  const { url, title, children } = props;
   const [theme] = useTheme();
 
   return (
-    <Container className={className} theme={theme} {...props}>
+    <Container
+      className={className}
+      href={url}
+      title={title}
+      theme={theme}
+      {...props}
+    >
       {children}
     </Container>
   );

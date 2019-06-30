@@ -28,6 +28,15 @@ A photo portfolio site with React and WordPress: http://inu.ro
 
 ### Passing flat props
 
+- This is also a good example for typechecking / props usage
+- - Throughout the entire code we pass the same props structure:
+- - `useState(props)`
+- - `useQuery(query)`
+- - `setSiteInfo(data.generalSettings)`
+- - `<SiteInfo {...siteInfo} />`
+- - And we decompose props only when they are finally displayed in the SiteInfo component:
+- - `const { title, description, url } = props;`
+
 ### Naming conventions
 
 ### Style objects for better composition

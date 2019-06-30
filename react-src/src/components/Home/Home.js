@@ -4,7 +4,8 @@ import styled from "styled-components";
 import gql from "graphql-tag";
 import WebFont from "webfontloader";
 
-import { useQuery, useTheme } from "./../../hooks";
+import { useQuery, useTheme, useData } from "./../../hooks";
+//import { stringify } from "flatted";
 
 import Reset from "../Reset";
 import TypographicGrid from "../TypographicGrid";
@@ -81,36 +82,8 @@ const Home = props => {
   // Theming
   const [theme, setTheme, ThemeContext] = useTheme();
 
-  /**
-   * Site Info
-   *
-   * This is a good example how Hooks work in React
-   * - The db query is async which means we'll have to wait for the real data
-   * - Meantime we set up a state variable with default values coming from `props`
-   * - Then we'll update the state var in `useEffect` when the data becomes ready
-   * - And the `<SiteInfo/>` component will be re-rendered automatically
-   *
-   * This is also a good example for typechecking / props usage
-   * - Throughout the entire code we pass the same props structure:
-   * - `useState(props)`
-   * - `useQuery(query)`
-   * - `setSiteInfo(data.generalSettings)`
-   * - `<SiteInfo {...siteInfo} />`
-   * - And we decompose props only when they are finally displayed:
-   * - `const { title, description, url } = props;`
-   */
-
-  const [siteInfo, setSiteInfo] = useState(props);
-  const { data } = useQuery(query);
-
-  useEffect(
-    () => {
-      if (data.generalSettings) {
-        setSiteInfo(data.generalSettings);
-      }
-    },
-    [data.generalSettings]
-  );
+  // Site info
+  const siteInfo = useData(props, query, "generalSettings");
 
   return (
     <>
