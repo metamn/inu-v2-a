@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import { useTheme } from "../../hooks";
+import { useTheme, Media } from "../../hooks";
 
 import SiteInfo from "../SiteInfo";
 import { default as _Link } from "../Link";
-import Media from "../Media";
+//import Media from "../Media";
 import { Section as _Section } from "../SemanticHTML";
 
 /**

@@ -3,21 +3,23 @@ import { useLocalStorage, usePrefersDarkMode } from "./index";
 import { ThemeContext, switchThemeTo } from "../themes/default.js";
 
 /**
- * Theming
+ * The theme hook
  *
- * - Checks if the user / browser prefers dark mode
- * - Checks if the browser has stored a preference for a theme
- * - Based on above the theme context can be set up with the desired theme
- * - Then saved into a state var to make it switchable
+ * - Sets the default theme from browser preferences and/or user preferences
+ * - Saves theme into a state and makes is switchable
+ *
+ * @return array The theme object, the theme switcher function and the theme context
  */
-
-const useTheme = props => {
+const useTheme = () => {
+  /** Checks if the user / browser prefers dark mode */
   const prefersDarkMode = usePrefersDarkMode();
 
+  /** Checks if the browser has stored a preference for a theme */
   const [currentThemeSaved, setCurrentThemeSaved] = useLocalStorage(
     "current-theme"
   );
 
+  /** Sets the theme based on above */
   const starterColorScheme =
     typeof currentThemeSaved !== "undefined"
       ? currentThemeSaved
@@ -28,6 +30,7 @@ const useTheme = props => {
   let themeContext = useContext(ThemeContext);
   themeContext = switchThemeTo(starterColorScheme);
 
+  /** Saves theme into a state */
   const [currentTheme, setCurrentTheme] = useState(themeContext);
 
   return [currentTheme.theme, setCurrentTheme, ThemeContext];
