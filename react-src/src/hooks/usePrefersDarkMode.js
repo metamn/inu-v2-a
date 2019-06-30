@@ -1,4 +1,4 @@
-import useMedia from "./useMedia";
+import useMatchMedia from "./useMatchMedia";
 
 /**
  * Checks if the user / browser prefers dark mode
@@ -7,7 +7,7 @@ import useMedia from "./useMedia";
  * @return Boolean The user / browser preference
  */
 function usePrefersDarkMode() {
-  return useMedia(["(prefers-color-scheme: dark)"], [true], false);
+  return useMatchMedia(["(prefers-color-scheme: dark)"], [true], false);
 }
 
 export default usePrefersDarkMode;

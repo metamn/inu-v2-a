@@ -7,7 +7,7 @@
  * @param  Boolean defaultValue The default value
  * @return Boolean              The browser response
  */
-const useMedia = (queries, values, defaultValue) => {
+const useMatchMedia = (queries, values, defaultValue) => {
   /**
    * Array containing a media query list for each query
    */
@@ -24,4 +24,4 @@ const useMedia = (queries, values, defaultValue) => {
   return typeof values[index] !== "undefined" ? values[index] : defaultValue;
 };
 
-export default useMedia;
+export default useMatchMedia;
