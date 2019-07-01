@@ -5,24 +5,33 @@ import gql from "graphql-tag";
 import { stringify } from "flatted";
 
 import { useTheme, useData } from "./../../hooks";
-import ListItem from "../ListItem";
+import Category from "../Category";
 
 /**
  * Defines the prop types
  */
 const propTypes = {
-  id: PropTypes.string.isRequired,
-  categoryId: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired
+  /**
+   * Defines a category node
+   */
+  node: Category.propTypes,
+  /**
+   * Defines a list of category nodes
+   */
+  edges: PropTypes.array,
+  /**
+   * Defines the number of edges
+   */
+  numberOfEdges: PropTypes.number
 };
 
 /**
  * Defines the default props
  */
 const defaultProps = {
-  id: "1",
-  categoryId: 1,
-  name: "/ / / / / / / / / "
+  node: Category.defaultProps,
+  edges: [],
+  numberOfEdges: 10
 };
 
 /**
@@ -33,13 +42,12 @@ const query = gql`
     categories(where: { hideEmpty: $hideEmpty, orderby: TERM_ORDER }) {
       edges {
         node {
-          id
-          categoryId
-          name
+          ...CategoryNode
         }
       }
     }
   }
+  ${Category.fragments.node}
 `;
 
 /**
@@ -58,7 +66,7 @@ const Categories = props => {
 
   let items = "";
   if (data && data.edges) {
-    items = data.edges.map(edge => <ListItem>{edge.node.name}</ListItem>);
+    items = data.edges.map(edge => <Category {...edge.node} />);
   }
 
   return <Container className="categories">{items}</Container>;
