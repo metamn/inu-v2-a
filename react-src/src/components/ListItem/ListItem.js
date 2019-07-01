@@ -5,12 +5,16 @@ import styled from "styled-components";
 /**
  * Defines the prop types
  */
-const propTypes = {};
+const propTypes = {
+  children: PropTypes.any.isRequired
+};
 
 /**
  * Defines the default props
  */
-const defaultProps = {};
+const defaultProps = {
+  children: "List item"
+};
 
 /**
  * Displays the ListItem container
@@ -22,7 +26,8 @@ const Container = styled("div")(props => ({}));
  * @param Object props The component properties
  */
 const ListItem = props => {
-  return <Container className="list-item">ListItem</Container>;
+  const { children } = props;
+  return <Container className="list-item">{children}</Container>;
 };
 
 ListItem.propTypes = propTypes;

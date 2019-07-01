@@ -9,6 +9,7 @@ import SiteInfo from "../SiteInfo";
 import Logo from "../Logo";
 import Icon from "../Icon";
 import IconToggle from "../IconToggle";
+import Menu from "../Menu";
 
 /**
  * Defines the prop types
@@ -58,6 +59,7 @@ const Header = props => {
       <Icon>
         <FiSun onClick={() => themeIconClickHandler()} />
       </Icon>
+      <Menu />
     </Container>
   );
 };
