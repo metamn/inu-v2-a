@@ -13,19 +13,19 @@ const propTypes = {};
 const defaultProps = {};
 
 /**
- * Displays the Template container
+ * Displays the ListItem container
  */
 const Container = styled("div")(props => ({}));
 
 /**
- * Displays the Template
+ * Displays the ListItem
  * @param Object props The component properties
  */
-const Template = props => {
-  return <Container className="template">Template</Container>;
+const ListItem = props => {
+  return <Container className="list-item">ListItem</Container>;
 };
 
-Template.propTypes = propTypes;
-Template.defaultProps = defaultProps;
+ListItem.propTypes = propTypes;
+ListItem.defaultProps = defaultProps;
 
-export default Template;
+export default ListItem;

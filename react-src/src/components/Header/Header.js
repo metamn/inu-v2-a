@@ -49,6 +49,7 @@ const Header = props => {
 
   const icon1 = <FiMenu onClick={() => {}} />;
   const icon2 = <FiX onClick={() => {}} />;
+  console.log("header");
 
   return (
     <Container>
