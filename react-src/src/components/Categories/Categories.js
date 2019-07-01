@@ -113,31 +113,30 @@ const Categories = props => {
    */
   const data = useData(tempData, query, "categories");
 
-  let items = "";
-  if (data && data.edges) {
-    /**
-     * Displays the data
-     */
-    items = data.edges.map(edge => (
-      <Category
-        {...edge.node}
-        status={setCategoryStatus({
-          categoryId: edge.node.categoryId,
-          activeCategory: activeCategory
-        })}
-      />
-    ));
+  /**
+   * Displays the data
+   */
+  const items = data.edges.map(edge => (
+    <Category
+      {...edge.node}
+      status={setCategoryStatus({
+        categoryId: edge.node.categoryId,
+        activeCategory: activeCategory
+      })}
+    />
+  ));
 
-    /**
-     * Saves the number of categories to local storage
-     */
-    //setNumberOfEdgesSaved(data.edges.length);
+  /**
+   * Saves the number of categories to local storage
+   */
+  //setNumberOfEdgesSaved(data.edges.length);
 
-    /**
-     * Marks the first category as active
-     */
-    //setActiveCategory(data.edges[0].node.categoryId);
-  }
+  /**
+   * Marks the first category as active
+   */
+  //setActiveCategory(data.edges[0].node.categoryId);
+
+  console.log("category");
 
   return <Container className="categories">{items}</Container>;
 };

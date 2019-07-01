@@ -78,7 +78,7 @@ const Line = styled("div")(props => ({
 const Logo = props => {
   const { title, description } = props;
   const { theme } = useTheme();
-  console.log("logo");
+  //console.log("logo");
 
   return (
     <Container className="logo">

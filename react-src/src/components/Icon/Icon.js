@@ -64,7 +64,7 @@ const Container = styled("div")(props => ({
 const Icon = props => {
   const { children } = props;
   const { theme } = useTheme();
-  console.log("icon");
+  //console.log("icon");
 
   return (
     <Container className="icon" theme={theme} {...props}>

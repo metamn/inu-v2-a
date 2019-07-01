@@ -73,7 +73,7 @@ const Section = styled(_Section)(props => ({
 const Home = props => {
   // Theming
   const { currentTheme, switchTheme, ThemeContext } = useTheme();
-  console.log("home");
+  //console.log("home");
 
   // Site info
   const siteInfo = useData(props, query, "generalSettings");

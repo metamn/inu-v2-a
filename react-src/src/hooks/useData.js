@@ -23,28 +23,21 @@ import { useQuery } from "./index";
  * @return Object               The data returned
  */
 const useData = (defaultValues, query, filter) => {
-  /**
-   * Sets up a state variable with default values
-   * The db query is async which means we'll have to wait for the real data
-   * During that the default values will be returned
-   */
-  const [newData, setNewData] = useState(defaultValues);
-
   /** Queries the database */
-  const { data } = useQuery(query);
+  const { data, error, loading } = useQuery(query);
 
-  /** Checks the results from database and updates the state variable */
-  useEffect(
-    () => {
-      if (data && data[filter]) {
-        setNewData(data[filter]);
-      }
-    },
-    [data, filter]
-  );
+  /** Returns default data while loading from the database */
+  if (loading) {
+    return defaultValues;
+  }
+
+  /** Logs to console when there is an error */
+  if (error) {
+    console.log("useQuery error");
+  }
 
   /** Returns the data */
-  return newData;
+  return data[filter];
 };
 
 export default useData;
