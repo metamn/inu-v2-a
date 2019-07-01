@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { FiSun } from "react-icons/fi";
+import { FiSun, FiMenu, FiX } from "react-icons/fi";
 
+import SiteInfo from "../SiteInfo";
 import Logo from "../Logo";
 import Icon from "../Icon";
-import SiteInfo from "../SiteInfo";
+import IconToggle from "../IconToggle";
 
 /**
  * Defines the prop types
@@ -40,9 +41,13 @@ const Container = styled("header")(props => ({}));
 const Header = props => {
   const { themeIconClickHandler } = props;
 
+  const icon1 = <FiMenu onClick={() => {}} />;
+  const icon2 = <FiX onClick={() => {}} />;
+
   return (
     <Container>
       <Logo {...props} />
+      <IconToggle icon1={icon1} icon2={icon2} />
       <Icon>
         <FiSun onClick={() => themeIconClickHandler()} />
       </Icon>
