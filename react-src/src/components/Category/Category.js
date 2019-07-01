@@ -64,11 +64,21 @@ const Container = styled("li")(props => ({
 }));
 
 /**
+ * Sets the status of a category
+ * @param {[type]} props [description]
+ */
+const setCategoryStatus = props => {
+  const { categoryId, activeCategory } = props;
+
+  return categoryId === activeCategory ? "active" : "inactive";
+};
+
+/**
  * Displays the Category
  * @param Object props The component properties
  */
 const Category = props => {
-  const { id, categoryId, name, status } = props;
+  const { name } = props;
 
   return (
     <Container className="category" {...props}>
@@ -82,3 +92,4 @@ Category.defaultProps = defaultProps;
 Category.fragments = queryFragment;
 
 export default Category;
+export { setCategoryStatus };

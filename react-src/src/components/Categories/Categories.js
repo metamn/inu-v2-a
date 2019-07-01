@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import gql from "graphql-tag";
 import { stringify } from "flatted";
 
-import { useTheme, useData, useLocalStorage } from "./../../hooks";
-import Category from "../Category";
+import { useTheme, useData } from "./../../hooks";
+import Category, { setCategoryStatus } from "../Category";
 
 /**
  * Defines the prop types
@@ -22,7 +22,11 @@ const propTypes = {
   /**
    * Defines the number of edges
    */
-  numberOfEdges: PropTypes.number
+  numberOfEdges: PropTypes.number,
+  /**
+   * Defines the active category
+   */
+  activeCategory: PropTypes.number
 };
 
 /**
@@ -31,7 +35,8 @@ const propTypes = {
 const defaultProps = {
   node: Category.defaultProps,
   edges: [],
-  numberOfEdges: 5
+  numberOfEdges: 5,
+  activeCategory: 1
 };
 
 /**
@@ -76,32 +81,16 @@ const createTemporaryData = props => {
 };
 
 /**
- * Sets the status of a category
- * @param {[type]} props [description]
- */
-const setCategoryStatus = props => {
-  const { categoryId, activeCategory } = props;
-
-  return categoryId === activeCategory ? "active" : "inactive";
-};
-
-/**
  * Displays the Categories
  * @param Object props The component properties
  */
 const Categories = props => {
-  /**
-   * Saves the active category into a state
-   */
-  const [activeCategory, setActiveCategory] = useState(1);
-
-  /**
-   * Saves the number of categories to local storage
-   * At the next load exactly the same temporary categories will be displayed as the real number of categories
-   */
-  const [numberOfEdgesSaved, setNumberOfEdgesSaved] = useLocalStorage(
-    "number-of-edges"
-  );
+  const {
+    activeCategory,
+    setActiveCategory,
+    numberOfEdgesSaved,
+    setNumberOfEdgesSaved
+  } = props;
 
   /**
    * Loads temporary data
@@ -129,14 +118,14 @@ const Categories = props => {
   /**
    * Saves the number of categories to local storage
    */
-  //setNumberOfEdgesSaved(data.edges.length);
+  setNumberOfEdgesSaved(data.edges.length);
 
   /**
    * Marks the first category as active
    */
-  //setActiveCategory(data.edges[0].node.categoryId);
+  setActiveCategory(data.edges[0].node.categoryId);
 
-  console.log("category");
+  //console.log("category");
 
   return <Container className="categories">{items}</Container>;
 };
