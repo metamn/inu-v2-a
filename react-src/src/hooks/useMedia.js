@@ -1,3 +1,6 @@
+import { useMediaQuery } from "react-responsive";
+import { stringify } from "flatted";
+
 /**
  * Defines the breakpoints
  * NOTE: Best use with the `min-width` technique
@@ -11,7 +14,7 @@ const Breakpoints = {
 };
 
 /**
- * Defines a media query mixin to be used with object notation
+ * Defines a media query mixin to be used with styled components / object notation
  * For template literals see https://www.styled-components.com/docs/advanced/#media-templates
  *
  * Usage:
@@ -31,9 +34,29 @@ const Media = {
 };
 
 /**
+ * Defines media queries for a list of devices
+ *
+ * @type Object
+ */
+const Devices = {
+  mobile: `(max-width: ${Breakpoints.tablet - 1}px)`,
+  tablet: `(min-width: ${
+    Breakpoints.tablet
+  }px) and (max-width: ${Breakpoints.laptop - 1}px)`,
+  laptop: `(min-width: ${
+    Breakpoints.laptop
+  }px) and (max-width: ${Breakpoints.desktop - 1}px)`,
+  desktop: `(min-width: ${Breakpoints.desktop}px)`
+};
+
+/**
  * Media query hook to be used inside components
  * @return {[type]} [description]
  */
-const useMedia = () => {};
+const useMedia = breakpoint => {
+  return useMediaQuery({
+    query: Devices[breakpoint]
+  });
+};
 
 export { Media, useMedia };

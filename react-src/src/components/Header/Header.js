@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { FiSun, FiMenu, FiX } from "react-icons/fi";
 
+import { useMedia } from "../../hooks";
+
 import SiteInfo from "../SiteInfo";
 import Logo from "../Logo";
 import Icon from "../Icon";
@@ -40,6 +42,9 @@ const Container = styled("header")(props => ({}));
  */
 const Header = props => {
   const { themeIconClickHandler } = props;
+
+  const isIt = useMedia("desktop");
+  console.log("isD:" + isIt);
 
   const icon1 = <FiMenu onClick={() => {}} />;
   const icon2 = <FiX onClick={() => {}} />;

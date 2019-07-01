@@ -75,6 +75,7 @@ A photo portfolio site with React and WordPress: http://inu.ro
 - [react-helmet](https://github.com/nfl/react-helmet) - to manage the document head
 - [react-docgen](https://github.com/reactjs/react-docgen) - to verify code documentation
 - [react-icons](https://github.com/react-icons/react-icons) - for SVG icons
+- [react-responsive](https://github.com/contra/react-responsive) - for media queries in components
 
 ### Plugins (for WordPress)
 
