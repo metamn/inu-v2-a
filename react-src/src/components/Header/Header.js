@@ -43,16 +43,17 @@ const Container = styled("header")(props => ({}));
 const Header = props => {
   const { themeIconClickHandler } = props;
 
-  const isIt = useMedia("desktop");
-  console.log("isD:" + isIt);
+  const isMobile = useMedia("mobile");
+  const lineStatus = isMobile ? "invisible" : "visible";
+  const iconToggleStatus = isMobile ? "active" : "hidden";
 
   const icon1 = <FiMenu onClick={() => {}} />;
   const icon2 = <FiX onClick={() => {}} />;
 
   return (
     <Container>
-      <Logo {...props} />
-      <IconToggle icon1={icon1} icon2={icon2} />
+      <Logo {...props} lineStatus={lineStatus} />
+      <IconToggle icon1={icon1} icon2={icon2} status={iconToggleStatus} />
       <Icon>
         <FiSun onClick={() => themeIconClickHandler()} />
       </Icon>

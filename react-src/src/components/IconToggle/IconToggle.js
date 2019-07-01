@@ -15,7 +15,12 @@ const propTypes = {
   /**
    * The second, inactive by default icon
    */
-  icon2: PropTypes.element.isRequired
+  icon2: PropTypes.element.isRequired,
+  /**
+   * The component status
+   * @type {[type]}
+   */
+  status: PropTypes.oneOf(["active", "inactive", "hidden"])
 };
 
 /**
@@ -23,13 +28,16 @@ const propTypes = {
  */
 const defaultProps = {
   icon1: <div />,
-  icon2: <div />
+  icon2: <div />,
+  status: "active"
 };
 
 /**
  * Displays the IconToggle container
  */
-const Container = styled("div")(props => ({}));
+const Container = styled("div")(props => ({
+  display: props.status === "hidden" ? "none" : "flex"
+}));
 
 /**
  * Displays the IconToggle
@@ -39,7 +47,7 @@ const IconToggle = props => {
   const { icon1, icon2 } = props;
 
   return (
-    <Container>
+    <Container className="icon-toggle" {...props}>
       <Icon>{icon1}</Icon>
       <Icon>{icon2}</Icon>
     </Container>

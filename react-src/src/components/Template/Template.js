@@ -22,7 +22,7 @@ const Container = styled("div")(props => ({}));
  * @param Object props The component properties
  */
 const Template = props => {
-  return <Container>"Template"</Container>;
+  return <Container className="template">"Template"</Container>;
 };
 
 Template.propTypes = propTypes;
