@@ -55,7 +55,12 @@ const queryFragment = {
  */
 const Container = styled("li")(props => ({
   textDecoration: props.status === "active" ? "line-through" : "none",
-  display: props.status === "hidden" ? "none" : "flex"
+  display: props.status === "hidden" ? "none" : "flex",
+  cursor: "pointer",
+
+  "&:hover": {
+    textDecoration: "line-through"
+  }
 }));
 
 /**
@@ -63,9 +68,13 @@ const Container = styled("li")(props => ({
  * @param Object props The component properties
  */
 const Category = props => {
-  const { id, categoryId, name } = props;
+  const { id, categoryId, name, status } = props;
 
-  return <Container className="category">{name}</Container>;
+  return (
+    <Container className="category" {...props}>
+      {name}
+    </Container>
+  );
 };
 
 Category.propTypes = propTypes;

@@ -93,7 +93,7 @@ const Categories = props => {
   /**
    * Saves the active category into a state
    */
-  const [activeCategory, setActiveCategory] = useState(0);
+  const [activeCategory, setActiveCategory] = useState(1);
 
   /**
    * Saves the number of categories to local storage
@@ -121,19 +121,22 @@ const Categories = props => {
     items = data.edges.map(edge => (
       <Category
         {...edge.node}
-        status={setCategoryStatus(edge.node.categoryId, activeCategory)}
+        status={setCategoryStatus({
+          categoryId: edge.node.categoryId,
+          activeCategory: activeCategory
+        })}
       />
     ));
 
     /**
      * Saves the number of categories to local storage
      */
-    setNumberOfEdgesSaved(data.edges.length);
+    //setNumberOfEdgesSaved(data.edges.length);
 
     /**
      * Marks the first category as active
      */
-    setActiveCategory(data.edges[0].node.categoryId);
+    //setActiveCategory(data.edges[0].node.categoryId);
   }
 
   return <Container className="categories">{items}</Container>;
