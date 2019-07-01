@@ -62,6 +62,22 @@ const GlobalReset = createGlobalStyle`
 		embed {
 			max-width: 100%;
 		}
+
+		button {
+			-webkit-appearance: none;
+    		-moz-appearance: none;
+			background: transparent;
+			border: none;
+			outline: none;
+			padding: 0;
+
+			 &:hover,
+			 &:focus,
+			 &:active {
+				 border: none;
+				 box-shadow: none;
+			 }
+		}
 	}
 `;
 

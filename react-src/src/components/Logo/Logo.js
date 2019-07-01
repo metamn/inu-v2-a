@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import { useTheme, Media } from "../../hooks";
+import { useTheme } from "../../hooks";
 
 import SiteInfo from "../SiteInfo";
 import { default as _Link } from "../Link";
@@ -16,7 +17,12 @@ const propTypes = {
    * Inherits from SiteInfo
    * @type Object
    */
-  ...SiteInfo.propTypes
+  ...SiteInfo.propTypes,
+  /**
+   * The line status
+   * @type {[type]}
+   */
+  lineStatus: PropTypes.oneOf(["visible", "invisible"])
 };
 
 /**
@@ -24,7 +30,8 @@ const propTypes = {
  * @type Object
  */
 const defaultProps = {
-  ...SiteInfo.defaultProps
+  ...SiteInfo.defaultProps,
+  lineStatus: "visible"
 };
 
 /**
@@ -57,20 +64,13 @@ const Link = styled(_Link)(props => ({
  * Styles the line
  * @type {[type]}
  */
-const Line = styled("div")([], {
+const Line = styled("div")(props => ({
   width: "calc(var(--lem) * 8)",
   height: "var(--lem)",
   borderBottom: "1px solid",
   transform: "rotate(-65deg) translateX(calc(var(--lem) * -2))",
-
-  [`${Media.mobile}`]: {
-    display: "none"
-  },
-
-  [`${Media.tablet}`]: {
-    display: "flex"
-  }
-});
+  display: props.lineStatus === "visible" ? "flex" : "none"
+}));
 
 /**
  * Displays the site logo
@@ -91,7 +91,7 @@ const Logo = props => {
           {description}
         </Link>
       </Links>
-      <Line className="line" />
+      <Line className="line" {...props} />
     </Section>
   );
 };
