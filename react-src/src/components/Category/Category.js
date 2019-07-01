@@ -78,10 +78,14 @@ const setCategoryStatus = props => {
  * @param Object props The component properties
  */
 const Category = props => {
-  const { name } = props;
+  const { name, categoryId, setActiveCategory } = props;
 
   return (
-    <Container className="category" {...props}>
+    <Container
+      className="category"
+      {...props}
+      onClick={() => setActiveCategory(categoryId)}
+    >
       {name}
     </Container>
   );

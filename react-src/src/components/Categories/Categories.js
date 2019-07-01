@@ -24,9 +24,21 @@ const propTypes = {
    */
   numberOfEdges: PropTypes.number,
   /**
+   * Defines the number of edges saved to local storage
+   */
+  numberOfEdgesSaved: PropTypes.number,
+  /**
+   * Defines the function which sets the number of edges saved to local storage
+   */
+  setNumberOfEdgesSaved: PropTypes.func,
+  /**
    * Defines the active category
    */
-  activeCategory: PropTypes.number
+  activeCategory: PropTypes.number,
+  /**
+   * Defines the function which sets the active category
+   */
+  setActiveCategory: PropTypes.func
 };
 
 /**
@@ -112,6 +124,7 @@ const Categories = props => {
         categoryId: edge.node.categoryId,
         activeCategory: activeCategory
       })}
+      setActiveCategory={setActiveCategory}
     />
   ));
 

@@ -68,7 +68,7 @@ const Menu = props => {
 
   /**
    * Saves the number of categories to local storage
-   * At the next load exactly the same temporary categories will be displayed as the real number of categories
+   * At the next load exactly the same number of temporary categories will be displayed as the real number of categories
    */
   const [numberOfEdgesSaved, setNumberOfEdgesSaved] = useLocalStorage(
     "number-of-edges"
@@ -90,6 +90,7 @@ const Menu = props => {
             categoryId: defaultProps.random.categoryId,
             activeCategory: activeCategory
           })}
+          setActiveCategory={setActiveCategory}
         />
         <Category
           {...defaultProps.contact}
@@ -97,6 +98,7 @@ const Menu = props => {
             categoryId: defaultProps.contact.categoryId,
             activeCategory: activeCategory
           })}
+          setActiveCategory={setActiveCategory}
         />
       </ExtraMenuItems>
     </Nav>
