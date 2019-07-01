@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import gql from "graphql-tag";
 import WebFont from "webfontloader";
-import { FiSun } from "react-icons/fi";
 //import { stringify } from "flatted";
 
 import { useTheme, useData } from "./../../hooks";
@@ -10,9 +9,8 @@ import { useTheme, useData } from "./../../hooks";
 import Reset from "../Reset";
 import TypographicGrid from "../TypographicGrid";
 import SiteInfo from "../SiteInfo";
-import Logo from "../Logo";
-import Icon from "../Icon";
 import { Section as _Section } from "../SemanticHTML";
+import Header from "../Header";
 
 /**
  * Loads web fonts
@@ -86,10 +84,7 @@ const Home = props => {
       <ThemeContext.Provider value={currentTheme}>
         <TypographicGrid />
         <Section title="Home" className="home" theme={currentTheme.theme}>
-          <Logo {...siteInfo} />
-          <Icon>
-            <FiSun onClick={() => switchTheme()} />
-          </Icon>
+          <Header {...siteInfo} themeIconClickHandler={switchTheme} />
         </Section>
       </ThemeContext.Provider>
     </>

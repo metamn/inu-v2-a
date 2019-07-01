@@ -41,7 +41,7 @@ const defaultProps = {
  * Displays the icon container
  * @type {[type]}
  */
-const Element = styled("div")(props => ({
+const Container = styled("div")(props => ({
   width: `calc(var(--lem) * ${props.size})`,
   height: `calc(var(--lem) * ${props.size})`,
 
@@ -67,9 +67,9 @@ const Icon = props => {
   console.log("icon");
 
   return (
-    <Element className="icon" theme={theme} {...props}>
+    <Container className="icon" theme={theme} {...props}>
       {children}
-    </Element>
+    </Container>
   );
 };
 
