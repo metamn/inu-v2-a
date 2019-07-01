@@ -3,7 +3,7 @@ import { stringify } from "flatted";
 
 /**
  * Defines the breakpoints
- * NOTE: Best use with the `min-width` technique
+ *
  * @type Object
  */
 const Breakpoints = {
@@ -16,6 +16,8 @@ const Breakpoints = {
 /**
  * Defines a media query mixin to be used with styled components / object notation
  * For template literals see https://www.styled-components.com/docs/advanced/#media-templates
+ *
+ * Best use with the `min-width` technique
  *
  * Usage:
  * ```
@@ -36,6 +38,10 @@ const Media = {
 /**
  * Defines media queries for a list of devices
  *
+ * It doesn't use the `min-width` technique but it's useful inside components
+ *
+ * Usage: `const isMobile = useMedia("mobile");`
+ *
  * @type Object
  */
 const Devices = {
@@ -51,7 +57,7 @@ const Devices = {
 
 /**
  * Media query hook to be used inside components
- * @return {[type]} [description]
+ * @return {boolean} If the media query is true
  */
 const useMedia = breakpoint => {
   return useMediaQuery({
