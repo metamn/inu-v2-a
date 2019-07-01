@@ -54,6 +54,7 @@ const Container = styled("a")(props => ({
 const Link = props => {
   const { url, title, children } = props;
   const { theme } = useTheme();
+  console.log("link");
 
   return (
     <Container

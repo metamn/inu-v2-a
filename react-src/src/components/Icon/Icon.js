@@ -64,6 +64,7 @@ const Element = styled("div")(props => ({
 const Icon = props => {
   const { children } = props;
   const { theme } = useTheme();
+  console.log("icon");
 
   return (
     <Element className="icon" theme={theme} {...props}>

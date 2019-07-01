@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import styled from "styled-components";
 import gql from "graphql-tag";
 import WebFont from "webfontloader";
 import { FiSun } from "react-icons/fi";
+//import { stringify } from "flatted";
 
-import { useQuery, useTheme, useData } from "./../../hooks";
-import { stringify } from "flatted";
+import { useTheme, useData } from "./../../hooks";
 
 import Reset from "../Reset";
 import TypographicGrid from "../TypographicGrid";
@@ -75,6 +74,7 @@ const Section = styled(_Section)(props => ({
 const Home = props => {
   // Theming
   const { currentTheme, switchTheme, ThemeContext } = useTheme();
+  console.log("home");
 
   // Site info
   const siteInfo = useData(props, query, "generalSettings");

@@ -1,7 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
-import { stringify } from "flatted";
 
 import { useTheme, Media } from "../../hooks";
 
@@ -81,6 +79,7 @@ const Line = styled("div")([], {
 const Logo = props => {
   const { title, description } = props;
   const { theme } = useTheme();
+  console.log("logo");
 
   return (
     <Section className="logo" title="Logo">
