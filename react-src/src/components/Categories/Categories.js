@@ -22,7 +22,7 @@ const propTypes = {
 const defaultProps = {
   id: "1",
   categoryId: 1,
-  name: "Demo category"
+  name: "/ / / / / / / / / "
 };
 
 /**
@@ -52,8 +52,9 @@ const Container = styled("div")(props => ({}));
  * @param Object props The component properties
  */
 const Categories = props => {
-  const data = useData([], query, "categories");
-  console.log("data:" + stringify(data));
+  const tempNode = { node: { ...defaultProps } };
+  const tempData = { edges: Array(10).fill(tempNode) };
+  const data = useData(tempData, query, "categories");
 
   let items = "";
   if (data && data.edges) {
