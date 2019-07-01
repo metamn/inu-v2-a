@@ -5,11 +5,23 @@ import { FiSun } from "react-icons/fi";
 
 import Logo from "../Logo";
 import Icon from "../Icon";
+import SiteInfo from "../SiteInfo";
 
 /**
  * Defines the prop types
  */
-const propTypes = {};
+const propTypes = {
+  /**
+   * Inherits from SiteInfo
+   * @type Object
+   */
+  ...SiteInfo.propTypes,
+  /**
+   * The theme icon click handler
+   * @type Function
+   */
+  themeIconClickHandler: PropTypes.func.isRequired
+};
 
 /**
  * Defines the default props

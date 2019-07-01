@@ -8,6 +8,7 @@ import { useTheme, useData } from "./../../hooks";
 
 import Reset from "../Reset";
 import TypographicGrid from "../TypographicGrid";
+
 import SiteInfo from "../SiteInfo";
 import { Section as _Section } from "../SemanticHTML";
 import Header from "../Header";

@@ -6,7 +6,6 @@ import { useTheme } from "../../hooks";
 
 import SiteInfo from "../SiteInfo";
 import { default as _Link } from "../Link";
-import { Section as _Section } from "../SemanticHTML";
 
 /**
  * Defines the prop types of the component
@@ -38,7 +37,7 @@ const defaultProps = {
  * Styles for the main container
  * @type {[type]}
  */
-const Section = styled(_Section)([], {
+const Container = styled("div")([], {
   display: "flex",
   flexWrap: "wrap"
 });
@@ -82,17 +81,17 @@ const Logo = props => {
   console.log("logo");
 
   return (
-    <Section className="logo" title="Logo">
+    <Container className="logo">
       <Links className="links">
         <Link className="link" theme={theme} {...props}>
-          {title}
+          <h1>{title}</h1>
         </Link>
         <Link className="link" theme={theme} {...props}>
-          {description}
+          <h2>{description}</h2>
         </Link>
       </Links>
       <Line className="line" {...props} />
-    </Section>
+    </Container>
   );
 };
 
