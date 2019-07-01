@@ -19,7 +19,11 @@ const propTypes = {
   /**
    * The category name
    */
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  /**
+   * The category status
+   */
+  status: PropTypes.oneOf(["active", "inactive", "hidden"])
 };
 
 /**
@@ -28,7 +32,8 @@ const propTypes = {
 const defaultProps = {
   id: "1",
   categoryId: 1,
-  name: "/ / / / / / / / / "
+  name: "/ / / / / / / / / ",
+  status: "inactive"
 };
 
 /**
@@ -48,7 +53,10 @@ const queryFragment = {
 /**
  * Displays the Category container
  */
-const Container = styled("div")(props => ({}));
+const Container = styled("li")(props => ({
+  textDecoration: props.status === "active" ? "line-through" : "none",
+  display: props.status === "hidden" ? "none" : "flex"
+}));
 
 /**
  * Displays the Category
