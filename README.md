@@ -48,6 +48,8 @@ A photo portfolio site with React and WordPress: http://inu.ro
 - Just the first steps, needs more attention
 - Styleguidist or Storybook will be added later
 
+Storybook added. It displays only prop tables not the whole API docs.
+
 ### Outlined semantic HTML elements
 
 ## Design

@@ -48,7 +48,9 @@ const defaultProps = {
   node: Category.defaultProps,
   edges: [],
   numberOfEdges: 5,
-  activeCategory: 1
+  setNumberOfEdgesSaved: () => {},
+  activeCategory: 1,
+  setActiveCategory: () => {}
 };
 
 /**
