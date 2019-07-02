@@ -6,6 +6,17 @@ import { withConsole } from "@storybook/addon-console";
 import { setConsoleOptions } from "@storybook/addon-console";
 import "@storybook/addon-console";
 
+// Info / JSDoc imports
+// This must be first among all settings: https://github.com/storybookjs/storybook/issues/4801#issuecomment-452214479
+import { withInfo } from "@storybook/addon-info";
+addDecorator(
+  withInfo({
+    inline: true,
+    header: false,
+    source: false
+  })
+);
+
 // General settings
 addParameters({
   options: {

@@ -1,6 +1,5 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { withInfo } from "@storybook/addon-info";
 
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo-hooks";
@@ -12,15 +11,14 @@ const client = new ApolloClient({
 });
 
 storiesOf("Components/Categories", module)
-  .addDecorator(withInfo)
-  .add(
-    "Overview",
-    () => (
-      <ApolloProvider client={client}>
-        <Categories />
-      </ApolloProvider>
-    ),
-    {
-      notes: { markdown: markdownNotes }
+  .addDecorator(story => (
+    <ApolloProvider client={client}>{story()}</ApolloProvider>
+  ))
+  .addParameters({
+    info: {
+      propTablesExclude: [ApolloProvider]
     }
-  );
+  })
+  .add("Overview", () => <Categories />, {
+    notes: { markdown: markdownNotes }
+  });
