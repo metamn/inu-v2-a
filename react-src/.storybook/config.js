@@ -27,11 +27,7 @@ addParameters({
   options: {
     theme: theme,
     panelPosition: "right"
-  },
-  backgrounds: [
-    { name: "default", value: "#F6F9FC", default: true },
-    { name: "black", value: "#000" }
-  ]
+  }
 });
 
 // Info settings

@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import gql from "graphql-tag";
-import { stringify } from "flatted";
 
 /**
  * Defines the prop types
@@ -96,4 +95,4 @@ Category.defaultProps = defaultProps;
 Category.fragments = queryFragment;
 
 export default Category;
-export { setCategoryStatus };
+export { setCategoryStatus, propTypes, defaultProps };

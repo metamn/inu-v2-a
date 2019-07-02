@@ -2,10 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import gql from "graphql-tag";
-import { stringify } from "flatted";
 
-import { useTheme, useData } from "./../../hooks";
-import Category, { setCategoryStatus } from "../Category";
+import { useData } from "./../../hooks";
+import Category, {
+  setCategoryStatus,
+  propTypes as CategoryPropTypes,
+  defaultProps as CategoryDefaultProps
+} from "../Category";
 
 /**
  * Defines the prop types
@@ -14,43 +17,48 @@ const propTypes = {
   /**
    * Defines a category node
    */
-  node: Category.propTypes,
+  node: CategoryPropTypes,
   /**
    * Defines a list of category nodes
    */
-  edges: PropTypes.array,
+  edges: PropTypes.arrayOf(CategoryPropTypes),
   /**
-   * Defines the number of edges
+   * Defines the number of edges aka. how many loading indicators to display at the first load.
    */
   numberOfEdges: PropTypes.number,
   /**
    * Defines the number of edges saved to local storage
    */
-  numberOfEdgesSaved: PropTypes.number,
+  numberOfEdgesSaved: PropTypes.number.isRequired,
   /**
    * Defines the function which sets the number of edges saved to local storage
    */
-  setNumberOfEdgesSaved: PropTypes.func,
+  setNumberOfEdgesSaved: PropTypes.func.isRequired,
   /**
    * Defines the active category
    */
-  activeCategory: PropTypes.number,
+  activeCategory: PropTypes.number.isRequired,
   /**
    * Defines the function which sets the active category
    */
-  setActiveCategory: PropTypes.func
+  setActiveCategory: PropTypes.func.isRequired
 };
 
 /**
  * Defines the default props
  */
 const defaultProps = {
-  node: Category.defaultProps,
-  edges: [],
+  node: CategoryDefaultProps,
+  edges: Array(5).fill(CategoryDefaultProps),
   numberOfEdges: 5,
-  setNumberOfEdgesSaved: () => {},
+  numberOfEdgesSaved: null,
+  setNumberOfEdgesSaved: () => {
+    console.log("setNumberOfEdgesSaved called");
+  },
   activeCategory: 1,
-  setActiveCategory: () => {}
+  setActiveCategory: () => {
+    console.log("setActiveCategory called");
+  }
 };
 
 /**
@@ -76,9 +84,6 @@ const Container = styled("ul")(props => ({}));
 
 /**
  * Creates temporary data to be displayed while real data is loading
- *
- * @param  {Object} props The Object from the temporary data will be created
- * @return {Object}       An array of data
  */
 const createTemporaryData = props => {
   const { node, numberOfEdges, numberOfEdgesSaved } = props;
@@ -95,8 +100,7 @@ const createTemporaryData = props => {
 };
 
 /**
- * Displays the Categories
- * @param Object props The component properties
+ * Displays the categories
  */
 const Categories = props => {
   const {
@@ -117,7 +121,7 @@ const Categories = props => {
   const data = useData(tempData, query, "categories");
 
   /**
-   * Displays the data
+   * Puts together the data
    */
   const items = data.edges.map(edge => (
     <Category
@@ -140,8 +144,9 @@ const Categories = props => {
    */
   setActiveCategory(data.edges[0].node.categoryId);
 
-  //console.log("category");
-
+  /**
+   * Renders the results
+   */
   return <Container className="categories">{items}</Container>;
 };
 

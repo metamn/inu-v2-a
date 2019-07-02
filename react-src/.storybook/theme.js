@@ -1,7 +1,7 @@
 import { create } from "@storybook/theming";
 
 export default create({
-  base: "dark",
-  brandTitle: "The design system for http://inu.ro",
+  base: "light",
+  brandTitle: "The design system of http://inu.ro",
   brandUrl: "http://inu.ro"
 });

@@ -37,6 +37,8 @@ A photo portfolio site with React and WordPress: http://inu.ro
 - - And we decompose props only when they are finally displayed in the SiteInfo component:
 - - `const { title, description, url } = props;`
 
+Importing propTypes from other components: https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/forbid-foreign-prop-types.md
+
 ### Naming conventions
 
 ### Style objects for better composition

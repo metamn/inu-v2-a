@@ -1,5 +1,4 @@
 import { useMediaQuery } from "react-responsive";
-import { stringify } from "flatted";
 
 /**
  * Defines the breakpoints
