@@ -5,7 +5,10 @@ import { FiSun, FiMenu, FiX } from "react-icons/fi";
 
 import { useMedia } from "../../hooks";
 
-import SiteInfo from "../SiteInfo";
+import {
+  propTypes as SiteInfoPropTypes,
+  defaultProps as SiteInfoDefaultProps
+} from "../SiteInfo";
 import Logo from "../Logo";
 import Icon from "../Icon";
 import IconToggle from "../IconToggle";
@@ -17,12 +20,10 @@ import Menu from "../Menu";
 const propTypes = {
   /**
    * Inherits from SiteInfo
-   * @type Object
    */
-  ...SiteInfo.propTypes,
+  ...SiteInfoPropTypes,
   /**
    * The theme icon click handler
-   * @type Function
    */
   themeIconClickHandler: PropTypes.func.isRequired
 };
@@ -30,7 +31,12 @@ const propTypes = {
 /**
  * Defines the default props
  */
-const defaultProps = {};
+const defaultProps = {
+  ...SiteInfoDefaultProps,
+  themeIconClickHandler: () => {
+    console.log("themeIconClickHandler called");
+  }
+};
 
 /**
  * Displays the header container
@@ -39,7 +45,6 @@ const Container = styled("header")(props => ({}));
 
 /**
  * Displays the header
- * @param Object props The component properties
  */
 const Header = props => {
   const { themeIconClickHandler } = props;

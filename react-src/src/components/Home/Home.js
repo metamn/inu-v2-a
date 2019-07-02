@@ -9,7 +9,10 @@ import { useTheme, useData } from "./../../hooks";
 import Reset from "../Reset";
 import TypographicGrid from "../TypographicGrid";
 
-import SiteInfo from "../SiteInfo";
+import SiteInfo, {
+  propTypes as SiteInfoPropTypes,
+  defaultProps as SiteInfoDefaultProps
+} from "../SiteInfo";
 import { Section as _Section } from "../SemanticHTML";
 import Header from "../Header";
 
@@ -25,23 +28,20 @@ WebFont.load({
 
 /**
  * Defines the prop types of the component
- * @type Object
  */
 const propTypes = {
-  ...SiteInfo.propTypes
+  ...SiteInfoPropTypes
 };
 
 /**
  * Defines the default props
- * @type Object
  */
 const defaultProps = {
-  ...SiteInfo.defaultProps
+  ...SiteInfoDefaultProps
 };
 
 /**
  * Defines the query
- * @type {Object}
  */
 const query = gql`
   query siteInfo {
@@ -55,8 +55,6 @@ const query = gql`
 /**
  * Styles the main container
  * Wherever possible the object notation is used to enable composition by spreading and reduce the ugly, long `{$props => ...}` syntax with template literals
- *
- * @type {Object}
  */
 const Section = styled(_Section)(props => ({
   ...props.theme.colorPairs.default,
@@ -68,16 +66,22 @@ const Section = styled(_Section)(props => ({
 
 /**
  * Displays the Homepage
- * @param Object props The component properties
  */
 const Home = props => {
-  // Theming
+  /**
+   * Sets up theming
+   */
   const { currentTheme, switchTheme, ThemeContext } = useTheme();
   //console.log("home");
 
-  // Site info
+  /**
+   * Sets up site info
+   */
   const siteInfo = useData(props, query, "generalSettings");
 
+  /**
+   * Renders the component
+   */
   return (
     <>
       <Reset />

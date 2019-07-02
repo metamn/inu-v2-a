@@ -68,3 +68,4 @@ SiteInfo.defaultProps = defaultProps;
 SiteInfo.fragments = queryFragment;
 
 export default SiteInfo;
+export { propTypes, defaultProps };

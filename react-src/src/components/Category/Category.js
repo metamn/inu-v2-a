@@ -64,7 +64,6 @@ const Container = styled("li")(props => ({
 
 /**
  * Sets the status of a category
- * @param {object} props [description]
  */
 const setCategoryStatus = props => {
   const { categoryId, activeCategory } = props;
@@ -73,8 +72,7 @@ const setCategoryStatus = props => {
 };
 
 /**
- * Displays the Category
- * @param Object props The component properties
+ * Displays a category
  */
 const Category = props => {
   const { name, categoryId, setActiveCategory } = props;
