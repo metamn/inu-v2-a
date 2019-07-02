@@ -1,8 +1,10 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
+import { withInfo } from "@storybook/addon-info";
 
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo-hooks";
+
 import Categories from "./Categories";
 import markdownNotes from "./Categories.md";
 
@@ -20,5 +22,8 @@ storiesOf("Components/Categories", module)
     }
   })
   .add("Overview", () => <Categories />, {
-    notes: { markdown: markdownNotes }
+    notes: { markdown: markdownNotes },
+    info: {
+      text: markdownNotes
+    }
   });

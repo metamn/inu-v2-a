@@ -11,7 +11,6 @@ import "@storybook/addon-console";
 import { withInfo } from "@storybook/addon-info";
 addDecorator(
   withInfo({
-    inline: true,
     header: false,
     source: false
   })
