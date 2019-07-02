@@ -1,5 +1,6 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
+import { withInfo } from "@storybook/addon-info";
 
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo-hooks";
@@ -10,14 +11,16 @@ const client = new ApolloClient({
   uri: "http://localhost/react-wp/graphql"
 });
 
-storiesOf("Components/Categories", module).add(
-  "Overview",
-  () => (
-    <ApolloProvider client={client}>
-      <Categories />
-    </ApolloProvider>
-  ),
-  {
-    notes: { markdown: markdownNotes }
-  }
-);
+storiesOf("Components/Categories", module)
+  .addDecorator(withInfo)
+  .add(
+    "Overview",
+    () => (
+      <ApolloProvider client={client}>
+        <Categories />
+      </ApolloProvider>
+    ),
+    {
+      notes: { markdown: markdownNotes }
+    }
+  );
