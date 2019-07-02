@@ -6,40 +6,34 @@ import { useTheme } from "../../hooks";
 
 /**
  * Defines the prop types of the component
- * @type {Object}
  */
 const propTypes = {
   /**
    * The size multiplier
-   * The width, height of the icon will be `var(--lem) * size`
-   * @type {[type]}
+   * The width and height of the icon will be `var(--lem) * size`
    */
   size: PropTypes.number,
   /**
    * The icon status
-   * @type {[type]}
    */
   status: PropTypes.oneOf(["active", "inactive", "hidden"]),
   /**
    * The icon itself. Preferably in SVG format.
-   * @type {[type]}
    */
   children: PropTypes.any.isRequired
 };
 
 /**
  * Defines the default props
- * @type {Object}
  */
 const defaultProps = {
   size: 1.5,
   status: "active",
-  children: ""
+  children: "SVG"
 };
 
 /**
  * Displays the icon container
- * @type {[type]}
  */
 const Container = styled("div")(props => ({
   width: `calc(var(--lem) * ${props.size})`,
@@ -59,7 +53,6 @@ const Container = styled("div")(props => ({
 
 /**
  * Displays an icon
- * @param Object props The component properties
  */
 const Icon = props => {
   const { children } = props;

@@ -15,31 +15,31 @@ import Category, {
  */
 const propTypes = {
   /**
-   * Defines a category node
+   * A category node
    */
   node: CategoryPropTypes,
   /**
-   * Defines a list of category nodes
+   * A list of category nodes
    */
   edges: PropTypes.arrayOf(CategoryPropTypes),
   /**
-   * Defines the number of edges aka. how many loading indicators to display at the first load.
+   * The number of initial edges aka. how many loading indicators to display at the first load.
    */
   numberOfEdges: PropTypes.number,
   /**
-   * Defines the number of edges saved to local storage
+   * The number of edges saved to local storage. After the data is loaded the real number of edges is saved to the local storage. At the next load the same amount of loading inidcators will be displayed as the real number of edges.
    */
   numberOfEdgesSaved: PropTypes.number.isRequired,
   /**
-   * Defines the function which sets the number of edges saved to local storage
+   * The function which saves the number of edges to local storage
    */
   setNumberOfEdgesSaved: PropTypes.func.isRequired,
   /**
-   * Defines the active category
+   * The active category
    */
   activeCategory: PropTypes.number.isRequired,
   /**
-   * Defines the function which sets the active category
+   * The function which sets the active category
    */
   setActiveCategory: PropTypes.func.isRequired
 };

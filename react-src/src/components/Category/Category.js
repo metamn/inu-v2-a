@@ -37,7 +37,6 @@ const defaultProps = {
 
 /**
  * Defines the query fragment needed by the component
- * @type Object
  */
 const queryFragment = {
   node: gql`

@@ -18,7 +18,6 @@ const propTypes = {
   icon2: PropTypes.element.isRequired,
   /**
    * The component status
-   * @type {[type]}
    */
   status: PropTypes.oneOf(["active", "inactive", "hidden"])
 };
@@ -27,8 +26,8 @@ const propTypes = {
  * Defines the default props
  */
 const defaultProps = {
-  icon1: <div />,
-  icon2: <div />,
+  icon1: <div>icon1</div>,
+  icon2: <div>icon2</div>,
   status: "active"
 };
 
@@ -36,20 +35,20 @@ const defaultProps = {
  * Displays the IconToggle container
  */
 const Container = styled("div")(props => ({
-  display: props.status === "hidden" ? "none" : "flex"
+  display: props.status === "hidden" ? "none" : "flex",
+  cursor: "pointer"
 }));
 
 /**
- * Displays the IconToggle
- * @param Object props The component properties
+ * Displays two icons which can be toggled
  */
 const IconToggle = props => {
   const { icon1, icon2 } = props;
 
   return (
     <Container className="icon-toggle" {...props}>
-      <Icon>{icon1}</Icon>
-      <Icon>{icon2}</Icon>
+      <Icon status="active">{icon1}</Icon>
+      <Icon status="hidden">{icon2}</Icon>
     </Container>
   );
 };
