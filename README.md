@@ -48,6 +48,8 @@ A photo portfolio site with React and WordPress: http://inu.ro
 - Just the first steps, needs more attention
 - Styleguidist or Storybook will be added later
 
+Styleguidist dev server couldn't be started up ...
+
 ### Outlined semantic HTML elements
 
 ## Design
