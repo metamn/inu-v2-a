@@ -7,6 +7,9 @@ import { withConsole } from "@storybook/addon-console";
 import { setConsoleOptions } from "@storybook/addon-console";
 import "@storybook/addon-console";
 
+// Info support
+import { withInfo } from "@storybook/addon-info";
+
 // The Apollo decorator
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo-hooks";
@@ -19,12 +22,6 @@ addDecorator(story => (
   <ApolloProvider client={client}>{story()}</ApolloProvider>
 ));
 
-addParameters({
-  info: {
-    propTablesExclude: [ApolloProvider]
-  }
-});
-
 // General settings
 addParameters({
   options: {
@@ -36,6 +33,14 @@ addParameters({
     { name: "black", value: "#000" }
   ]
 });
+
+// Info settings
+addDecorator(
+  withInfo({
+    source: false,
+    propTablesExclude: [ApolloProvider]
+  })
+);
 
 // Console settings
 setConsoleOptions({
