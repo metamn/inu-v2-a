@@ -3,15 +3,14 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 /**
- * Defines prop types for SemanticHTMLElement
- * @type Object
+ * Defines the prop types
  */
-const propTypesForSemanticHTMLElement = {
+const propTypes = {
   /**
    * The element name
-   * Like 'section', 'article', 'aside', 'nav'
    */
-  elementName: PropTypes.string.isRequired,
+  elementName: PropTypes.oneOf(["section", "article", "aside", "nav"])
+    .isRequired,
   /**
    * The element class name
    * Required to make it later styleable
@@ -30,59 +29,38 @@ const propTypesForSemanticHTMLElement = {
 };
 
 /**
- * Defines prop types for individual elements
- * @type Object
+ * Defines the default props
  */
-const propTypesForElement = {
-  /**
-   * The element name
-   * It will be set automatically with the default props
-   */
-  elementName: PropTypes.string,
-  /**
-   * The element class name
-   * Required to make it later styleable
-   */
-  className: PropTypes.string.isRequired,
-  /**
-   * The element title
-   * Usually a string, but it can be a link too
-   */
-  title: PropTypes.any.isRequired,
-  /**
-   * The element children
-   * Without children there is no use of an empty element
-   */
-  children: PropTypes.any.isRequired
+const defaultProps = {
+  elementName: "section",
+  className: "section",
+  titleElement: "Section Title",
+  children: "Section body"
 };
 
 /**
- * Defines prop types for Section
- * @type Object
+ * Defines default props for Section
  */
 const defaultPropsForSection = {
   elementName: "section"
 };
 
 /**
- * Defines prop types for Article
- * @type Object
+ * Defines default props for Article
  */
 const defaultPropsForArticle = {
   elementName: "article"
 };
 
 /**
- * Defines prop types for Aside
- * @type Object
+ * Defines default props for Aside
  */
 const defaultPropsForAside = {
   elementName: "aside"
 };
 
 /**
- * Defines prop types for Nav
- * @type Object
+ * Defines default props for Nav
  */
 const defaultPropsForNav = {
   elementName: "nav"
@@ -90,8 +68,8 @@ const defaultPropsForNav = {
 
 /**
  * Styles the semantic element title
- * - It is always hidden because it is needed only by the HTML outliner / validator
- * @type {[type]}
+ *
+ * It is always hidden because it is needed only by the HTML outliner / validator
  */
 const Title = styled("h3")([], {
   display: "none"
@@ -124,50 +102,47 @@ const SemanticHTMLElement = props => {
   ]);
 };
 
-SemanticHTMLElement.propTypes = propTypesForSemanticHTMLElement;
+SemanticHTMLElement.propTypes = propTypes;
+SemanticHTMLElement.defaultProps = defaultProps;
 
 /**
  * Creates a `<section>` element
- * @param {[type]} props [description]
  */
 const Section = props => {
   return SemanticHTMLElement(props);
 };
 
-Section.propTypes = propTypesForElement;
+Section.propTypes = propTypes;
 Section.defaultProps = defaultPropsForSection;
 
 /**
  * Creates an `<article>` element
- * @param {[type]} props [description]
  */
 const Article = props => {
   return SemanticHTMLElement(props);
 };
 
-Article.propTypes = propTypesForElement;
+Article.propTypes = propTypes;
 Article.defaultProps = defaultPropsForArticle;
 
 /**
  * Creates an `<aside>` element
- * @param {[type]} props [description]
  */
 const Aside = props => {
   return SemanticHTMLElement(props);
 };
 
-Aside.propTypes = propTypesForElement;
+Aside.propTypes = propTypes;
 Aside.defaultProps = defaultPropsForAside;
 
 /**
  * Creates a `<nav>` element
- * @param {[type]} props [description]
  */
 const Nav = props => {
   return SemanticHTMLElement(props);
 };
 
-Nav.propTypes = propTypesForElement;
+Nav.propTypes = propTypes;
 Nav.defaultProps = defaultPropsForNav;
 
 export { Section, Article, Aside, Nav };

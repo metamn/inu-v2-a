@@ -4,38 +4,36 @@ import styled from "styled-components";
 
 import { useTheme } from "../../hooks";
 
-import SiteInfo from "../SiteInfo";
+import {
+  propTypes as SiteInfoPropTypes,
+  defaultProps as SiteInfoDefaultProps
+} from "../SiteInfo";
 import { default as _Link } from "../Link";
 
 /**
  * Defines the prop types of the component
- * @type Object
  */
 const propTypes = {
   /**
    * Inherits from SiteInfo
-   * @type Object
    */
-  ...SiteInfo.propTypes,
+  ...SiteInfoPropTypes,
   /**
    * The line status
-   * @type {[type]}
    */
   lineStatus: PropTypes.oneOf(["visible", "invisible"])
 };
 
 /**
  * Defines the default props
- * @type Object
  */
 const defaultProps = {
-  ...SiteInfo.defaultProps,
+  ...SiteInfoDefaultProps,
   lineStatus: "visible"
 };
 
 /**
  * Styles for the main container
- * @type {[type]}
  */
 const Container = styled("div")([], {
   display: "flex",
@@ -44,7 +42,6 @@ const Container = styled("div")([], {
 
 /**
  * Styles for the links
- * @type {[type]}
  */
 const Links = styled("div")([], {
   display: "flex",
@@ -53,7 +50,6 @@ const Links = styled("div")([], {
 
 /**
  * Styles the link
- * @type {[type]}
  */
 const Link = styled(_Link)(props => ({
   ...props.theme.textStyles.large
@@ -61,7 +57,6 @@ const Link = styled(_Link)(props => ({
 
 /**
  * Styles the line
- * @type {[type]}
  */
 const Line = styled("div")(props => ({
   width: "calc(var(--lem) * 8)",
@@ -73,7 +68,6 @@ const Line = styled("div")(props => ({
 
 /**
  * Displays the site logo
- * @param Object props The component properties
  */
 const Logo = props => {
   const { title, description } = props;

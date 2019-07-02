@@ -4,8 +4,7 @@ import gql from "graphql-tag";
 import { Helmet } from "react-helmet";
 
 /**
- * Defines the prop types of the component
- * @type Object
+ * Defines the prop types
  */
 const propTypes = {
   /**
@@ -24,7 +23,6 @@ const propTypes = {
 
 /**
  * Defines the default props
- * @type Object
  */
 const defaultProps = {
   title: "Ioan Chivu",
@@ -34,7 +32,6 @@ const defaultProps = {
 
 /**
  * Defines the query fragment needed by the component
- * @type Object
  */
 const queryFragment = {
   settings: gql`
@@ -48,8 +45,8 @@ const queryFragment = {
 
 /**
  * Displays site info in the document `<head>` with Helmet
+ *
  * NOTE: use this method instead of manually edit `public/index.php`
- * @param Object props The component properties
  */
 const SiteInfo = props => {
   const { title, description, url } = props;

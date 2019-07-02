@@ -5,7 +5,10 @@ import styled from "styled-components";
 import { useLocalStorage } from "./../../hooks";
 
 import Categories from "../Categories";
-import Category, { setCategoryStatus } from "../Category";
+import Category, {
+  setCategoryStatus,
+  propTypes as CategoryPropTypes
+} from "../Category";
 import { Nav as _Nav } from "../SemanticHTML";
 
 /**
@@ -13,13 +16,13 @@ import { Nav as _Nav } from "../SemanticHTML";
  */
 const propTypes = {
   /**
-   * Defines prop types for the Random extra menu item
+   * The Random extra menu item
    */
-  random: Category.propTypes,
+  random: CategoryPropTypes,
   /**
-   * Defines prop types for the Contact extra menu item
+   * The Contact extra menu item
    */
-  contact: Category.propTypes
+  contact: CategoryPropTypes
 };
 
 /**
@@ -27,7 +30,7 @@ const propTypes = {
  */
 const defaultProps = {
   /**
-   * Defines default props for the Random extra menu item
+   * The default props for the Random extra menu item
    */
   random: {
     id: "random",
@@ -35,7 +38,7 @@ const defaultProps = {
     name: "Random"
   },
   /**
-   * Defines default props for the Contact extra menu item
+   * The default props for the Contact extra menu item
    */
   contact: {
     id: "contact",
@@ -58,7 +61,6 @@ const ExtraMenuItems = styled("ul")(props => ({
 
 /**
  * Displays the Menu
- * @param Object props The component properties
  */
 const Menu = props => {
   /**
