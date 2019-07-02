@@ -1,7 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 
-import SemanticHTML, { Section } from "./SemanticHTML";
+import { Section } from "./SemanticHTML";
 import description from "./SemanticHTML.md";
 
 storiesOf("SemanticHTML", module).add(

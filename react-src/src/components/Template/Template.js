@@ -29,3 +29,4 @@ Template.propTypes = propTypes;
 Template.defaultProps = defaultProps;
 
 export default Template;
+export { propTypes, defaultProps };
