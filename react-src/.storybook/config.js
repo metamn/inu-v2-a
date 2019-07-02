@@ -37,7 +37,7 @@ addParameters({
 // Info settings
 addDecorator(
   withInfo({
-    header: false,
+    inline: true,
     source: false,
     propTablesExclude: [ApolloProvider]
   })
