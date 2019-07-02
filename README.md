@@ -49,6 +49,7 @@ A photo portfolio site with React and WordPress: http://inu.ro
 - Styleguidist or Storybook will be added later
 
 Storybook added. It displays only prop tables not the whole API docs.
+`jsdoc-to-markdown` to the rescue
 
 ### Outlined semantic HTML elements
 
@@ -75,9 +76,10 @@ Storybook added. It displays only prop tables not the whole API docs.
 - [prop-types](https://reactjs.org/docs/typechecking-with-proptypes.html) - for basic typechecking
 - [react-axe](https://www.npmjs.com/package/react-axe) - for testing accessibility
 - [react-helmet](https://github.com/nfl/react-helmet) - to manage the document head
-- [react-docgen](https://github.com/reactjs/react-docgen) - to verify code documentation
 - [react-icons](https://github.com/react-icons/react-icons) - for SVG icons
 - [react-responsive](https://github.com/contra/react-responsive) - for media queries in components
+- [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown) - to generate markdown from code documentation
+- [storybook](https://storybook.js.org/) - to test components in isolation and display documentation
 
 ### Plugins (for WordPress)
 

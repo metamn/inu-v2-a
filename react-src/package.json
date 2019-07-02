@@ -28,8 +28,7 @@
     "start": "wptheme-scripts start",
     "wpbuild": "wptheme-scripts wpbuild",
     "wpstart": "wptheme-scripts wpstart",
-    "doc": "react-docgen",
-    "docmd": "jsdoc2md",
+    "doc": "jsdoc2md",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   },
@@ -64,7 +63,6 @@
     "@storybook/addons": "^5.1.9",
     "@storybook/react": "^5.1.9",
     "flatted": "^2.0.1",
-    "jsdoc-to-markdown": "^5.0.0",
-    "react-docgen": "^4.1.1"
+    "jsdoc-to-markdown": "^5.0.0"
   }
 }
