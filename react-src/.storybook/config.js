@@ -23,7 +23,7 @@ addParameters({
     panelPosition: "right"
   },
   backgrounds: [
-    { name: "silver", value: "silver", default: true },
+    { name: "default", value: "#F6F9FC", default: true },
     { name: "black", value: "#000" }
   ]
 });
