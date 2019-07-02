@@ -1,3 +1,4 @@
+import React from "react";
 import { addParameters, addDecorator, configure } from "@storybook/react";
 import theme from "./theme";
 
@@ -6,15 +7,23 @@ import { withConsole } from "@storybook/addon-console";
 import { setConsoleOptions } from "@storybook/addon-console";
 import "@storybook/addon-console";
 
-// Info / JSDoc imports
-// This must be first among all settings: https://github.com/storybookjs/storybook/issues/4801#issuecomment-452214479
-import { withInfo } from "@storybook/addon-info";
-addDecorator(
-  withInfo({
-    header: false,
-    source: false
-  })
-);
+// The Apollo decorator
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo-hooks";
+
+const client = new ApolloClient({
+  uri: "http://localhost/react-wp/graphql"
+});
+
+addDecorator(story => (
+  <ApolloProvider client={client}>{story()}</ApolloProvider>
+));
+
+addParameters({
+  info: {
+    propTablesExclude: [ApolloProvider]
+  }
+});
 
 // General settings
 addParameters({

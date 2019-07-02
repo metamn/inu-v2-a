@@ -41,7 +41,7 @@ const defaultProps = {
 
 /**
  * Defines the query
- * @type {[type]}
+ * @type {Object}
  */
 const query = gql`
   query siteInfo {
@@ -56,7 +56,7 @@ const query = gql`
  * Styles the main container
  * Wherever possible the object notation is used to enable composition by spreading and reduce the ugly, long `{$props => ...}` syntax with template literals
  *
- * @type {[type]}
+ * @type {Object}
  */
 const Section = styled(_Section)(props => ({
   ...props.theme.colorPairs.default,

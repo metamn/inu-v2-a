@@ -65,7 +65,7 @@ const Container = styled("li")(props => ({
 
 /**
  * Sets the status of a category
- * @param {[type]} props [description]
+ * @param {object} props [description]
  */
 const setCategoryStatus = props => {
   const { categoryId, activeCategory } = props;
