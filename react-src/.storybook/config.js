@@ -1,4 +1,4 @@
-import { configure, addParameters, addDecorator } from "@storybook/react";
+import { addParameters, addDecorator, configure } from "@storybook/react";
 import theme from "./theme";
 
 // Console imports ... more complicated than the rest

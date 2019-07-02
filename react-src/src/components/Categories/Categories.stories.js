@@ -19,7 +19,8 @@ storiesOf("Components/Categories", module)
   .addParameters({
     info: {
       propTablesExclude: [ApolloProvider]
-    }
+    },
+    component: Categories
   })
   .add("Overview", () => <Categories />, {
     notes: { markdown: markdownNotes },
