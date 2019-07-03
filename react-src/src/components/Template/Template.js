@@ -19,7 +19,6 @@ const Container = styled("div")(props => ({}));
 
 /**
  * Displays the Template
- * @param Object props The component properties
  */
 const Template = props => {
   return <Container className="template">Template</Container>;
