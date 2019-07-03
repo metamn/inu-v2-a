@@ -1,9 +1,8 @@
 The component performs the following tasks:
 
 <details>
-	<summary>###Global reset with `normalize.css`.
-
-Also adds custom resets
+	<summary>###Defines a global reset with `normalize.css`.
+Adds custom resets
 
 </summary>
 </details>

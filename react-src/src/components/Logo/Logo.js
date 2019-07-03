@@ -11,7 +11,7 @@ import {
 import { default as _Link } from "../Link";
 
 /**
- * Defines the prop types of the component
+ * Defines the prop types
  */
 const propTypes = {
   /**

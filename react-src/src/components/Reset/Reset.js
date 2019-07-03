@@ -3,9 +3,8 @@ import { createGlobalStyle } from "styled-components";
 import { normalize } from "polished";
 
 /**
- * Global reset with `normalize.css`.
- *
- * Also adds custom resets
+ * Defines a global reset with `normalize.css`.
+ * Adds custom resets
  */
 const GlobalReset = createGlobalStyle`
 	${normalize()}
