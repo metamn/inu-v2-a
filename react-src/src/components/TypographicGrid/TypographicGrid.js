@@ -7,7 +7,6 @@ import { ThemeContext } from "../../themes/default.js";
 
 /**
  * Defines the component prop types
- * @type Object
  */
 const propTypes = {
   /**
@@ -34,7 +33,6 @@ const propTypes = {
 
 /**
  * Defines the default props
- * @type Object
  */
 const defaultProps = {
   displayVerticalRhytm: false,
@@ -45,15 +43,9 @@ const defaultProps = {
 };
 
 /**
- * Defines the component name
- * @type String
- */
-const className = "typographic-grid";
-
-/**
  * Sets up the typographic grid
+ *
  * It's hand coded since `createGlobalStyle` doesn't supports yet object notation
- * @type String
  */
 const GlobalStyle = createGlobalStyle`
 	body {
@@ -64,8 +56,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 /**
- * Shared settings for the rhythm containers
- * @type String
+ * Styles the rhythm containers
  */
 const Rhythm = styled("div")([], {
   position: "absolute",
@@ -76,8 +67,7 @@ const Rhythm = styled("div")([], {
 });
 
 /**
- * The vertical rhythm container
- * @type String
+ * Styles the vertical rhythm container
  */
 const VerticalRhythm = styled(Rhythm)(props => ({
   display: props.displayVerticalRhytm ? "flex" : "none",
@@ -85,8 +75,7 @@ const VerticalRhythm = styled(Rhythm)(props => ({
 }));
 
 /**
- * The horizontal rhythm container
- * @type String
+ * Styles the horizontal rhythm container
  */
 const HorizontalRhythm = styled(Rhythm)(props => ({
   display: props.displayHorizontalRhytm ? "flex" : "none",
@@ -94,8 +83,7 @@ const HorizontalRhythm = styled(Rhythm)(props => ({
 }));
 
 /**
- * Shared settings for the rhythm lines
- * @type String
+ * Styles the rhythm lines
  */
 const Line = styled.div(props => ({
   boxSizing: "border-box",
@@ -104,8 +92,7 @@ const Line = styled.div(props => ({
 }));
 
 /**
- * The vertical rhythm line
- * @type String
+ * Styles the vertical rhythm line
  */
 const VerticalRhythmLine = styled(Line)([], {
   width: "var(--lem)",
@@ -114,8 +101,7 @@ const VerticalRhythmLine = styled(Line)([], {
 });
 
 /**
- * The horizontal rhythm line
- * @type String
+ * Styles the horizontal rhythm line
  */
 const HorizontalRhythmLine = styled(Line)([], {
   width: "100%",
@@ -124,16 +110,15 @@ const HorizontalRhythmLine = styled(Line)([], {
 });
 
 /**
- * The main container
- * @type Sting
+ * Styles the main container
  */
 const Container = styled.div([]);
 
 /**
- * Displays horizontal and vertical lines across the page
- * It helps to verify elements are all perfectly aligned to the grid
- * See: http://metamn.io/mr-ui
- * @param Object props The component properties
+ * Displays horizontal and vertical lines across the page.
+ *
+ * It helps to verify elements are all perfectly aligned to the grid.
+ * @see http://metamn.io/mr-ui
  */
 const TypographicGrid = props => {
   const {

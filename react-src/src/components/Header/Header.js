@@ -39,7 +39,7 @@ const defaultProps = {
 };
 
 /**
- * Displays the header container
+ * Styles the header container
  */
 const Container = styled("header")(props => ({}));
 
@@ -49,10 +49,24 @@ const Container = styled("header")(props => ({}));
 const Header = props => {
   const { themeIconClickHandler } = props;
 
+  /**
+   * Checks if we are on a mobile device
+   */
   const isMobile = useMedia("mobile");
+
+  /**
+   * Hides the line in the logo on mobile screens
+   */
   const lineStatus = isMobile ? "invisible" : "visible";
+
+  /**
+   * Displays the mobile icon toggler on mobile screens
+   */
   const iconToggleStatus = isMobile ? "active" : "hidden";
 
+  /**
+   * Defines the mobile menu toggle icons
+   */
   const icon1 = <FiMenu onClick={() => {}} />;
   const icon2 = <FiX onClick={() => {}} />;
   //console.log("header");

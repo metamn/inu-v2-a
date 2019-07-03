@@ -2,7 +2,8 @@ The component performs the following tasks:
 
 <details>
 	<summary>###Defines a global reset with `normalize.css`.
-Adds custom resets
+
+Adds custom resets.
 
 </summary>
 </details>

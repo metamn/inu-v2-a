@@ -20,7 +20,7 @@ The width and height of the icon will be `var(--lem) * size`.
 </details>
 
 <details>
-	<summary>###Displays the icon container
+	<summary>###Styles the icon container
 
 </summary>
 </details>

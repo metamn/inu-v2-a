@@ -33,7 +33,7 @@ const defaultProps = {
 };
 
 /**
- * Displays the icon container
+ * Styles the icon container
  */
 const Container = styled("div")(props => ({
   width: `calc(var(--lem) * ${props.size})`,

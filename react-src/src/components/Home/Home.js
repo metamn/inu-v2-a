@@ -83,9 +83,6 @@ const Home = props => {
    */
   const siteInfo = useData(props, query, "generalSettings");
 
-  /**
-   * Renders the component
-   */
   return (
     <>
       <Reset />

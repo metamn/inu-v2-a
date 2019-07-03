@@ -48,19 +48,18 @@ Without children there is no use of an empty element
 </details>
 
 <details>
-	<summary>###Styles the semantic element title
-
-It is always hidden because it is needed only by the HTML outliner / validator
+	<summary>###Styles the semantic element title.
+It is always hidden because it is needed only by the HTML outliner / validator.
 
 </summary>
 </details>
 
 <details>
-	<summary>###Creates a semantic HTML element with title
+	<summary>###Creates a semantic HTML element with title.
 
-- Semantic elements with title are properly outlined in https://validator.w3.org/
-- When a HTML document outlines perfectly it means its component structure is flawless
-- Many times an invalid outline structure points to errors in component design and helps fix it
+Semantic elements with title are properly outlined in https://validator.w3.org/.
+When a HTML document outlines perfectly it means its component structure is flawless.
+Many times an invalid outline structure points to errors in component design and helps fix it.
 
 Returns something like: `<section><h3>section title</h3>...children</section>` where the title is hidden by default
 

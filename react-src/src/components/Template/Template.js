@@ -13,7 +13,7 @@ const propTypes = {};
 const defaultProps = {};
 
 /**
- * Displays the Template container
+ * Styles the Template container
  */
 const Container = styled("div")(props => ({}));
 

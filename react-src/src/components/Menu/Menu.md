@@ -21,13 +21,13 @@ The component performs the following tasks:
 </details>
 
 <details>
-	<summary>###Displays the Menu container
+	<summary>###Styles the Menu container
 
 </summary>
 </details>
 
 <details>
-	<summary>###Displays the the extra menu items container
+	<summary>###Styles the the extra menu items container
 
 </summary>
 </details>

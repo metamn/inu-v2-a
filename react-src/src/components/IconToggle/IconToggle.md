@@ -19,7 +19,7 @@ The component performs the following tasks:
 </details>
 
 <details>
-	<summary>###Displays the IconToggle container
+	<summary>###Styles the IconToggle container
 
 </summary>
 </details>

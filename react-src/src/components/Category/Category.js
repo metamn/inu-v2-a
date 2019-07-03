@@ -49,7 +49,7 @@ const queryFragment = {
 };
 
 /**
- * Displays the Category container
+ * Styles the Category container
  */
 const Container = styled("li")(props => ({
   textDecoration: props.status === "active" ? "line-through" : "none",

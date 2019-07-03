@@ -15,7 +15,7 @@ The component performs the following tasks:
 </details>
 
 <details>
-	<summary>###Displays the header container
+	<summary>###Styles the header container
 
 </summary>
 </details>
@@ -24,5 +24,13 @@ The component performs the following tasks:
 	<summary>###Displays the header
 
 </summary>
+* Checks if we are on a mobile device
+
+* Hides the line in the logo on mobile screens
+
+* Displays the mobile icon toggler on mobile screens
+
+* Defines the mobile menu toggle icons
+
 </details>
 

@@ -13,7 +13,7 @@ The component performs the following tasks:
 </details>
 
 <details>
-	<summary>###Displays the Template container
+	<summary>###Styles the Template container
 
 </summary>
 </details>

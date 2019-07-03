@@ -27,7 +27,7 @@ The component performs the following tasks:
 </details>
 
 <details>
-	<summary>###Displays the Category container
+	<summary>###Styles the Category container
 
 </summary>
 </details>

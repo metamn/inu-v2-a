@@ -32,7 +32,7 @@ const defaultProps = {
 };
 
 /**
- * Displays the IconToggle container
+ * Styles the IconToggle container
  */
 const Container = styled("div")(props => ({
   display: props.status === "hidden" ? "none" : "flex",

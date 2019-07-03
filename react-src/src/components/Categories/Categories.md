@@ -33,7 +33,7 @@ The component performs the following tasks:
 </details>
 
 <details>
-	<summary>###Displays the Categories container
+	<summary>###Styles the Categories container
 
 </summary>
 </details>

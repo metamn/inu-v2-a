@@ -47,12 +47,12 @@ const defaultProps = {
 };
 
 /**
- * Displays the Menu container
+ * Styles the Menu container
  */
 const Nav = styled(_Nav)(props => ({}));
 
 /**
- * Displays the the extra menu items container
+ * Styles the the extra menu items container
  */
 const ExtraMenuItems = styled("ul")(props => ({
   marginTop: "var(--lem)"
@@ -69,6 +69,7 @@ const Menu = props => {
 
   /**
    * Saves the number of categories to local storage
+   *
    * At the next load exactly the same number of temporary categories will be displayed as the real number of categories
    */
   const [numberOfEdgesSaved, setNumberOfEdgesSaved] = useLocalStorage(

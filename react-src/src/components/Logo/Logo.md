@@ -1,7 +1,7 @@
 The component performs the following tasks:
 
 <details>
-	<summary>###Defines the prop types of the component
+	<summary>###Defines the prop types
 
 </summary>
 * The line status
@@ -15,13 +15,13 @@ The component performs the following tasks:
 </details>
 
 <details>
-	<summary>###Styles for the main container
+	<summary>###Styles the main container
 
 </summary>
 </details>
 
 <details>
-	<summary>###Styles for the links
+	<summary>###Styles the links
 
 </summary>
 </details>

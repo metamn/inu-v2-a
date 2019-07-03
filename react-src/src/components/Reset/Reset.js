@@ -4,7 +4,8 @@ import { normalize } from "polished";
 
 /**
  * Defines a global reset with `normalize.css`.
- * Adds custom resets
+ *
+ * Adds custom resets.
  */
 const GlobalReset = createGlobalStyle`
 	${normalize()}

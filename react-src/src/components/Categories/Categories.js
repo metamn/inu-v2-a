@@ -78,7 +78,7 @@ const query = gql`
 `;
 
 /**
- * Displays the Categories container
+ * Styles the Categories container
  */
 const Container = styled("ul")(props => ({}));
 

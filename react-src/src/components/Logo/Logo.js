@@ -33,7 +33,7 @@ const defaultProps = {
 };
 
 /**
- * Styles for the main container
+ * Styles the main container
  */
 const Container = styled("div")([], {
   display: "flex",
@@ -41,7 +41,7 @@ const Container = styled("div")([], {
 });
 
 /**
- * Styles for the links
+ * Styles the links
  */
 const Links = styled("div")([], {
   display: "flex",
