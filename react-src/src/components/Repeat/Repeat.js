@@ -29,8 +29,7 @@ const defaultProps = {
 
 /**
  * Imitates the for loop inside JSX
- *
- * See: https://reactjs.org/docs/jsx-in-depth.html
+ * @see: https://reactjs.org/docs/jsx-in-depth.html
  */
 const Repeat = props => {
   const { startAt, numberOfTimes, children } = props;

@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { useTheme } from "../../hooks";
 
 /**
- * Defines the prop types of the component
+ * Defines the prop types
  */
 const propTypes = {
   /**

@@ -18,6 +18,7 @@ import Header from "../Header";
 
 /**
  * Loads web fonts
+ *
  * NOTE: When changing font also the `theme` has to be updated
  */
 WebFont.load({
@@ -54,9 +55,12 @@ const query = gql`
 
 /**
  * Styles the main container
- * Wherever possible the object notation is used to enable composition by spreading and reduce the ugly, long `{$props => ...}` syntax with template literals
+ *
  */
 const Section = styled(_Section)(props => ({
+  /**
+   * Wherever possible the object notation is used to enable composition by spreading and reduce the ugly, long `{$props => ...}` syntax with template literals
+   */
   ...props.theme.colorPairs.default,
   ...props.theme.fonts.default,
   display: "flex",

@@ -1,11 +1,11 @@
 The component performs the following tasks:
 
 <details>
-	<summary>###Defines the prop types of the component
+	<summary>###Defines the prop types
 
 </summary>
-* The size multiplier
-The width and height of the icon will be `var(--lem) * size`
+* The size multiplier.
+The width and height of the icon will be `var(--lem) * size`.
 
 * The icon status
 

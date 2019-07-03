@@ -21,8 +21,6 @@ The component performs the following tasks:
 <details>
 	<summary>###Imitates the for loop inside JSX
 
-See: https://reactjs.org/docs/jsx-in-depth.html
-
 </summary>
 </details>
 

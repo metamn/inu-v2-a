@@ -1,7 +1,7 @@
 The component performs the following tasks:
 
 <details>
-	<summary>###Defines the prop types of the component
+	<summary>###Defines the prop types
 
 </summary>
 * The link url

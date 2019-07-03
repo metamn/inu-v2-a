@@ -20,7 +20,6 @@ The component performs the following tasks:
 
 <details>
 	<summary>###Styles the main container
-Wherever possible the object notation is used to enable composition by spreading and reduce the ugly, long `{$props => ...}` syntax with template literals
 
 </summary>
 </details>
