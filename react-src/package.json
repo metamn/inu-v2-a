@@ -66,6 +66,7 @@
     "@storybook/react": "^5.1.9",
     "flatted": "^2.0.1",
     "jsdoc-to-markdown": "^5.0.0",
-    "scripty": "^1.9.1"
+    "scripty": "^1.9.1",
+    "babel-loader": "8.0.5"
   }
 }
