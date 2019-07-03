@@ -77,6 +77,7 @@ const Title = styled("h3")([], {
 
 /**
  * Creates a semantic HTML element with title
+ *
  * - Semantic elements with title are properly outlined in https://validator.w3.org/
  * - When a HTML document outlines perfectly it means its component structure is flawless
  * - Many times an invalid outline structure points to errors in component design and helps fix it
@@ -85,7 +86,6 @@ const Title = styled("h3")([], {
  *
  * NOTE: since we have inside an element a title + content it will act as a list so we have to provide unique `key` props
  *
- * @param {[type]} props [description]
  */
 const SemanticHTMLElement = props => {
   const { elementName, children, className, title } = props;

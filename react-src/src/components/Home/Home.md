@@ -1,68 +1,35 @@
-## Constants
+The component performs the following tasks:
 
-<dl>
-<dt><a href="#propTypes">propTypes</a> : <code>Object</code></dt>
-<dd><p>Defines the prop types of the component</p>
-</dd>
-<dt><a href="#defaultProps">defaultProps</a> : <code>Object</code></dt>
-<dd><p>Defines the default props</p>
-</dd>
-<dt><a href="#query">query</a> : <code>Object</code></dt>
-<dd><p>Defines the query</p>
-</dd>
-<dt><a href="#Section">Section</a> : <code>Object</code></dt>
-<dd><p>Styles the main container
-Wherever possible the object notation is used to enable composition by spreading and reduce the ugly, long <code>{$props =&gt; ...}</code> syntax with template literals</p>
-</dd>
-</dl>
+<details>
+	<summary>###Defines the prop types of the component
 
-## Functions
+</summary>
+</details>
 
-<dl>
-<dt><a href="#Home">Home(Object)</a></dt>
-<dd><p>Displays the Homepage</p>
-</dd>
-</dl>
+<details>
+	<summary>###Defines the default props
 
-<a name="propTypes"></a>
+</summary>
+</details>
 
-## propTypes : <code>Object</code>
+<details>
+	<summary>###Defines the query
 
-Defines the prop types of the component
+</summary>
+</details>
 
-**Kind**: global constant  
-<a name="defaultProps"></a>
-
-## defaultProps : <code>Object</code>
-
-Defines the default props
-
-**Kind**: global constant  
-<a name="query"></a>
-
-## query : <code>Object</code>
-
-Defines the query
-
-**Kind**: global constant  
-<a name="Section"></a>
-
-## Section : <code>Object</code>
-
-Styles the main container
+<details>
+	<summary>###Styles the main container
 Wherever possible the object notation is used to enable composition by spreading and reduce the ugly, long `{$props => ...}` syntax with template literals
 
-**Kind**: global constant  
-<a name="Home"></a>
+</summary>
+</details>
 
-## Home(Object)
+<details>
+	<summary>###Displays the Homepage
 
-Displays the Homepage
+</summary>
+* Sets up site info
 
-**Kind**: global function
+</details>
 
-| Param  | Description                    |
-| ------ | ------------------------------ |
-| Object | props The component properties |
-
-Done in 1.44s.

@@ -1,3 +1,26 @@
-yarn run v1.9.4
-$ jsdoc2md Template.js
-info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+The component performs the following tasks:
+
+<details>
+	<summary>###Defines the prop types
+
+</summary>
+</details>
+
+<details>
+	<summary>###Defines the default props
+
+</summary>
+</details>
+
+<details>
+	<summary>###Displays the Template container
+
+</summary>
+</details>
+
+<details>
+	<summary>###Displays the Template
+
+</summary>
+</details>
+
