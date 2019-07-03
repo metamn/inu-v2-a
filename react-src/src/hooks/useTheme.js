@@ -17,7 +17,7 @@ import {
  *
  * @return array The theme object, the theme switcher function and the theme context
  */
-const useTheme = () => {
+const useTheme = colorScheme => {
   /** Checks if the user / browser prefers dark mode */
   const prefersDarkMode = usePrefersDarkMode();
 
@@ -28,7 +28,10 @@ const useTheme = () => {
 
   /** Defines the color scheme based on the above preferences */
   const starterColorScheme =
-    typeof currentThemeSaved !== "undefined"
+    typeof colorScheme !== "undefined"
+      ? /** If we have a strong preference then we will use it */
+        colorScheme
+      : typeof currentThemeSaved !== "undefined"
       ? currentThemeSaved
       : prefersDarkMode
       ? "dark"

@@ -7,12 +7,19 @@ import { useTheme } from "./../../hooks";
 /**
  * Defines the prop types
  */
-const propTypes = {};
+const propTypes = {
+  /**
+   * The desired color scheme
+   */
+  colorScheme: PropTypes.string
+};
 
 /**
  * Defines the default props
  */
-const defaultProps = {};
+const defaultProps = {
+  colorScheme: "light"
+};
 
 /**
  * Styles the component container
@@ -23,13 +30,17 @@ const Container = styled("div")(props => ({
 }));
 
 /**
- * Displays the component
+ * Displays the theme styleguide.
+ *
+ * Used only with the Storybook.
  */
 const Theme = props => {
+  const { colorScheme } = props;
+
   /**
    * Sets up the theme
    */
-  const { currentTheme, switchTheme, ThemeContext } = useTheme();
+  const { currentTheme, switchTheme, ThemeContext } = useTheme(colorScheme);
 
   /**
    * Loads the theme
