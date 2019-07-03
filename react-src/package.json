@@ -28,7 +28,7 @@
     "start": "wptheme-scripts start",
     "wpbuild": "wptheme-scripts wpbuild",
     "wpstart": "wptheme-scripts wpstart",
-    "doc": "jsdoc2md",
+    "doc": "jsdoc2md --template .jsdoc2md/template.hbs",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   },

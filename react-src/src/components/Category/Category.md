@@ -1,3 +1,5 @@
+The component performs the following tasks:
+
 ###Defines the prop types
 
 ###Defines the default props

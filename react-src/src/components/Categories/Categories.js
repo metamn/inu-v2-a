@@ -62,7 +62,7 @@ const defaultProps = {
 };
 
 /**
- * Defines the query
+ * Defines the database query
  */
 const query = gql`
   query Categories($hideEmpty: Boolean) {
