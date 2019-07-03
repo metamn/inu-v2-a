@@ -68,6 +68,7 @@ const defaultPropsForNav = {
 
 /**
  * Styles the semantic element title.
+ *
  * It is always hidden because it is needed only by the HTML outliner / validator.
  */
 const Title = styled("h3")([], {

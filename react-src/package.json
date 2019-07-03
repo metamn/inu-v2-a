@@ -64,7 +64,6 @@
     "@storybook/addon-viewport": "^5.1.9",
     "@storybook/addons": "^5.1.9",
     "@storybook/react": "^5.1.9",
-    "babel-loader": "^8.0.6",
     "flatted": "^2.0.1",
     "jsdoc-to-markdown": "^5.0.0",
     "scripty": "^1.9.1"

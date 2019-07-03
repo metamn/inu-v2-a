@@ -136,7 +136,7 @@ const TypographicGrid = props => {
     <>
       <GlobalStyle theme={theme} />
       {(displayHorizontalRhytm || displayVerticalRhytm) && (
-        <Container className={className}>
+        <Container className="typographic-grid">
           {displayHorizontalRhytm && (
             <HorizontalRhythm
               className="horizontal-lines"
