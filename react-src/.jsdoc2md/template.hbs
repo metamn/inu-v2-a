@@ -2,10 +2,11 @@ The component performs the following tasks:
 
 {{#orphans ~}}
 
-###{{>description~}}
-{{#children inherited=undefined ~}}
-* {{>description~}}
-{{/children~}}
-
+<details>
+	<summary>###{{>description~}}</summary>
+	{{#children inherited=undefined ~}}
+	* {{>description~}}
+	{{/children~}}
+</details>
 
 {{/orphans~}}

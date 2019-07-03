@@ -1,7 +1,9 @@
 The component performs the following tasks:
 
-###Defines the prop types
+<details>
+	<summary>###Defines the prop types
 
+</summary>
 * A category node
 
 * A list of category nodes
@@ -16,21 +18,43 @@ The component performs the following tasks:
 
 * The function which sets the active category
 
-###Defines the default props
+</details>
 
-###Defines the database query
+<details>
+	<summary>###Defines the default props
 
-###Displays the Categories container
+</summary>
+</details>
 
-###Creates temporary data to be displayed while real data is loading
+<details>
+	<summary>###Defines the database query
 
+</summary>
+</details>
+
+<details>
+	<summary>###Displays the Categories container
+
+</summary>
+</details>
+
+<details>
+	<summary>###Creates temporary data to be displayed while real data is loading
+
+</summary>
 * Defines the number of edges to be displayed either from default props or from the local storage
 
-###Displays the categories
+</details>
 
+<details>
+	<summary>###Displays the categories
+
+</summary>
 * Loads temporary data
 
 * Loads the real data
 
 * Puts together the data
+
+</details>
 
