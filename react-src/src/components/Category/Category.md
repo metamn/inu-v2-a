@@ -1,21 +1,46 @@
 The component performs the following tasks:
 
-###Defines the prop types
+<details>
+	<summary>###Defines the prop types
 
-- The GraphQL id
+</summary>
+* The GraphQL id
 
-- The category id from the database
+* The category id from the database
 
-- The category name
+* The category name
 
-- The category status
+* The category status
 
-###Defines the default props
+</details>
 
-###Defines the query fragment needed by the component
+<details>
+	<summary>###Defines the default props
 
-###Displays the Category container
+</summary>
+</details>
 
-###Sets the status of a category
+<details>
+	<summary>###Defines the query fragment needed by the component
 
-###Displays a category
+</summary>
+</details>
+
+<details>
+	<summary>###Displays the Category container
+
+</summary>
+</details>
+
+<details>
+	<summary>###Sets the status of a category
+
+</summary>
+</details>
+
+<details>
+	<summary>###Displays a category
+
+</summary>
+</details>
+

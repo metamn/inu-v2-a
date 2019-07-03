@@ -3,8 +3,10 @@
     margin-bottom: 1em;
   }
 
+  /* When there are details */
   summary {
     cursor: pointer;
+    padding: 0.5em;
   }
 
   summary h3 {
@@ -13,12 +15,41 @@
   }
 
   details[open] summary {
-    background: black;
-    color: white;
+    background: #333;
+    color: #f6f9fc;
+  }
+
+  /* When there are no details */
+  summary:only-child {
+    list-style-type: oriya;
+  }
+
+  summary:only-child,
+  summary:only-child h3 {
+    cursor: default;
+  }
+
+  details[open] summary:only-child {
+    background: #f6f9fc;
+    color: #333333;
+  }
+
+  /* Style of the detail item */
+  details ul {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 1px solid;
+    border-top: none;
+    list-style: none;
   }
 
   details ul li {
-    font-size: larger;
-    list-style-typec: circle;
+    font-size: 1.25em;
+    padding: 1.25em !important;
+    margin: 0 !important;
+  }
+
+  details ul li + li {
+    border-top: 1px solid;
   }
 </style>
