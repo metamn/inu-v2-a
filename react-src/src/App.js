@@ -3,7 +3,8 @@ import React from "react";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo-hooks";
 
-import Home from "./components/Home";
+//import Home from "./components/Home";
+import Theme from "./components/Theme";
 
 const client = new ApolloClient({
   uri: "http://localhost/react-wp/graphql"
@@ -11,7 +12,7 @@ const client = new ApolloClient({
 
 const App = () => (
   <ApolloProvider client={client}>
-    <Home />
+    <Theme />
   </ApolloProvider>
 );
 

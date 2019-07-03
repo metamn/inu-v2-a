@@ -4,33 +4,35 @@ import { modularScale } from "polished";
 /**
  * Color definitions
  */
-const white = "white";
-const black = "black";
-const gray = "#666";
-const lightgray = "lightgray";
-const darkgray = "#333";
+const colors = {
+  white: "white",
+  black: "black",
+  gray: "#666",
+  lightgray: "lightgray",
+  darkgray: "#333"
+};
 
 /**
  * Color schemes
  */
 const colorSchemes = {
   light: {
-    text: black,
-    background: white,
-    gray: gray,
-    placeholder: white,
-    borderColor: black,
+    text: colors.black,
+    background: colors.white,
+    gray: colors.gray,
+    placeholder: colors.white,
+    borderColor: colors.black,
     cursor: "brutalist_line_SVGicon_cursor2.png",
-    inactive: lightgray
+    inactive: colors.lightgray
   },
   dark: {
-    text: white,
-    background: black,
-    gray: lightgray,
-    placeholder: black,
-    borderColor: white,
+    text: colors.white,
+    background: colors.black,
+    gray: colors.lightgray,
+    placeholder: colors.black,
+    borderColor: colors.white,
     cursor: "brutalist_line_SVGicon_cursor2-black.png",
-    inactive: darkgray
+    inactive: colors.darkgray
   }
 };
 

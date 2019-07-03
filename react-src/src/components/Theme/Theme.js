@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { stringify } from "flatted";
 
 import { useTheme } from "./../../hooks";
 
@@ -30,6 +31,24 @@ const Container = styled("div")(props => ({
 }));
 
 /**
+ * Styles the colors container
+ */
+const Colors = styled("div")(props => ({}));
+
+/**
+ * Styles the color
+ */
+const Color = styled("div")(props => ({}));
+
+/**
+ * Displays a color swatch
+ */
+const ColorSwatch = props => {
+  const { name, value } = props;
+  return name;
+};
+
+/**
  * Displays the theme styleguide.
  *
  * Used only with the Storybook.
@@ -47,10 +66,18 @@ const Theme = props => {
    */
   const { theme } = currentTheme;
 
+  /**
+   * Displays the colors
+   */
+  const colors = { ...theme.colors };
+  const colorSwatches = Object.keys(colors).map(key => {
+    return <ColorSwatch name={key} value={colors[key]} />;
+  });
+
   return (
     <ThemeContext.Provider value={currentTheme}>
       <Container className="Theme" theme={theme}>
-        Theme
+        <Colors className="Colors">{colorSwatches}</Colors>
       </Container>
     </ThemeContext.Provider>
   );
