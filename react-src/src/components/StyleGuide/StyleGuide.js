@@ -179,6 +179,11 @@ const StyleGuide = props => {
       id: "colors",
       name: "Colors",
       url: "#colors"
+    },
+    {
+      id: "colorpairs",
+      name: "Color pairs",
+      url: "#colorpairs"
     }
   ];
 

@@ -95,4 +95,5 @@ Storybook added. It displays only prop tables not the whole API docs.
 
 ## Gotchas
 
-- Storybook is an enormous help to clean up code and design errors introduced when coding fast an idea.
+- Storybook is an enormous help to clean up code and design errors introduced when coding fast an idea. (Ie. in theme.js icons inside color declarations)
+- Styleguide refactors components originally made for a single usage (Category) to a much broader usage (MenuItem)
