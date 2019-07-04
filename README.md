@@ -89,3 +89,7 @@ Storybook added. It displays only prop tables not the whole API docs.
 - [Category Order and Taxonomy Terms Order](https://www.nsp-code.com/wordpress-plugins/category-order-and-taxonomy-terms-order/) to manage in which order categories are listed
 
 ## Difficulties
+
+## Gotchas
+
+- Storybook is an enormous help to clean up code and design errors introduced when coding fast an idea.

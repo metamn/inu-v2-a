@@ -4,6 +4,10 @@ import styled from "styled-components";
 import { stringify } from "flatted";
 
 import { useTheme } from "./../../hooks";
+import { sgColors } from "../../themes/default.js";
+
+import Reset from "../Reset";
+import TypographicGrid from "../TypographicGrid";
 
 /**
  * Defines the prop types
@@ -38,14 +42,37 @@ const Colors = styled("div")(props => ({}));
 /**
  * Styles the color
  */
-const Color = styled("div")(props => ({}));
+const Color = styled("div")(props => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center"
+}));
+
+/**
+ * Styles the color circle
+ */
+const Circle = styled("span")(props => ({
+  display: "flex",
+  width: "calc(var(--lem) * 3)",
+  height: "calc(var(--lem) * 3)",
+  borderRadius: "calc(var(--lem) * 3)",
+  backgroundColor: props.color,
+  border: props.color === props.current ? "1px solid" : "none"
+}));
 
 /**
  * Displays a color swatch
  */
 const ColorSwatch = props => {
-  const { name, value } = props;
-  return name;
+  const { name, value, currentColors } = props;
+  const { backgroundColor } = currentColors;
+
+  return (
+    <Color className="color">
+      <Circle className="circle" color={value} current={backgroundColor} />
+      <span className="text">{name}</span>
+    </Color>
+  );
 };
 
 /**
@@ -65,21 +92,32 @@ const Theme = props => {
    * Loads the theme
    */
   const { theme } = currentTheme;
+  const { colorPairs } = theme;
 
   /**
    * Displays the colors
    */
-  const colors = { ...theme.colors };
-  const colorSwatches = Object.keys(colors).map(key => {
-    return <ColorSwatch name={key} value={colors[key]} />;
+  const colorSwatches = Object.keys(sgColors).map(key => {
+    return (
+      <ColorSwatch
+        key={key}
+        name={key}
+        value={sgColors[key]}
+        currentColors={colorPairs.default}
+      />
+    );
   });
 
   return (
-    <ThemeContext.Provider value={currentTheme}>
-      <Container className="Theme" theme={theme}>
-        <Colors className="Colors">{colorSwatches}</Colors>
-      </Container>
-    </ThemeContext.Provider>
+    <>
+      <Reset />
+      <ThemeContext.Provider value={currentTheme}>
+        <TypographicGrid />
+        <Container className="Theme" theme={theme}>
+          <Colors className="Colors">{colorSwatches}</Colors>
+        </Container>
+      </ThemeContext.Provider>
+    </>
   );
 };
 

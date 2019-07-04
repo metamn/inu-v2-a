@@ -58,7 +58,6 @@ const getColorPairs = colors => {
 
 /**
  * Text styles
- * @type {Object}
  */
 const textStyles = {
   // Grid is set up elsewhere manually since createGlobalStyle supports only tagged liters
@@ -72,7 +71,6 @@ const textStyles = {
 
 /**
  * Link styles
- * @type {Object}
  */
 const links = {
   default: {
@@ -85,9 +83,8 @@ const links = {
 
 /**
  * Fonts
- * NOTE:  When changing font also the `WebFont.load` has to be updated
  *
- * @type {Object}
+ * NOTE:  When changing font also the `WebFont.load` has to be updated
  */
 const fonts = {
   default: {
@@ -147,10 +144,15 @@ const switchThemeTo = colorScheme => {
 
 /**
  * Creates a theme context
- * @type {[type]}
  */
 const ThemeContext = React.createContext(switchThemeTo("light"));
 
-//const themeContext = useContext(ThemeContext);
-
+/**
+ * Exports default data
+ */
 export { getTheme, switchThemeFrom, switchThemeTo, ThemeContext };
+
+/**
+ * Exports original values for the styleguide
+ */
+export { colors as sgColors };
