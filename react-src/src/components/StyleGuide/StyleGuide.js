@@ -9,6 +9,9 @@ import { sgColors } from "../../themes/default.js";
 import Reset from "../Reset";
 import TypographicGrid from "../TypographicGrid";
 
+import SiteInfo, { propTypes as SiteInfoPropTypes } from "../SiteInfo";
+import Logo from "../Logo";
+
 /**
  * Defines the prop types
  */
@@ -16,14 +19,21 @@ const propTypes = {
   /**
    * The desired color scheme
    */
-  colorScheme: PropTypes.string
+  colorScheme: PropTypes.string,
+  /**
+   * Page title and url
+   */
+  ...SiteInfoPropTypes
 };
 
 /**
  * Defines the default props
  */
 const defaultProps = {
-  colorScheme: "light"
+  colorScheme: "light",
+  title: "Styleguide",
+  description: "for inu.ro",
+  url: "http://inu.ro/styleguide"
 };
 
 /**
@@ -76,9 +86,7 @@ const ColorSwatch = props => {
 };
 
 /**
- * Displays the theme styleguide.
- *
- * Used only with the Storybook.
+ * Displays the styleguide.
  */
 const StyleGuide = props => {
   const { colorScheme } = props;
@@ -108,12 +116,23 @@ const StyleGuide = props => {
     );
   });
 
+  /**
+   * Displays the menu
+   */
+  const menuItems = [
+    {
+      name: "Colors"
+    }
+  ];
+
   return (
     <>
       <Reset />
+      <SiteInfo {...props} />
       <ThemeContext.Provider value={currentTheme}>
         <TypographicGrid />
         <Container className="StyleGuide" theme={theme}>
+          <Logo {...props} />
           <Colors className="Colors">{colorSwatches}</Colors>
         </Container>
       </ThemeContext.Provider>
