@@ -77,14 +77,16 @@ const Circle = styled("span")(props => ({
 const ColorTexts = styled("div")(props => ({}));
 
 /**
- * Styles the color text
+ * Styles a text box
  */
-const ColorText = styled("div")(props => ({
+const TextBox = styled("div")(props => ({
+  ...props.fonts,
+
   maxWidth: "calc(var(--lem) * 25)",
   border: "1px solid",
 
   "& .text": {
-    ...props.theme.colorPairs[props.name],
+    ...props.colors,
     padding: "var(--lem)"
   },
 
@@ -102,6 +104,11 @@ const MeetsContrastItem = styled("span")(props => ({
   marginRight: "var(--lem)",
   padding: "calc(var(--lem) / 4)"
 }));
+
+/**
+ * Styles the font texts container
+ */
+const FontTexts = styled("div")(props => ({}));
 
 /**
  * Displays a color swatch
@@ -133,7 +140,7 @@ const StyleGuide = props => {
    * Loads the theme
    */
   const { theme } = currentTheme;
-  const { colorPairs } = theme;
+  const { colorPairs, fonts } = theme;
 
   /**
    * Displays the colors
@@ -157,7 +164,11 @@ const StyleGuide = props => {
     ));
 
     return (
-      <ColorText name={name} theme={theme}>
+      <TextBox
+        name={name}
+        colors={theme.colorPairs[name]}
+        fonts={theme.fonts.default}
+      >
         <div class="text">
           Colors don't exist alone yet in pairs, like black on white. All color
           pairs have a contrast ratio set for perfect readability.
@@ -167,7 +178,31 @@ const StyleGuide = props => {
           <p>Contrast ratio: {contrast}</p>
           <p>Meets guidelines: {meetsContrastItems}</p>
         </div>
-      </ColorText>
+      </TextBox>
+    );
+  });
+
+  /**
+   * Displays the fonts used
+   */
+  const fontTexts = Object.keys(fonts).map(name => {
+    const { fontFamily } = fonts[name];
+
+    return (
+      <TextBox
+        name={name}
+        colors={theme.colorPairs.default}
+        fonts={theme.fonts[name]}
+      >
+        <div class="text">
+          Hello, I'm a designer and developer creating user interfaces and
+          experiences for the web.
+        </div>
+        <div class="details">
+          <p>Name: {name}</p>
+          <p>Font family: {fontFamily}</p>
+        </div>
+      </TextBox>
     );
   });
 
@@ -184,6 +219,11 @@ const StyleGuide = props => {
       id: "colorpairs",
       name: "Color pairs",
       url: "#colorpairs"
+    },
+    {
+      id: "fonts",
+      name: "Fonts",
+      url: "#fonts"
     }
   ];
 
@@ -202,6 +242,7 @@ const StyleGuide = props => {
           </ColorSwatches>
 
           <ColorTexts className="ColorTexts">{colorTexts}</ColorTexts>
+          <FontTexts className="FontTexts">{fontTexts}</FontTexts>
         </Container>
       </ThemeContext.Provider>
     </>

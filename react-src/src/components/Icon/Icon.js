@@ -42,8 +42,8 @@ const Container = styled("div")(props => ({
   visibility: props.status === "hidden" ? "hidden" : "visible",
   color:
     props.status === "active"
-      ? props.theme.colors.text
-      : props.theme.colors.inactive,
+      ? props.theme.colorPairs.default
+      : props.theme.colorPairs.inactive,
   cursor: props.status === "active" ? "pointer" : "default",
 
   svg: {

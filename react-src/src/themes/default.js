@@ -19,18 +19,18 @@ const colorSchemes = {
   light: {
     text: colors.black,
     background: colors.white,
+    inactive: colors.gray,
     gray: colors.gray,
     placeholder: colors.white,
-    borderColor: colors.black,
-    inactive: colors.lightgray
+    borderColor: colors.black
   },
   dark: {
     text: colors.white,
     background: colors.black,
+    inactive: colors.darkgray,
     gray: colors.lightgray,
     placeholder: colors.black,
-    borderColor: colors.white,
-    inactive: colors.darkgray
+    borderColor: colors.white
   }
 };
 
@@ -43,7 +43,7 @@ const colorSchemes = {
  * @return Object        A set of color pairs
  */
 const getColorPairs = colors => {
-  const { text, background } = colors;
+  const { text, background, inactive } = colors;
 
   return {
     default: {
@@ -57,8 +57,25 @@ const getColorPairs = colors => {
       backgroundColor: text,
       contrast: getContrast(text, background),
       meetsContrast: meetsContrastGuidelines(text, background)
+    },
+    inactive: {
+      color: inactive,
+      backgroundColor: background,
+      contrast: getContrast(inactive, background),
+      meetsContrast: meetsContrastGuidelines(inactive, background)
     }
   };
+};
+
+/**
+ * Fonts
+ *
+ * NOTE:  When changing font also the `WebFont.load` has to be updated
+ */
+const fonts = {
+  default: {
+    fontFamily: "'Major Mono Display', sans-serif;"
+  }
 };
 
 /**
@@ -83,17 +100,6 @@ const links = {
     "&:hover": {
       textDecoration: "line-through"
     }
-  }
-};
-
-/**
- * Fonts
- *
- * NOTE:  When changing font also the `WebFont.load` has to be updated
- */
-const fonts = {
-  default: {
-    fontFamily: "'Major Mono Display', sans-serif;"
   }
 };
 

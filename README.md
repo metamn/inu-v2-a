@@ -93,7 +93,7 @@ Storybook added. It displays only prop tables not the whole API docs.
 
 ## Difficulties
 
-- Getting around the ecosystem / co-location. There are many opinions, contradictory opinions, inexperienced-but-loud opinions ... hard to find the right way. The same was true for rails/ruby.
+- Getting around the ecosystem / co-location. There are many opinions, contradictory opinions, inexperienced-but-loud opinions ... hard to find the right way. The same was true for rails/ruby. True sources / best practices: CRA, Dan Abramow, RWieruch
 
 Ex.: https://dev.to/anssamghezala/you-don-t-have-to-use-redux-32a6 from the 'official' react newsletter #190 vs. https://www.robinwieruch.de/redux-vs-usereducer/
 
