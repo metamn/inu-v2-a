@@ -81,13 +81,20 @@ const fonts = {
 /**
  * Text styles
  */
+const scales = {
+  large: 1
+};
+
+/**
+ * Text styles
+ */
 const textStyles = {
   // Grid is set up elsewhere manually since createGlobalStyle supports only tagged liters
   default: {
     fontSize: "100%"
   },
   large: {
-    fontSize: modularScale(1)
+    fontSize: modularScale(scales.large)
   }
 };
 
@@ -179,4 +186,4 @@ export { getTheme, switchThemeFrom, switchThemeTo, ThemeContext };
 /**
  * Exports original values for the styleguide
  */
-export { colors as sgColors };
+export { colors as sgColors, scales as sgScales };

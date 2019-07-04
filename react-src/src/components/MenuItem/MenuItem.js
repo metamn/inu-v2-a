@@ -45,7 +45,7 @@ const Container = styled("li")(props => ({}));
  * Displays the component
  */
 const MenuItem = props => {
-  const { id, name, url, status } = props;
+  const { name, url, status } = props;
 
   /**
    * Sets up a link if required
@@ -60,7 +60,7 @@ const MenuItem = props => {
     );
 
   return (
-    <Container className="menu-item" id={id} status={status}>
+    <Container className="menu-item" status={status}>
       {item}
     </Container>
   );

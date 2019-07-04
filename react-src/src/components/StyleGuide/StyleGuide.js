@@ -4,7 +4,8 @@ import styled from "styled-components";
 import { stringify } from "flatted";
 
 import { useTheme } from "./../../hooks";
-import { sgColors } from "../../themes/default.js";
+import { sgColors, sgScales } from "../../themes/default.js";
+import { modularScale } from "polished";
 
 import Reset from "../Reset";
 import TypographicGrid from "../TypographicGrid";
@@ -48,7 +49,15 @@ const Container = styled("div")(props => ({
 /**
  * Styles the color swatches
  */
-const ColorSwatches = styled("div")(props => ({}));
+const ColorSwatches = styled("div")(props => ({
+  display: "flex",
+  flexWrap: "wrap",
+
+  "> *": {
+    marginRight: "calc(var(--lem) * 2)",
+    marginBottom: "calc(var(--lem) * 2)"
+  }
+}));
 
 /**
  * Styles the color swatch
@@ -72,9 +81,9 @@ const Circle = styled("span")(props => ({
 }));
 
 /**
- * Styles the color text container
+ * Styles the text box container
  */
-const ColorTexts = styled("div")(props => ({}));
+const TextBoxContainer = styled(ColorSwatches)(props => ({}));
 
 /**
  * Styles a text box
@@ -87,6 +96,8 @@ const TextBox = styled("div")(props => ({
 
   "& .text": {
     ...props.colors,
+    ...props.fonts,
+    fontSize: props.scale ? modularScale(props.scale) : "1em",
     padding: "var(--lem)"
   },
 
@@ -104,11 +115,6 @@ const MeetsContrastItem = styled("span")(props => ({
   marginRight: "var(--lem)",
   padding: "calc(var(--lem) / 4)"
 }));
-
-/**
- * Styles the font texts container
- */
-const FontTexts = styled("div")(props => ({}));
 
 /**
  * Displays a color swatch
@@ -207,6 +213,36 @@ const StyleGuide = props => {
   });
 
   /**
+   * Displays the typographic scale
+   */
+  const scaleTexts = Object.keys(sgScales).map(name => {
+    const value = sgScales[name];
+
+    return (
+      <TextBox
+        name={name}
+        colors={theme.colorPairs.default}
+        fonts={theme.fonts.default}
+        scale={value}
+      >
+        <div class="text">
+          Typographic grid and scale. Different font sizes based on the{" "}
+          <a
+            href="https://polished.js.org/docs/#modularscale"
+            title="Modular Scale"
+          >
+            Modular Scale.
+          </a>
+        </div>
+        <div class="details">
+          <p>Name: {name}</p>
+          <p>Modular scale: {value}</p>
+        </div>
+      </TextBox>
+    );
+  });
+
+  /**
    * Displays the menu
    */
   const menuItems = [
@@ -224,6 +260,11 @@ const StyleGuide = props => {
       id: "fonts",
       name: "Fonts",
       url: "#fonts"
+    },
+    {
+      id: "scales",
+      name: "Scale",
+      url: "#scales"
     }
   ];
 
@@ -237,12 +278,21 @@ const StyleGuide = props => {
           <Logo {...props} />
           <Menu2 items={menuItems} />
 
-          <ColorSwatches className="ColorSwatches">
+          <ColorSwatches id="colors" className="ColorSwatches">
             {colorSwatches}
           </ColorSwatches>
 
-          <ColorTexts className="ColorTexts">{colorTexts}</ColorTexts>
-          <FontTexts className="FontTexts">{fontTexts}</FontTexts>
+          <TextBoxContainer id="colorpairs" className="ColorTexts">
+            {colorTexts}
+          </TextBoxContainer>
+
+          <TextBoxContainer id="fonts" className="FontTexts">
+            {fontTexts}
+          </TextBoxContainer>
+
+          <TextBoxContainer id="scales" className="Scales">
+            {scaleTexts}
+          </TextBoxContainer>
         </Container>
       </ThemeContext.Provider>
     </>
