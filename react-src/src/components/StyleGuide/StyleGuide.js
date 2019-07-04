@@ -11,6 +11,7 @@ import TypographicGrid from "../TypographicGrid";
 
 import SiteInfo, { propTypes as SiteInfoPropTypes } from "../SiteInfo";
 import Logo from "../Logo";
+import Menu2 from "../Menu2";
 
 /**
  * Defines the prop types
@@ -121,7 +122,9 @@ const StyleGuide = props => {
    */
   const menuItems = [
     {
-      name: "Colors"
+      id: "colors",
+      name: "Colors",
+      url: "#colors"
     }
   ];
 
@@ -133,6 +136,7 @@ const StyleGuide = props => {
         <TypographicGrid />
         <Container className="StyleGuide" theme={theme}>
           <Logo {...props} />
+          <Menu2 items={menuItems} />
           <Colors className="Colors">{colorSwatches}</Colors>
         </Container>
       </ThemeContext.Provider>

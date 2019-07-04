@@ -48,12 +48,12 @@ const Container = styled("a")(props => ({
  * Displays a HTML link element
  */
 const Link = props => {
-  const { children } = props;
+  const { url, children } = props;
   const { theme } = useTheme();
   //console.log("link");
 
   return (
-    <Container className="link" theme={theme} {...props}>
+    <Container className="link" theme={theme} href={url} {...props}>
       {children}
     </Container>
   );
