@@ -46,14 +46,14 @@ const Container = styled("div")(props => ({
 }));
 
 /**
- * Styles the colors container
+ * Styles the color swatches
  */
-const Colors = styled("div")(props => ({}));
+const ColorSwatches = styled("div")(props => ({}));
 
 /**
- * Styles the color
+ * Styles the color swatch
  */
-const Color = styled("div")(props => ({
+const ColorSwatchContainer = styled("div")(props => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center"
@@ -72,6 +72,29 @@ const Circle = styled("span")(props => ({
 }));
 
 /**
+ * Styles the color text container
+ */
+const ColorTexts = styled("div")(props => ({}));
+
+/**
+ * Styles the color text
+ */
+const ColorText = styled("div")(props => ({
+  maxWidth: "calc(var(--lem) * 25)",
+  border: "1px solid",
+
+  "& .text": {
+    ...props.theme.colorPairs[props.name],
+    padding: "var(--lem)"
+  },
+
+  "& .name": {
+    padding: "var(--lem)",
+    borderTop: "1px solid"
+  }
+}));
+
+/**
  * Displays a color swatch
  */
 const ColorSwatch = props => {
@@ -79,10 +102,10 @@ const ColorSwatch = props => {
   const { backgroundColor } = currentColors;
 
   return (
-    <Color className="color">
+    <ColorSwatchContainer className="color">
       <Circle className="circle" color={value} current={backgroundColor} />
       <span className="text">{name}</span>
-    </Color>
+    </ColorSwatchContainer>
   );
 };
 
@@ -106,16 +129,27 @@ const StyleGuide = props => {
   /**
    * Displays the colors
    */
-  const colorSwatches = Object.keys(sgColors).map(key => {
-    return (
-      <ColorSwatch
-        key={key}
-        name={key}
-        value={sgColors[key]}
-        currentColors={colorPairs.default}
-      />
-    );
-  });
+  const colorSwatches = Object.keys(sgColors).map(key => (
+    <ColorSwatch
+      key={key}
+      name={key}
+      value={sgColors[key]}
+      currentColors={colorPairs.default}
+    />
+  ));
+
+  /**
+   * Displays the color pairs
+   */
+  const colorTexts = Object.keys(colorPairs).map(name => (
+    <ColorText name={name} theme={theme}>
+      <div class="text">
+        Colors don't exist alone yet in pairs, like black on white. All color
+        pairs have a contrast ratio set for perfect readability.
+      </div>
+      <div class="name">{name}</div>
+    </ColorText>
+  ));
 
   /**
    * Displays the menu
@@ -137,7 +171,12 @@ const StyleGuide = props => {
         <Container className="StyleGuide" theme={theme}>
           <Logo {...props} />
           <Menu2 items={menuItems} />
-          <Colors className="Colors">{colorSwatches}</Colors>
+
+          <ColorSwatches className="ColorSwatches">
+            {colorSwatches}
+          </ColorSwatches>
+
+          <ColorTexts className="ColorTexts">{colorTexts}</ColorTexts>
         </Container>
       </ThemeContext.Provider>
     </>
