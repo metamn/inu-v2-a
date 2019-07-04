@@ -55,6 +55,8 @@ Storybook added. It displays only prop tables not the whole API docs.
 
 ### Outlined semantic HTML elements
 
+### Styleguide
+
 ## Design
 
 ### CSS Reset
@@ -82,6 +84,7 @@ Storybook added. It displays only prop tables not the whole API docs.
 - [react-responsive](https://github.com/contra/react-responsive) - for media queries in components
 - [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown) - to generate markdown from code documentation
 - [storybook](https://storybook.js.org/) - to test components in isolation and display documentation
+- [react-router-dom](https://www.npmjs.com/package/react-router) - for routing
 
 ### Plugins (for WordPress)
 

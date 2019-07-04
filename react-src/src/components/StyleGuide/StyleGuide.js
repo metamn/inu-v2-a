@@ -80,7 +80,7 @@ const ColorSwatch = props => {
  *
  * Used only with the Storybook.
  */
-const Theme = props => {
+const StyleGuide = props => {
   const { colorScheme } = props;
 
   /**
@@ -113,7 +113,7 @@ const Theme = props => {
       <Reset />
       <ThemeContext.Provider value={currentTheme}>
         <TypographicGrid />
-        <Container className="Theme" theme={theme}>
+        <Container className="StyleGuide" theme={theme}>
           <Colors className="Colors">{colorSwatches}</Colors>
         </Container>
       </ThemeContext.Provider>
@@ -121,8 +121,8 @@ const Theme = props => {
   );
 };
 
-Theme.propTypes = propTypes;
-Theme.defaultProps = defaultProps;
+StyleGuide.propTypes = propTypes;
+StyleGuide.defaultProps = defaultProps;
 
-export default Theme;
+export default StyleGuide;
 export { propTypes, defaultProps };
