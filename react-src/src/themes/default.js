@@ -22,7 +22,6 @@ const colorSchemes = {
     gray: colors.gray,
     placeholder: colors.white,
     borderColor: colors.black,
-    cursor: "brutalist_line_SVGicon_cursor2.png",
     inactive: colors.lightgray
   },
   dark: {
@@ -31,7 +30,6 @@ const colorSchemes = {
     gray: colors.lightgray,
     placeholder: colors.black,
     borderColor: colors.white,
-    cursor: "brutalist_line_SVGicon_cursor2-black.png",
     inactive: colors.darkgray
   }
 };
@@ -93,6 +91,18 @@ const fonts = {
 };
 
 /**
+ * Icons
+ */
+const icons = {
+  light: {
+    brutalistCursor2: "brutalist_line_SVGicon_cursor2.png"
+  },
+  dark: {
+    brutalistCursor2: "brutalist_line_SVGicon_cursor2-black.png"
+  }
+};
+
+/**
  * Returns a color scheme
  *
  * @param  String colorScheme The name of the color scheme
@@ -115,7 +125,8 @@ const getTheme = colorScheme => {
     colorPairs: getColorPairs(colors),
     fonts: fonts,
     textStyles: textStyles,
-    links: links
+    links: links,
+    icons: icons[colorScheme]
   };
 };
 
