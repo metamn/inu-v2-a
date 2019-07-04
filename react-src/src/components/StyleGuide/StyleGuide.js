@@ -97,8 +97,12 @@ const TextBox = styled("div")(props => ({
   "& .text": {
     ...props.colors,
     ...props.fonts,
-    fontSize: props.scale ? modularScale(props.scale) : "1em",
+    ...props.textStyle,
     padding: "var(--lem)"
+  },
+
+  "& .with-scale": {
+    fontSize: props.scale ? modularScale(props.scale) : "inherit"
   },
 
   "& .details": {
@@ -146,7 +150,7 @@ const StyleGuide = props => {
    * Loads the theme
    */
   const { theme } = currentTheme;
-  const { colorPairs, fonts } = theme;
+  const { colorPairs, fonts, textStyles } = theme;
 
   /**
    * Displays the colors
@@ -174,6 +178,7 @@ const StyleGuide = props => {
         name={name}
         colors={theme.colorPairs[name]}
         fonts={theme.fonts.default}
+        textStyle={theme.textStyles.default}
       >
         <div class="text">
           Colors don't exist alone yet in pairs, like black on white. All color
@@ -199,6 +204,7 @@ const StyleGuide = props => {
         name={name}
         colors={theme.colorPairs.default}
         fonts={theme.fonts[name]}
+        textStyle={theme.textStyles.default}
       >
         <div class="text">
           Hello, I'm a designer and developer creating user interfaces and
@@ -223,9 +229,10 @@ const StyleGuide = props => {
         name={name}
         colors={theme.colorPairs.default}
         fonts={theme.fonts.default}
+        textStyle={theme.textStyles.default}
         scale={value}
       >
-        <div class="text">
+        <div class="text with-scale">
           Typographic grid and scale. Different font sizes based on the{" "}
           <a
             href="https://polished.js.org/docs/#modularscale"
@@ -237,6 +244,33 @@ const StyleGuide = props => {
         <div class="details">
           <p>Name: {name}</p>
           <p>Modular scale: {value}</p>
+        </div>
+      </TextBox>
+    );
+  });
+
+  /**
+   * Displays the text styles
+   */
+  const textStyleTexts = Object.keys(textStyles).map(name => {
+    const value = textStyles[name];
+
+    console.log("value:" + stringify(textStyles[name]));
+
+    return (
+      <TextBox
+        name={name}
+        colors={theme.colorPairs.default}
+        fonts={theme.fonts.default}
+        textStyle={value}
+      >
+        <div class="text">
+          This is the default text. With a high contrast background and a modern
+          typeface with extra letter spacing it should look electric, vibrant,
+          energizing on all displays.
+        </div>
+        <div class="details">
+          <p>Name: {name}</p>
         </div>
       </TextBox>
     );
@@ -265,6 +299,11 @@ const StyleGuide = props => {
       id: "scales",
       name: "Scale",
       url: "#scales"
+    },
+    {
+      id: "text-styles",
+      name: "Text styles",
+      url: "#text-styles"
     }
   ];
 
@@ -292,6 +331,10 @@ const StyleGuide = props => {
 
           <TextBoxContainer id="scales" className="Scales">
             {scaleTexts}
+          </TextBoxContainer>
+
+          <TextBoxContainer id="text-styles" className="textStyles">
+            {textStyleTexts}
           </TextBoxContainer>
         </Container>
       </ThemeContext.Provider>
