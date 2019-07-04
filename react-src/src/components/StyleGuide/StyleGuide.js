@@ -88,10 +88,19 @@ const ColorText = styled("div")(props => ({
     padding: "var(--lem)"
   },
 
-  "& .name": {
+  "& .details": {
     padding: "var(--lem)",
     borderTop: "1px solid"
   }
+}));
+
+/**
+ * Styles the color contrast guideline
+ */
+const MeetsContrastItem = styled("span")(props => ({
+  backgroundColor: props.ok ? "green" : "red",
+  marginRight: "var(--lem)",
+  padding: "calc(var(--lem) / 4)"
 }));
 
 /**
@@ -141,15 +150,26 @@ const StyleGuide = props => {
   /**
    * Displays the color pairs
    */
-  const colorTexts = Object.keys(colorPairs).map(name => (
-    <ColorText name={name} theme={theme}>
-      <div class="text">
-        Colors don't exist alone yet in pairs, like black on white. All color
-        pairs have a contrast ratio set for perfect readability.
-      </div>
-      <div class="name">{name}</div>
-    </ColorText>
-  ));
+  const colorTexts = Object.keys(colorPairs).map(name => {
+    const { contrast, meetsContrast } = colorPairs[name];
+    const meetsContrastItems = Object.keys(meetsContrast).map(key => (
+      <MeetsContrastItem ok={meetsContrast[key]}>{key}</MeetsContrastItem>
+    ));
+
+    return (
+      <ColorText name={name} theme={theme}>
+        <div class="text">
+          Colors don't exist alone yet in pairs, like black on white. All color
+          pairs have a contrast ratio set for perfect readability.
+        </div>
+        <div class="details">
+          <p>Name: {name}</p>
+          <p>Contrast ratio: {contrast}</p>
+          <p>Meets guidelines: {meetsContrastItems}</p>
+        </div>
+      </ColorText>
+    );
+  });
 
   /**
    * Displays the menu

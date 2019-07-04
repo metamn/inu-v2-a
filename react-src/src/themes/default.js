@@ -1,5 +1,5 @@
 import React from "react";
-import { modularScale } from "polished";
+import { modularScale, getContrast, meetsContrastGuidelines } from "polished";
 
 /**
  * Color definitions
@@ -48,9 +48,16 @@ const getColorPairs = colors => {
   return {
     default: {
       color: text,
-      backgroundColor: background
+      backgroundColor: background,
+      contrast: getContrast(text, background),
+      meetsContrast: meetsContrastGuidelines(text, background)
     },
-    inverted: { color: background, backgroundColor: text }
+    inverted: {
+      color: background,
+      backgroundColor: text,
+      contrast: getContrast(text, background),
+      meetsContrast: meetsContrastGuidelines(text, background)
+    }
   };
 };
 
