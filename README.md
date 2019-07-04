@@ -93,7 +93,14 @@ Storybook added. It displays only prop tables not the whole API docs.
 
 ## Difficulties
 
+- Getting around the ecosystem / co-location. There are many opinions, contradictory opinions, inexperienced-but-loud opinions ... hard to find the right way. The same was true for rails/ruby.
+
+Ex.: https://dev.to/anssamghezala/you-don-t-have-to-use-redux-32a6 from the 'official' react newsletter #190 vs. https://www.robinwieruch.de/redux-vs-usereducer/
+
+- Too much to learn / focus at once: hooks, styled components (vs ...), typechecking (vs ...), state (vs ...), graphql (vs...), docs/storybook (vs...)
+
 ## Gotchas
 
 - Storybook is an enormous help to clean up code and design errors introduced when coding fast an idea. (Ie. in theme.js icons inside color declarations)
 - Styleguide refactors components originally made for a single usage (Category) to a much broader usage (MenuItem)
+- Writing the Styleguide was way easier than for Metamn. This means once the basic components are set up React can be very very productive.
