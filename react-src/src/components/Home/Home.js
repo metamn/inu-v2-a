@@ -12,6 +12,7 @@ import TypographicGrid from "../TypographicGrid";
 import SiteInfo, { SiteInfoPropTypes, SiteInfoDefaultProps } from "../SiteInfo";
 import { Section as _Section } from "../SemanticHTML";
 import Header from "../Header";
+import Content from "../Content";
 
 /**
  * Loads web fonts
@@ -73,7 +74,6 @@ const Home = props => {
    * Sets up theming
    */
   const { currentTheme, switchTheme, ThemeContext } = useTheme();
-  //console.log("home");
 
   /**
    * Sets up site info
@@ -88,6 +88,7 @@ const Home = props => {
         <TypographicGrid />
         <Section title="Home" className="home" theme={currentTheme.theme}>
           <Header {...siteInfo} themeIconClickHandler={switchTheme} />
+          <Content />
         </Section>
       </ThemeContext.Provider>
     </>

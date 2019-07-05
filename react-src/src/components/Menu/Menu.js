@@ -1,10 +1,9 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
+import { stringify } from "flatted";
 
-import { useLocalStorage } from "./../../hooks";
-
-import Categories from "../Categories";
-import Category, { setCategoryStatus, CategoryPropTypes } from "../Category";
+import MenuItem, { MenuItemPropTypes, MenuItemDefaultProps } from "../MenuItem";
 import { Nav as _Nav } from "../SemanticHTML";
 
 /**
@@ -12,35 +11,21 @@ import { Nav as _Nav } from "../SemanticHTML";
  */
 const propTypes = {
   /**
-   * The Random extra menu item
+   * An array of items to be rendered as menu items
    */
-  random: CategoryPropTypes,
+  items: PropTypes.arrayOf(MenuItemPropTypes),
   /**
-   * The Contact extra menu item
+   * An set of items already rendered as menu items
    */
-  contact: CategoryPropTypes
+  renderedItems: PropTypes.node
 };
 
 /**
  * Defines the default props
  */
 const defaultProps = {
-  /**
-   * The default props for the Random extra menu item
-   */
-  random: {
-    id: "random",
-    categoryId: "-1",
-    name: "Random"
-  },
-  /**
-   * The default props for the Contact extra menu item
-   */
-  contact: {
-    id: "contact",
-    categoryId: "-2",
-    name: "Contact"
-  }
+  items: [MenuItemDefaultProps],
+  renderedItems: null
 };
 
 /**
@@ -49,57 +34,26 @@ const defaultProps = {
 const Nav = styled(_Nav)(props => ({}));
 
 /**
- * Styles the the extra menu items container
+ * Styles the list container
  */
-const ExtraMenuItems = styled("ul")(props => ({
-  marginTop: "var(--lem)"
-}));
+const List = styled("ul")(props => ({}));
 
 /**
  * Displays the Menu
  */
 const Menu = props => {
-  /**
-   * Saves the active category into a state
-   */
-  const [activeCategory, setActiveCategory] = useState(1);
+  const { items, renderedItems } = props;
 
-  /**
-   * Saves the number of categories to local storage
-   *
-   * At the next load exactly the same number of temporary categories will be displayed as the real number of categories
-   */
-  const [numberOfEdgesSaved, setNumberOfEdgesSaved] = useLocalStorage(
-    "number-of-edges"
-  );
+  const menuItems = items.map((item, index) => {
+    return <MenuItem className="menu-item" key={index} {...item} />;
+  });
 
   return (
-    <Nav title="Menu" className="menu">
-      <Categories
-        activeCategory={activeCategory}
-        setActiveCategory={setActiveCategory}
-        numberOfEdgesSaved={numberOfEdgesSaved}
-        setNumberOfEdgesSaved={setNumberOfEdgesSaved}
-      />
-
-      <ExtraMenuItems className="extra-menu-items">
-        <Category
-          {...defaultProps.random}
-          status={setCategoryStatus({
-            categoryId: defaultProps.random.categoryId,
-            activeCategory: activeCategory
-          })}
-          setActiveCategory={setActiveCategory}
-        />
-        <Category
-          {...defaultProps.contact}
-          status={setCategoryStatus({
-            categoryId: defaultProps.contact.categoryId,
-            activeCategory: activeCategory
-          })}
-          setActiveCategory={setActiveCategory}
-        />
-      </ExtraMenuItems>
+    <Nav title="Menu" className="Menu">
+      <List>
+        {renderedItems}
+        {menuItems}
+      </List>
     </Nav>
   );
 };

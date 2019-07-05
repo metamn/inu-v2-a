@@ -31,7 +31,7 @@ const propTypes = {
  */
 const defaultProps = {
   id: 1,
-  name: "Menu item",
+  name: "/ / / / / / / / / ",
   url: "",
   status: "active"
 };

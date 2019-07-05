@@ -1,14 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import gql from "graphql-tag";
+import { stringify } from "flatted";
 
 import { useData } from "./../../hooks";
-import Category, {
-  setCategoryStatus,
-  CategoryPropTypes,
-  CategoryDefaultProps
-} from "../Category";
+
+import Category, { CategoryPropTypes, CategoryDefaultProps } from "../Category";
+import MenuItem from "../MenuItem";
 
 /**
  * Defines the prop types
@@ -33,15 +31,7 @@ const propTypes = {
   /**
    * The function which saves the number of edges to local storage
    */
-  setNumberOfEdgesSaved: PropTypes.func.isRequired,
-  /**
-   * The active category
-   */
-  activeCategory: PropTypes.number.isRequired,
-  /**
-   * The function which sets the active category
-   */
-  setActiveCategory: PropTypes.func.isRequired
+  setNumberOfEdgesSaved: PropTypes.func.isRequired
 };
 
 /**
@@ -54,10 +44,6 @@ const defaultProps = {
   numberOfEdgesSaved: null,
   setNumberOfEdgesSaved: () => {
     console.log("setNumberOfEdgesSaved called");
-  },
-  activeCategory: 1,
-  setActiveCategory: () => {
-    console.log("setActiveCategory called");
   }
 };
 
@@ -78,11 +64,6 @@ const query = gql`
 `;
 
 /**
- * Styles the Categories container
- */
-const Container = styled("ul")(props => ({}));
-
-/**
  * Creates temporary data to be displayed while real data is loading
  */
 const createTemporaryData = props => {
@@ -100,15 +81,10 @@ const createTemporaryData = props => {
 };
 
 /**
- * Displays the categories
+ * Returns the categories for further display
  */
 const Categories = props => {
-  const {
-    activeCategory,
-    setActiveCategory,
-    numberOfEdgesSaved,
-    setNumberOfEdgesSaved
-  } = props;
+  const { numberOfEdgesSaved, setNumberOfEdgesSaved } = props;
 
   /**
    * Loads temporary data
@@ -123,16 +99,12 @@ const Categories = props => {
   /**
    * Puts together the data
    */
-  const items = data.edges.map(edge => (
-    <Category
-      {...edge.node}
-      status={setCategoryStatus({
-        categoryId: edge.node.categoryId,
-        activeCategory: activeCategory
-      })}
-      setActiveCategory={setActiveCategory}
-    />
-  ));
+  const items = data.edges.map((edge, index) => {
+    const { categoryId, name } = edge.node;
+    const menuItem = { id: categoryId, name: name };
+
+    return <MenuItem className="menu-item" key={index} {...menuItem} />;
+  });
 
   /**
    * Saves the number of categories to local storage
@@ -140,14 +112,9 @@ const Categories = props => {
   setNumberOfEdgesSaved(data.edges.length);
 
   /**
-   * Marks the first category as active
+   * Returns the data
    */
-  setActiveCategory(data.edges[0].node.categoryId);
-
-  /**
-   * Renders the results
-   */
-  return <Container className="categories">{items}</Container>;
+  return <>{items}</>;
 };
 
 Categories.propTypes = propTypes;

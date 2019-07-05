@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import gql from "graphql-tag";
 
 /**
@@ -18,11 +17,7 @@ const propTypes = {
   /**
    * The category name
    */
-  name: PropTypes.string.isRequired,
-  /**
-   * The category status
-   */
-  status: PropTypes.oneOf(["active", "inactive", "hidden"])
+  name: PropTypes.string.isRequired
 };
 
 /**
@@ -31,8 +26,7 @@ const propTypes = {
 const defaultProps = {
   id: "1",
   categoryId: 1,
-  name: "/ / / / / / / / / ",
-  status: "inactive"
+  name: "/ / / / / / / / / "
 };
 
 /**
@@ -49,42 +43,10 @@ const queryFragment = {
 };
 
 /**
- * Styles the Category container
- */
-const Container = styled("li")(props => ({
-  textDecoration: props.status === "active" ? "line-through" : "none",
-  display: props.status === "hidden" ? "none" : "flex",
-  cursor: "pointer",
-
-  "&:hover": {
-    textDecoration: "line-through"
-  }
-}));
-
-/**
- * Sets the status of a category
- */
-const setCategoryStatus = props => {
-  const { categoryId, activeCategory } = props;
-
-  return categoryId === activeCategory ? "active" : "inactive";
-};
-
-/**
- * Displays a category
+ * Returns nothing. Only the props and the query fragment will be reused later from this component.
  */
 const Category = props => {
-  const { name, categoryId, setActiveCategory } = props;
-
-  return (
-    <Container
-      className="category"
-      {...props}
-      onClick={() => setActiveCategory(categoryId)}
-    >
-      {name}
-    </Container>
-  );
+  return null;
 };
 
 Category.propTypes = propTypes;
@@ -92,8 +54,4 @@ Category.defaultProps = defaultProps;
 Category.fragments = queryFragment;
 
 export default Category;
-export {
-  setCategoryStatus,
-  propTypes as CategoryPropTypes,
-  defaultProps as CategoryDefaultProps
-};
+export { propTypes as CategoryPropTypes, defaultProps as CategoryDefaultProps };
