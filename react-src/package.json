@@ -70,6 +70,7 @@
     "babel-loader": "8.0.5",
     "flatted": "^2.0.1",
     "jsdoc-to-markdown": "^5.0.0",
+    "mq-polyfill": "^1.1.8",
     "react-test-renderer": "^16.8.6",
     "scripty": "^1.9.1"
   }

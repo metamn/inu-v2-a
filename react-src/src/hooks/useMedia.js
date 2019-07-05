@@ -2,8 +2,6 @@ import { useMediaQuery } from "react-responsive";
 
 /**
  * Defines the breakpoints
- *
- * @type Object
  */
 const Breakpoints = {
   mobile: 320,
@@ -24,8 +22,6 @@ const Breakpoints = {
  *  display: "none"
  * },
  * ```
- *
- * @type Object
  */
 const Media = {
   mobile: `@media (min-width: ${Breakpoints.mobile}px)`,
@@ -38,10 +34,6 @@ const Media = {
  * Defines media queries for a list of devices
  *
  * It doesn't use the `min-width` technique but it's useful inside components
- *
- * Usage: `const isMobile = useMedia("mobile");`
- *
- * @type Object
  */
 const Devices = {
   mobile: `(max-width: ${Breakpoints.tablet - 1}px)`,
@@ -56,7 +48,8 @@ const Devices = {
 
 /**
  * Media query hook to be used inside components
- * @return {boolean} If the media query is true
+ *
+ * Usage: `const isMobile = useMedia("mobile");`
  */
 const useMedia = breakpoint => {
   return useMediaQuery({

@@ -4,6 +4,11 @@ import { useState } from "react";
  * Syncs state to local storage so that it persists through a page refresh
  * From https://usehooks.com/useLocalStorage/
  *
+ * Example:
+ * ```
+ * useLocalStorage("test-key", "xxx")
+ * ```
+ *
  * @param  String key          The local storage key / ID
  * @param  String initialValue The initial value
  * @return String              The value from local storage
