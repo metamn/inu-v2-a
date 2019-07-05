@@ -21,13 +21,13 @@ The component performs the following tasks:
 </details>
 
 <details>
-	<summary>###Styles the colors container
+	<summary>###Styles the items container
 
 </summary>
 </details>
 
 <details>
-	<summary>###Styles the color
+	<summary>###Styles the item container
 
 </summary>
 </details>
@@ -39,18 +39,38 @@ The component performs the following tasks:
 </details>
 
 <details>
-	<summary>###Displays a color swatch
+	<summary>###Styles a text box
 
 </summary>
 </details>
 
 <details>
-	<summary>###Displays the theme styleguide.
-
-Used only with the Storybook.
+	<summary>###Styles the color contrast guideline
 
 </summary>
+</details>
+
+<details>
+	<summary>###Displays the styleguide.
+
+</summary>
+* Displays the icons
+
+* Displays the cursors
+
 * Displays the colors
+
+* Displays the color pairs
+
+* Displays the fonts used
+
+* Displays the typographic scale
+
+* Displays the link styles
+
+* Displays the text styles
+
+* Displays the menu
 
 </details>
 

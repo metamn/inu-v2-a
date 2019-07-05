@@ -45,17 +45,13 @@ Importing propTypes from other components: https://github.com/yannickcr/eslint-p
 
 ### Function components
 
-### Documentation
-
-- Just the first steps, needs more attention
-- Styleguidist or Storybook will be added later
-
-Storybook added. It displays only prop tables not the whole API docs.
-`jsdoc-to-markdown` to the rescue
-
 ### Outlined semantic HTML elements
 
-### Styleguide
+### Testing and documentation
+
+- components: Storybook, jsdoc2md
+- theme: Styleguide
+- hooks: Jest ??
 
 ## Design
 
