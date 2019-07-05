@@ -5,10 +5,7 @@ import { FiSun, FiMenu, FiX } from "react-icons/fi";
 
 import { useMedia } from "../../hooks";
 
-import {
-  propTypes as SiteInfoPropTypes,
-  defaultProps as SiteInfoDefaultProps
-} from "../SiteInfo";
+import { SiteInfoPropTypes, SiteInfoDefaultProps } from "../SiteInfo";
 import Logo from "../Logo";
 import Icon from "../Icon";
 import IconToggle from "../IconToggle";

@@ -9,10 +9,7 @@ import { useTheme, useData } from "./../../hooks";
 import Reset from "../Reset";
 import TypographicGrid from "../TypographicGrid";
 
-import SiteInfo, {
-  propTypes as SiteInfoPropTypes,
-  defaultProps as SiteInfoDefaultProps
-} from "../SiteInfo";
+import SiteInfo, { SiteInfoPropTypes, SiteInfoDefaultProps } from "../SiteInfo";
 import { Section as _Section } from "../SemanticHTML";
 import Header from "../Header";
 

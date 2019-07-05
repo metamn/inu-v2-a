@@ -92,4 +92,8 @@ Category.defaultProps = defaultProps;
 Category.fragments = queryFragment;
 
 export default Category;
-export { setCategoryStatus, propTypes, defaultProps };
+export {
+  setCategoryStatus,
+  propTypes as CategoryPropTypes,
+  defaultProps as CategoryDefaultProps
+};

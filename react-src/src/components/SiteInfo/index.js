@@ -1,2 +1,2 @@
 export { default } from "./SiteInfo";
-export { propTypes, defaultProps } from "./SiteInfo";
+export { SiteInfoPropTypes, SiteInfoDefaultProps } from "./SiteInfo";

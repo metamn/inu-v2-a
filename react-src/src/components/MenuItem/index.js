@@ -1,2 +1,2 @@
 export { default } from "./MenuItem";
-export { propTypes, defaultProps } from "./MenuItem";
+export { MenuItemPropTypes, MenuItemDefaultProps } from "./MenuItem";

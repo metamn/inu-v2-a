@@ -4,10 +4,7 @@ import styled from "styled-components";
 
 import { useTheme } from "../../hooks";
 
-import {
-  propTypes as SiteInfoPropTypes,
-  defaultProps as SiteInfoDefaultProps
-} from "../SiteInfo";
+import { SiteInfoPropTypes, SiteInfoDefaultProps } from "../SiteInfo";
 import { default as _Link } from "../Link";
 
 /**

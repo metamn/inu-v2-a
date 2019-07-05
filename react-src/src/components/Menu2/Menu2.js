@@ -2,10 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import MenuItem, {
-  propTypes as MenuItemPropTypes,
-  defaultProps as MenuItemDefaultProps
-} from "../MenuItem";
+import MenuItem, { MenuItemPropTypes, MenuItemDefaultProps } from "../MenuItem";
 import { Nav as _Nav } from "../SemanticHTML";
 
 /**

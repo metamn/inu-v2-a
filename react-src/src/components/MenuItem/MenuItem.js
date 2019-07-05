@@ -70,4 +70,4 @@ MenuItem.propTypes = propTypes;
 MenuItem.defaultProps = defaultProps;
 
 export default MenuItem;
-export { propTypes, defaultProps };
+export { propTypes as MenuItemPropTypes, defaultProps as MenuItemDefaultProps };

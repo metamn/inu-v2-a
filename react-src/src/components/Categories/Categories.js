@@ -6,8 +6,8 @@ import gql from "graphql-tag";
 import { useData } from "./../../hooks";
 import Category, {
   setCategoryStatus,
-  propTypes as CategoryPropTypes,
-  defaultProps as CategoryDefaultProps
+  CategoryPropTypes,
+  CategoryDefaultProps
 } from "../Category";
 
 /**

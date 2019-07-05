@@ -1,2 +1,2 @@
 export { default } from "./Template";
-export { propTypes, defaultProps } from "./Template";
+export { TemplatePropTypes, TemplateDefaultProps } from "./Template";

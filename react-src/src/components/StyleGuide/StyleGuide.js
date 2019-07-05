@@ -10,7 +10,7 @@ import { modularScale, getContrast, meetsContrastGuidelines } from "polished";
 import Reset from "../Reset";
 import TypographicGrid from "../TypographicGrid";
 
-import SiteInfo, { propTypes as SiteInfoPropTypes } from "../SiteInfo";
+import SiteInfo, { SiteInfoPropTypes } from "../SiteInfo";
 import Logo from "../Logo";
 import Menu2 from "../Menu2";
 import Icon from "../Icon";

@@ -4,10 +4,7 @@ import styled from "styled-components";
 import { useLocalStorage } from "./../../hooks";
 
 import Categories from "../Categories";
-import Category, {
-  setCategoryStatus,
-  propTypes as CategoryPropTypes
-} from "../Category";
+import Category, { setCategoryStatus, CategoryPropTypes } from "../Category";
 import { Nav as _Nav } from "../SemanticHTML";
 
 /**
