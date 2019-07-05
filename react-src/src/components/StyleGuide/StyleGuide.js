@@ -13,6 +13,7 @@ import TypographicGrid from "../TypographicGrid";
 import SiteInfo, { propTypes as SiteInfoPropTypes } from "../SiteInfo";
 import Logo from "../Logo";
 import Menu2 from "../Menu2";
+import Icon from "../Icon";
 
 /**
  * Defines the prop types
@@ -47,9 +48,9 @@ const Container = styled("div")(props => ({
 }));
 
 /**
- * Styles the color swatches
+ * Styles the items container
  */
-const ColorSwatches = styled("div")(props => ({
+const ItemsContainer = styled("div")(props => ({
   display: "flex",
   flexWrap: "wrap",
 
@@ -60,9 +61,9 @@ const ColorSwatches = styled("div")(props => ({
 }));
 
 /**
- * Styles the color swatch
+ * Styles the item container
  */
-const ColorSwatchContainer = styled("div")(props => ({
+const ItemContainer = styled("div")(props => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center"
@@ -79,11 +80,6 @@ const Circle = styled("span")(props => ({
   backgroundColor: props.color,
   border: props.color === props.current ? "1px solid" : "none"
 }));
-
-/**
- * Styles the text box container
- */
-const TextBoxContainer = styled(ColorSwatches)(props => ({}));
 
 /**
  * Styles a text box
@@ -125,21 +121,6 @@ const MeetsContrastItem = styled("span")(props => ({
 }));
 
 /**
- * Displays a color swatch
- */
-const ColorSwatch = props => {
-  const { name, value, currentColors } = props;
-  const { backgroundColor } = currentColors;
-
-  return (
-    <ColorSwatchContainer className="color">
-      <Circle className="circle" color={value} current={backgroundColor} />
-      <span className="text">{name}</span>
-    </ColorSwatchContainer>
-  );
-};
-
-/**
  * Displays the styleguide.
  */
 const StyleGuide = props => {
@@ -154,19 +135,66 @@ const StyleGuide = props => {
    * Loads the theme
    */
   const { theme } = currentTheme;
-  const { colorPairs, fonts, textStyles, links } = theme;
+  const {
+    colorPairs,
+    fonts,
+    textStyles,
+    links,
+    icons,
+    cursors,
+    themeUri
+  } = theme;
+
+  /**
+   * Displays the icons
+   */
+  const iconList = Object.keys(icons).map(name => {
+    const value = icons[name];
+
+    return (
+      <ItemContainer>
+        <div class="text">
+          <Icon>{value}</Icon>
+        </div>
+        <div class="details">
+          <p>{name}</p>
+        </div>
+      </ItemContainer>
+    );
+  });
+
+  /**
+   * Displays the cursors
+   */
+  const cursorList = Object.keys(cursors).map(name => {
+    const value = cursors[name];
+    const src = `${themeUri}/${value}`;
+
+    return (
+      <ItemContainer>
+        <img src={src} alt="cursor" />
+        <div class="details">
+          <p>{name}</p>
+        </div>
+      </ItemContainer>
+    );
+  });
 
   /**
    * Displays the colors
    */
-  const colorSwatches = Object.keys(sgColors).map(key => (
-    <ColorSwatch
-      key={key}
-      name={key}
-      value={sgColors[key]}
-      currentColors={colorPairs.default}
-    />
-  ));
+  const colorSwatches = Object.keys(sgColors).map(name => {
+    const value = sgColors[name];
+    const currentColors = colorPairs.default;
+    const { backgroundColor } = currentColors;
+
+    return (
+      <ItemContainer className="color">
+        <Circle className="circle" color={value} current={backgroundColor} />
+        <span className="text">{name}</span>
+      </ItemContainer>
+    );
+  });
 
   /**
    * Displays the color pairs
@@ -317,6 +345,16 @@ const StyleGuide = props => {
    */
   const menuItems = [
     {
+      id: "icons",
+      name: "Icons",
+      url: "#icons"
+    },
+    {
+      id: "cursors",
+      name: "Cursors",
+      url: "#cursors"
+    },
+    {
       id: "colors",
       name: "Colors",
       url: "#colors"
@@ -358,29 +396,37 @@ const StyleGuide = props => {
           <Logo {...props} />
           <Menu2 items={menuItems} />
 
-          <ColorSwatches id="colors" className="ColorSwatches">
+          <ItemsContainer id="icons" className="Icons">
+            {iconList}
+          </ItemsContainer>
+
+          <ItemsContainer id="cursors" className="Cursors">
+            {cursorList}
+          </ItemsContainer>
+
+          <ItemsContainer id="colors" className="Colors">
             {colorSwatches}
-          </ColorSwatches>
+          </ItemsContainer>
 
-          <TextBoxContainer id="colorpairs" className="ColorTexts">
+          <ItemsContainer id="colorpairs" className="ColorTexts">
             {colorTexts}
-          </TextBoxContainer>
+          </ItemsContainer>
 
-          <TextBoxContainer id="fonts" className="FontTexts">
+          <ItemsContainer id="fonts" className="FontTexts">
             {fontTexts}
-          </TextBoxContainer>
+          </ItemsContainer>
 
-          <TextBoxContainer id="scales" className="Scales">
+          <ItemsContainer id="scales" className="Scales">
             {scaleTexts}
-          </TextBoxContainer>
+          </ItemsContainer>
 
-          <TextBoxContainer id="links" className="Links">
+          <ItemsContainer id="links" className="Links">
             {linkTexts}
-          </TextBoxContainer>
+          </ItemsContainer>
 
-          <TextBoxContainer id="text-styles" className="textStyles">
+          <ItemsContainer id="text-styles" className="textStyles">
             {textStyleTexts}
-          </TextBoxContainer>
+          </ItemsContainer>
         </Container>
       </ThemeContext.Provider>
     </>

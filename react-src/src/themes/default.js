@@ -1,10 +1,20 @@
 import React from "react";
 import { modularScale } from "polished";
+import { FiSun, FiMenu, FiX } from "react-icons/fi";
 
 /**
  * Icons
  */
 const icons = {
+  sun: <FiSun />,
+  menu: <FiMenu />,
+  close: <FiX />
+};
+
+/**
+ * Cursors
+ */
+const cursors = {
   light: {
     brutalistCursor2: "brutalist_line_SVGicon_cursor2.png"
   },
@@ -141,7 +151,10 @@ const getTheme = colorScheme => {
     fonts: fonts,
     textStyles: textStyles,
     links: links,
-    icons: icons[colorScheme]
+    icons: icons,
+    cursors: cursors[colorScheme],
+    /** Temporary, we'll have to get from the database */
+    themeUri: "wp-content/themes/inu-v2-a"
   };
 };
 
