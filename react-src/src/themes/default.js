@@ -1,5 +1,5 @@
 import React from "react";
-import { modularScale, getContrast, meetsContrastGuidelines } from "polished";
+import { modularScale } from "polished";
 
 /**
  * Color definitions
@@ -48,21 +48,15 @@ const getColorPairs = colors => {
   return {
     default: {
       color: text,
-      backgroundColor: background,
-      contrast: getContrast(text, background),
-      meetsContrast: meetsContrastGuidelines(text, background)
+      backgroundColor: background
     },
     inverted: {
       color: background,
-      backgroundColor: text,
-      contrast: getContrast(text, background),
-      meetsContrast: meetsContrastGuidelines(text, background)
+      backgroundColor: text
     },
     inactive: {
       color: inactive,
-      backgroundColor: background,
-      contrast: getContrast(inactive, background),
-      meetsContrast: meetsContrastGuidelines(inactive, background)
+      backgroundColor: background
     }
   };
 };
@@ -104,6 +98,7 @@ const textStyles = {
 const links = {
   default: {
     textDecoration: "none",
+
     "&:hover": {
       textDecoration: "line-through"
     }

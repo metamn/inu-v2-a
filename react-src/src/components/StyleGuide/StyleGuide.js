@@ -5,7 +5,7 @@ import { stringify } from "flatted";
 
 import { useTheme } from "./../../hooks";
 import { sgColors, sgScales } from "../../themes/default.js";
-import { modularScale } from "polished";
+import { modularScale, getContrast, meetsContrastGuidelines } from "polished";
 
 import Reset from "../Reset";
 import TypographicGrid from "../TypographicGrid";
@@ -168,7 +168,11 @@ const StyleGuide = props => {
    * Displays the color pairs
    */
   const colorTexts = Object.keys(colorPairs).map(name => {
-    const { contrast, meetsContrast } = colorPairs[name];
+    const { color, backgroundColor } = colorPairs[name];
+
+    const contrast = getContrast(color, backgroundColor);
+    const meetsContrast = meetsContrastGuidelines(color, backgroundColor);
+
     const meetsContrastItems = Object.keys(meetsContrast).map(key => (
       <MeetsContrastItem ok={meetsContrast[key]}>{key}</MeetsContrastItem>
     ));
