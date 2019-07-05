@@ -51,7 +51,7 @@ Importing propTypes from other components: https://github.com/yannickcr/eslint-p
 
 - components: Storybook, jsdoc2md
 - theme: Styleguide
-- hooks: Jest ??
+- hooks: Jest (built in CRA) and `react-hooks-testing-library`
 
 ## Design
 
@@ -81,6 +81,7 @@ Importing propTypes from other components: https://github.com/yannickcr/eslint-p
 - [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown) - to generate markdown from code documentation
 - [storybook](https://storybook.js.org/) - to test components in isolation and display documentation
 - [react-router-dom](https://www.npmjs.com/package/react-router) - for routing
+- [react-hooks-testing-library](https://github.com/testing-library/react-hooks-testing-library) - for testing hooks
 
 ### Plugins (for WordPress)
 
