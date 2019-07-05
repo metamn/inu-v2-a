@@ -94,6 +94,10 @@ const TextBox = styled("div")(props => ({
   maxWidth: "calc(var(--lem) * 25)",
   border: "1px solid",
 
+  "& a": {
+    ...props.link
+  },
+
   "& .text": {
     ...props.colors,
     ...props.fonts,
@@ -150,7 +154,7 @@ const StyleGuide = props => {
    * Loads the theme
    */
   const { theme } = currentTheme;
-  const { colorPairs, fonts, textStyles } = theme;
+  const { colorPairs, fonts, textStyles, links } = theme;
 
   /**
    * Displays the colors
@@ -183,6 +187,7 @@ const StyleGuide = props => {
         colors={theme.colorPairs[name]}
         fonts={theme.fonts.default}
         textStyle={theme.textStyles.default}
+        link={theme.links.default}
       >
         <div class="text">
           Colors don't exist alone yet in pairs, like black on white. All color
@@ -209,6 +214,7 @@ const StyleGuide = props => {
         colors={theme.colorPairs.default}
         fonts={theme.fonts[name]}
         textStyle={theme.textStyles.default}
+        link={theme.links.default}
       >
         <div class="text">
           Hello, I'm a designer and developer creating user interfaces and
@@ -235,6 +241,7 @@ const StyleGuide = props => {
         fonts={theme.fonts.default}
         textStyle={theme.textStyles.default}
         scale={value}
+        link={theme.links.default}
       >
         <div class="text with-scale">
           Typographic grid and scale. Different font sizes based on the{" "}
@@ -254,12 +261,36 @@ const StyleGuide = props => {
   });
 
   /**
+   * Displays the link styles
+   */
+  const linkTexts = Object.keys(links).map(name => {
+    const value = links[name];
+
+    return (
+      <TextBox
+        name={name}
+        colors={theme.colorPairs.default}
+        fonts={theme.fonts.default}
+        textStyle={theme.textStyles.default}
+        link={value}
+      >
+        <div class="text">
+          <a href="#" title="link">
+            This is the {name} link style. No decoration just on hover.
+          </a>
+        </div>
+        <div class="details">
+          <p>Name: {name}</p>
+        </div>
+      </TextBox>
+    );
+  });
+
+  /**
    * Displays the text styles
    */
   const textStyleTexts = Object.keys(textStyles).map(name => {
     const value = textStyles[name];
-
-    console.log("value:" + stringify(textStyles[name]));
 
     return (
       <TextBox
@@ -267,6 +298,7 @@ const StyleGuide = props => {
         colors={theme.colorPairs.default}
         fonts={theme.fonts.default}
         textStyle={value}
+        link={theme.links.default}
       >
         <div class="text">
           This is the default text. With a high contrast background and a modern
@@ -305,6 +337,11 @@ const StyleGuide = props => {
       url: "#scales"
     },
     {
+      id: "links",
+      name: "Links",
+      url: "#links"
+    },
+    {
       id: "text-styles",
       name: "Text styles",
       url: "#text-styles"
@@ -335,6 +372,10 @@ const StyleGuide = props => {
 
           <TextBoxContainer id="scales" className="Scales">
             {scaleTexts}
+          </TextBoxContainer>
+
+          <TextBoxContainer id="links" className="Links">
+            {linkTexts}
           </TextBoxContainer>
 
           <TextBoxContainer id="text-styles" className="textStyles">

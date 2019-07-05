@@ -2,6 +2,18 @@ import React from "react";
 import { modularScale } from "polished";
 
 /**
+ * Icons
+ */
+const icons = {
+  light: {
+    brutalistCursor2: "brutalist_line_SVGicon_cursor2.png"
+  },
+  dark: {
+    brutalistCursor2: "brutalist_line_SVGicon_cursor2-black.png"
+  }
+};
+
+/**
  * Color definitions
  */
 const colors = {
@@ -73,6 +85,19 @@ const fonts = {
 };
 
 /**
+ * Link styles
+ */
+const links = {
+  default: {
+    textDecoration: "none",
+
+    "&:hover": {
+      textDecoration: "line-through"
+    }
+  }
+};
+
+/**
  * Text styles
  */
 const scales = {
@@ -89,31 +114,6 @@ const textStyles = {
   },
   large: {
     fontSize: modularScale(scales.large)
-  }
-};
-
-/**
- * Link styles
- */
-const links = {
-  default: {
-    textDecoration: "none",
-
-    "&:hover": {
-      textDecoration: "line-through"
-    }
-  }
-};
-
-/**
- * Icons
- */
-const icons = {
-  light: {
-    brutalistCursor2: "brutalist_line_SVGicon_cursor2.png"
-  },
-  dark: {
-    brutalistCursor2: "brutalist_line_SVGicon_cursor2-black.png"
   }
 };
 
