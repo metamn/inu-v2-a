@@ -1,15 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { FiSun, FiMenu, FiX } from "react-icons/fi";
 
-import { useMedia } from "../../hooks";
+import { useMedia, useTheme } from "../../hooks";
 
 import { SiteInfoPropTypes, SiteInfoDefaultProps } from "../SiteInfo";
 import Logo from "../Logo";
 import Icon from "../Icon";
-import IconToggle from "../IconToggle";
-import Menu from "../Menu";
 
 /**
  * Defines the prop types
@@ -38,13 +35,25 @@ const defaultProps = {
 /**
  * Styles the header container
  */
-const Container = styled("header")(props => ({}));
+const Container = styled("header")(props => ({
+  display: "flex",
+  flexWrap: "nowrap",
+  alignItems: "center",
+  justifyContent: props.isMobile ? "space-between" : "flex-start"
+}));
 
 /**
  * Displays the header
  */
 const Header = props => {
   const { themeIconClickHandler } = props;
+
+  /**
+   * Loads the Sun icon from theme
+   */
+  const { theme } = useTheme();
+  const { icons } = theme;
+  const sunIcon = icons.sun;
 
   /**
    * Checks if we are on a mobile device
@@ -57,25 +66,21 @@ const Header = props => {
   const lineStatus = isMobile ? "invisible" : "visible";
 
   /**
-   * Displays the mobile icon toggler on mobile screens
+   * Reduces logo text size on mobile screens
    */
-  const iconToggleStatus = isMobile ? "active" : "hidden";
+  const logoTextSize = isMobile ? "default" : "large";
 
   /**
-   * Defines the mobile menu toggle icons
+   * Reduces the theme switcher icon size on mobile screens
    */
-  const icon1 = <FiMenu onClick={() => {}} />;
-  const icon2 = <FiX onClick={() => {}} />;
-  //console.log("header");
+  const iconSize = isMobile ? 1 : 1.5;
 
   return (
-    <Container>
-      <Logo {...props} lineStatus={lineStatus} />
-      <IconToggle icon1={icon1} icon2={icon2} status={iconToggleStatus} />
-      <Icon>
-        <FiSun onClick={() => themeIconClickHandler()} />
+    <Container isMobile={isMobile}>
+      <Logo {...props} lineStatus={lineStatus} textSize={logoTextSize} />
+      <Icon size={iconSize} onClick={() => themeIconClickHandler()}>
+        {sunIcon}
       </Icon>
-      <Menu />
     </Container>
   );
 };

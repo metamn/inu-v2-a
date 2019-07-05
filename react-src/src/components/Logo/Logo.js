@@ -18,7 +18,11 @@ const propTypes = {
   /**
    * The line status
    */
-  lineStatus: PropTypes.oneOf(["visible", "invisible"])
+  lineStatus: PropTypes.oneOf(["visible", "invisible"]),
+  /**
+   * Text size
+   */
+  textSize: PropTypes.oneOf(["default", "large"])
 };
 
 /**
@@ -26,7 +30,8 @@ const propTypes = {
  */
 const defaultProps = {
   ...SiteInfoDefaultProps,
-  lineStatus: "visible"
+  lineStatus: "visible",
+  textSize: "large"
 };
 
 /**
@@ -49,7 +54,7 @@ const Links = styled("div")([], {
  * Styles the link
  */
 const Link = styled(_Link)(props => ({
-  ...props.theme.textStyles.large
+  ...props.theme.textStyles[props.textSize]
 }));
 
 /**
