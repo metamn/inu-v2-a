@@ -13,7 +13,7 @@ const propTypes = {
   /**
    * The id of the menu item.
    */
-  id: PropTypes.any.isRequired,
+  id: PropTypes.number.isRequired,
   /**
    * The name of the menu item.
    */

@@ -40,11 +40,11 @@ const defaultProps = {
   }),
   menuItemsCustom: [
     {
-      id: "-1",
+      id: -1,
       name: "Random"
     },
     {
-      id: "-2",
+      id: -2,
       name: "Contact"
     }
   ],
