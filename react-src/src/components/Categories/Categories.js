@@ -90,6 +90,7 @@ const categoriesToMenuItems = props => {
   return data.map((edge, index) => {
     const { categoryId, name } = edge.node;
     const menuItem = { id: categoryId, name: name };
+
     const status = setMenuItemStatus({
       menuItemId: menuItem.id,
       activeMenuItem: activeCategoryId,

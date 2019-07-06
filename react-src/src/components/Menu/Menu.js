@@ -89,14 +89,12 @@ const List = styled("ul")(props => ({}));
  * Sets the status of a menu item
  */
 const setMenuItemStatus = props => {
-  const { menuItemId, activeMenuItem, menuType } = props;
+  const { menuItemId, activeMenuItem, menuType, newMenuType } = props;
 
-  switch (menuType) {
-    case "dropdown":
-      return menuItemId == activeMenuItem ? "inactive" : "hidden";
-    case "list":
-    default:
-      return menuItemId == activeMenuItem ? "active" : "inactive";
+  if (menuType === "list" || newMenuType === "list") {
+    return menuItemId == activeMenuItem ? "active" : "inactive";
+  } else {
+    return menuItemId == activeMenuItem ? "inactive" : "hidden";
   }
 };
 
@@ -104,7 +102,13 @@ const setMenuItemStatus = props => {
  * Renders the menu items
  */
 const createMenuItems = props => {
-  const { items, activeMenuItem, menuType, menuItemClickHandler } = props;
+  const {
+    items,
+    activeMenuItem,
+    menuType,
+    menuItemClickHandler,
+    newMenuType
+  } = props;
 
   return items.map((item, index) => {
     const { id } = item;
@@ -112,7 +116,8 @@ const createMenuItems = props => {
     const status = setMenuItemStatus({
       menuItemId: id,
       activeMenuItem: activeMenuItem,
-      menuType: menuType
+      menuType: menuType,
+      newMenuType: newMenuType
     });
 
     return (
@@ -131,7 +136,12 @@ const createMenuItems = props => {
  * Sets up the dropdown icons
  */
 const setupDropdownIcons = props => {
-  const { dropdownIcons, menuType, theme } = props;
+  const {
+    dropdownIconState,
+    dropdownIconClickHandler,
+    menuType,
+    theme
+  } = props;
 
   if (menuType !== "dropdown") {
     return null;
@@ -140,30 +150,69 @@ const setupDropdownIcons = props => {
   const icon1 = theme.icons.chevronDown;
   const icon2 = theme.icons.chevronUp;
 
-  return <IconToggle {...dropdownIcons} icon1={icon1} icon2={icon2} />;
+  return (
+    <IconToggle
+      icon1={icon1}
+      icon2={icon2}
+      toggled={dropdownIconState}
+      toggleIconClickHandler={dropdownIconClickHandler}
+    />
+  );
 };
 
 /**
  * Displays the Menu
  */
 const Menu = props => {
-  const { menuType, renderedItems } = props;
+  const { menuType, renderedItems, dropdownIcons } = props;
+  const { toggled } = dropdownIcons;
   const { theme } = useTheme();
+
+  /**
+   * Saves the state of the dropdown menu type
+   */
+  const [dropdownMenuType, setDropdownMenuType] = useState("dropdown");
+
+  /**
+   * Saves the state of the dropdown icon
+   */
+  const [dropdownIconState, setDropdownIconState] = useState(toggled);
+
+  /**
+   * Manages the click on the dropdown icon
+   */
+  const dropdownIconClickHandler = () => {
+    setDropdownIconState(!dropdownIconState);
+
+    dropdownIconState
+      ? setDropdownMenuType("dropdown")
+      : setDropdownMenuType("list");
+  };
 
   /**
    * Sets up the dropdown icons
    */
-  const iconToggle = setupDropdownIcons({ theme, ...props });
+  const iconToggle = setupDropdownIcons({
+    theme,
+    menuType,
+    dropdownIconState,
+    dropdownIconClickHandler
+  });
+
+  /**
+   * Derives menu type from the dropdown icon state
+   */
+  const newMenuType = menuType === "dropdown" ? dropdownMenuType : menuType;
 
   /**
    * Renders the menu items
    */
-  const menuItems = createMenuItems(props);
+  const menuItems = createMenuItems({ newMenuType, ...props });
 
   return (
     <Nav title="Menu" className="Menu">
       {iconToggle}
-      <List menuType={menuType}>
+      <List menuType={newMenuType}>
         {renderedItems}
         {menuItems}
       </List>
