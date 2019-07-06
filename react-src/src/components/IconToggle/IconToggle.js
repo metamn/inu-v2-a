@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
@@ -19,7 +19,11 @@ const propTypes = {
   /**
    * The component status
    */
-  status: PropTypes.oneOf(["active", "inactive", "hidden"])
+  status: PropTypes.oneOf(["active", "inactive", "hidden"]),
+  /**
+   * The initial icon toggle status
+   */
+  initialIconToggleStatus: PropTypes.boolean
 };
 
 /**
@@ -28,7 +32,8 @@ const propTypes = {
 const defaultProps = {
   icon1: <div>icon1</div>,
   icon2: <div>icon2</div>,
-  status: "active"
+  status: "active",
+  initialIconToggleStatus: false
 };
 
 /**
@@ -43,12 +48,23 @@ const Container = styled("div")(props => ({
  * Displays two icons which can be toggled
  */
 const IconToggle = props => {
-  const { icon1, icon2 } = props;
+  const { icon1, icon2, status, initialIconToggleStatus } = props;
+
+  /**
+   * Manages the state of the toggle icon
+   */
+  const [iconToggled, setIconToggled] = useState(initialIconToggleStatus);
+
+  /**
+   * Derives the state of the icons
+   */
+  const icon1Status = iconToggled ? "hidden" : "active";
+  const icon2Status = iconToggled ? "active" : "hidden";
 
   return (
     <Container className="icon-toggle" {...props}>
-      <Icon status="active">{icon1}</Icon>
-      <Icon status="hidden">{icon2}</Icon>
+      <Icon status={icon1Status}>{icon1}</Icon>
+      <Icon status={icon2Status}>{icon2}</Icon>
     </Container>
   );
 };
@@ -57,3 +73,7 @@ IconToggle.propTypes = propTypes;
 IconToggle.defaultProps = defaultProps;
 
 export default IconToggle;
+export {
+  propTypes as IconTogglePropTypes,
+  defaultProps as IconToggleDefaultProps
+};

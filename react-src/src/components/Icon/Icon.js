@@ -39,12 +39,12 @@ const Container = styled("div")(props => ({
   width: `calc(var(--lem) * ${props.size})`,
   height: `calc(var(--lem) * ${props.size})`,
 
+  cursor: props.status === "active" ? "pointer" : "default",
   visibility: props.status === "hidden" ? "hidden" : "visible",
   color:
     props.status === "active"
       ? props.theme.colorPairs.default
       : props.theme.colorPairs.inactive,
-  cursor: props.status === "active" ? "pointer" : "default",
 
   svg: {
     fontSize: `calc(var(--lem) * ${props.size})`
