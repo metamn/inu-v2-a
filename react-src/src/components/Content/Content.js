@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { stringify } from "flatted";
 
-import { useData } from "./../../hooks";
-
-import Categories from "../Categories";
+import Categories, {
+  categoriesToMenuItems,
+  CategoryDefaultProps
+} from "../Categories";
 import Menu from "../Menu";
 import { MenuItemPropTypes, MenuItemDefaultProps } from "../MenuItem";
 
@@ -13,15 +14,23 @@ import { MenuItemPropTypes, MenuItemDefaultProps } from "../MenuItem";
  * Defines the prop types
  */
 const propTypes = {
-  menuItemsFromCategories: PropTypes.array,
-  menuItemsCustom: PropTypes.array
+  /**
+   * A list of Categories rendered as MenuItems
+   */
+  menuItemsFromCategories: PropTypes.arrayOf(PropTypes.node),
+  /**
+   * Custom menu items like Contact and Random
+   */
+  menuItemsCustom: PropTypes.arrayOf(MenuItemPropTypes)
 };
 
 /**
  * Defines the default props
  */
 const defaultProps = {
-  menuItemsFromCategories: Array(5).fill(MenuItemDefaultProps),
+  menuItemsFromCategories: categoriesToMenuItems(
+    Array(5).fill(CategoryDefaultProps)
+  ),
   menuItemsCustom: [
     {
       id: "-1",
@@ -43,11 +52,20 @@ const Container = styled("main")(props => ({}));
  * Displays the component
  */
 const Content = props => {
-  const { menuItemsFromCategories, menuItemsCustom } = props;
+  const { menuItemsCustom, menuItemsFromCategories } = props;
+
+  const [numberOfEdgesSaved, setNumberOfEdgesSaved] = useState(0);
+
+  const renderedItems = (
+    <Categories
+      numberOfEdgesSaved={numberOfEdgesSaved}
+      setNumberOfEdgesSaved={setNumberOfEdgesSaved}
+    />
+  );
 
   return (
     <Container className="Content">
-      <Menu items={menuItemsCustom} renderedItems=<Categories /> />
+      <Menu items={menuItemsCustom} renderedItems={renderedItems} />
     </Container>
   );
 };

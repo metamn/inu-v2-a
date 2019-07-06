@@ -12,7 +12,7 @@ import TypographicGrid from "../TypographicGrid";
 
 import SiteInfo, { SiteInfoPropTypes } from "../SiteInfo";
 import Logo from "../Logo";
-import Menu2 from "../Menu2";
+import Menu from "../Menu";
 import Icon from "../Icon";
 
 /**
@@ -394,7 +394,7 @@ const StyleGuide = props => {
         <TypographicGrid />
         <Container className="StyleGuide" theme={theme}>
           <Logo {...props} />
-          <Menu2 items={menuItems} />
+          <Menu items={menuItems} />
 
           <ItemsContainer id="icons" className="Icons">
             {iconList}

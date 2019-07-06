@@ -81,7 +81,19 @@ const createTemporaryData = props => {
 };
 
 /**
- * Returns the categories for further display
+ * Converts Categories to a list of MenuItems
+ */
+const categoriesToMenuItems = data => {
+  return data.map((edge, index) => {
+    const { categoryId, name } = edge.node;
+    const menuItem = { id: categoryId, name: name };
+
+    return <MenuItem className="menu-item" key={index} {...menuItem} />;
+  });
+};
+
+/**
+ * Returns the categories as a List of MenuItems
  */
 const Categories = props => {
   const { numberOfEdgesSaved, setNumberOfEdgesSaved } = props;
@@ -91,6 +103,8 @@ const Categories = props => {
    */
   const tempData = createTemporaryData({ numberOfEdgesSaved, ...defaultProps });
 
+  console.log("tempData:" + stringify(tempData));
+
   /**
    * Loads the real data
    */
@@ -99,12 +113,7 @@ const Categories = props => {
   /**
    * Puts together the data
    */
-  const items = data.edges.map((edge, index) => {
-    const { categoryId, name } = edge.node;
-    const menuItem = { id: categoryId, name: name };
-
-    return <MenuItem className="menu-item" key={index} {...menuItem} />;
-  });
+  const items = categoriesToMenuItems(data.edges);
 
   /**
    * Saves the number of categories to local storage
@@ -121,3 +130,8 @@ Categories.propTypes = propTypes;
 Categories.defaultProps = defaultProps;
 
 export default Categories;
+export {
+  categoriesToMenuItems,
+  propTypes as CategoryPropTypes,
+  defaultProps as CategoryDefaultProps
+};
