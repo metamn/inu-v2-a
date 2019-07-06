@@ -14,10 +14,6 @@ The component performs the following tasks:
 
 * The function which saves the number of edges to local storage
 
-* The active category
-
-* The function which sets the active category
-
 </details>
 
 <details>
@@ -33,7 +29,7 @@ The component performs the following tasks:
 </details>
 
 <details>
-	<summary>###Styles the Categories container
+	<summary>###Converts Categories to a list of MenuItems
 
 </summary>
 </details>
@@ -47,7 +43,7 @@ The component performs the following tasks:
 </details>
 
 <details>
-	<summary>###Displays the categories
+	<summary>###Returns the categories as a List of MenuItems
 
 </summary>
 * Loads temporary data

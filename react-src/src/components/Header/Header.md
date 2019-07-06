@@ -28,9 +28,9 @@ The component performs the following tasks:
 
 * Hides the line in the logo on mobile screens
 
-* Displays the mobile icon toggler on mobile screens
+* Reduces logo text size on mobile screens
 
-* Defines the mobile menu toggle icons
+* Reduces the theme switcher icon size on mobile screens
 
 </details>
 

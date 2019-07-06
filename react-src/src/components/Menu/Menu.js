@@ -12,12 +12,26 @@ import { Nav as _Nav } from "../SemanticHTML";
 const propTypes = {
   /**
    * An array of items to be rendered as menu items
+   *
+   * Example:
+   * ```
+   * <Menu items={[{id:1, name:'Random'}, {id:2, name:'Contact'}]}
+   * ```
    */
   items: PropTypes.arrayOf(PropTypes.shape({ ...MenuItemPropTypes })),
   /**
-   * An set of items already rendered as menu items
+   * A set of items already rendered as menu items
+   *
+   * Example:
+   * ```
+   * <Menu renderedItems=<Categories/>
+   * ```
    */
-  renderedItems: PropTypes.node
+  renderedItems: PropTypes.node,
+  /**
+   * The active menu item
+   */
+  activeMenuItem: PropTypes.number
 };
 
 /**
@@ -25,7 +39,8 @@ const propTypes = {
  */
 const defaultProps = {
   items: [MenuItemDefaultProps],
-  renderedItems: null
+  renderedItems: null,
+  activeMenuItem: 1
 };
 
 /**
@@ -39,13 +54,33 @@ const Nav = styled(_Nav)(props => ({}));
 const List = styled("ul")(props => ({}));
 
 /**
+ * Sets the status of a menu item
+ */
+const setMenuItemStatus = (menuItemId, activeMenuItem) => {
+  //console.log("menuItemId:" + menuItemId);
+  //console.log("activeMenuItem:" + activeMenuItem);
+  return menuItemId == activeMenuItem ? "active" : "inactive";
+};
+
+/**
  * Displays the Menu
  */
 const Menu = props => {
-  const { items, renderedItems } = props;
+  const { items, renderedItems, activeMenuItem, clickHandler } = props;
 
   const menuItems = items.map((item, index) => {
-    return <MenuItem className="menu-item" key={index} {...item} />;
+    const { id } = item;
+    const status = setMenuItemStatus(id, activeMenuItem);
+
+    return (
+      <MenuItem
+        className="menu-item"
+        key={index}
+        status={status}
+        clickHandler={clickHandler}
+        {...item}
+      />
+    );
   });
 
   return (
@@ -62,3 +97,4 @@ Menu.propTypes = propTypes;
 Menu.defaultProps = defaultProps;
 
 export default Menu;
+export { setMenuItemStatus };

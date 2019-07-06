@@ -4,9 +4,19 @@ The component performs the following tasks:
 	<summary>###Defines the prop types
 
 </summary>
-* The Random extra menu item
+* An array of items to be rendered as menu items
 
-* The Contact extra menu item
+Example:
+```
+<Menu items={[{id:1, name:'Random'}, {id:2, name:'Contact'}]}
+```
+
+* An set of items already rendered as menu items
+
+Example:
+```
+<Menu renderedItems=<Categories/>
+```
 
 </details>
 
@@ -14,10 +24,6 @@ The component performs the following tasks:
 	<summary>###Defines the default props
 
 </summary>
-* The default props for the Random extra menu item
-
-* The default props for the Contact extra menu item
-
 </details>
 
 <details>
@@ -27,7 +33,7 @@ The component performs the following tasks:
 </details>
 
 <details>
-	<summary>###Styles the the extra menu items container
+	<summary>###Styles the list container
 
 </summary>
 </details>

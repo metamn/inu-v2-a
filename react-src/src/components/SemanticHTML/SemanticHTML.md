@@ -49,6 +49,7 @@ Without children there is no use of an empty element
 
 <details>
 	<summary>###Styles the semantic element title.
+
 It is always hidden because it is needed only by the HTML outliner / validator.
 
 </summary>

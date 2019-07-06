@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { stringify } from "flatted";
@@ -23,16 +23,21 @@ const propTypes = {
   /**
    * Custom menu items like Contact and Random
    */
-  menuItemsCustom: PropTypes.arrayOf(PropTypes.shape({ ...MenuItemPropTypes }))
+  menuItemsCustom: PropTypes.arrayOf(PropTypes.shape({ ...MenuItemPropTypes })),
+  /**
+   * The active menu item id
+   */
+  menuItemActiveId: PropTypes.number
 };
 
 /**
  * Defines the default props
  */
 const defaultProps = {
-  menuItemsFromCategories: categoriesToMenuItems(
-    Array(5).fill(CategoryDefaultProps)
-  ),
+  menuItemsFromCategories: categoriesToMenuItems({
+    data: Array(5).fill(CategoryDefaultProps),
+    activeCategoryId: 1
+  }),
   menuItemsCustom: [
     {
       id: "-1",
@@ -42,7 +47,8 @@ const defaultProps = {
       id: "-2",
       name: "Contact"
     }
-  ]
+  ],
+  menuItemActiveId: 1
 };
 
 /**
@@ -54,10 +60,11 @@ const Container = styled("main")(props => ({}));
  * Displays the component
  */
 const Content = props => {
-  const { menuItemsCustom, menuItemsFromCategories } = props;
+  const { menuItemsCustom, menuItemActiveId } = props;
 
   /**
-   * Saves the number of categories to local storage
+   * Saves the number of categories to local storage.
+   *
    * At the next load exactly the same number of temporary categories will be displayed as the real number of categories
    */
   const [numberOfEdgesSaved, setNumberOfEdgesSaved] = useLocalStorage(
@@ -65,18 +72,28 @@ const Content = props => {
   );
 
   /**
-   * Loads Categories as a list of MenuItems
+   * Saves the active menu item into a state
+   */
+  const [activeMenuItem, setActiveMenuItem] = useState(menuItemActiveId);
+
+  /**
+   * Loads Categories as a list of MenuItems.
    */
   const categories = (
     <Categories
       numberOfEdgesSaved={numberOfEdgesSaved}
       setNumberOfEdgesSaved={setNumberOfEdgesSaved}
+      activeMenuItem={activeMenuItem}
     />
   );
 
   return (
     <Container className="Content">
-      <Menu items={menuItemsCustom} renderedItems={categories} />
+      <Menu
+        items={menuItemsCustom}
+        renderedItems={categories}
+        clickHandler={setActiveMenuItem}
+      />
     </Container>
   );
 };

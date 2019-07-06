@@ -6,6 +6,8 @@ The component performs the following tasks:
 </summary>
 * The line status
 
+* Text size
+
 </details>
 
 <details>

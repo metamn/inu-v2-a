@@ -7,6 +7,7 @@ import { useData } from "./../../hooks";
 
 import Category, { CategoryPropTypes, CategoryDefaultProps } from "../Category";
 import MenuItem from "../MenuItem";
+import { setMenuItemStatus } from "../Menu";
 
 /**
  * Defines the prop types
@@ -31,7 +32,11 @@ const propTypes = {
   /**
    * The function which saves the number of edges to local storage
    */
-  setNumberOfEdgesSaved: PropTypes.func.isRequired
+  setNumberOfEdgesSaved: PropTypes.func.isRequired,
+  /**
+   * The active category id
+   */
+  activeCategoryId: PropTypes.number
 };
 
 /**
@@ -44,7 +49,8 @@ const defaultProps = {
   numberOfEdgesSaved: null,
   setNumberOfEdgesSaved: () => {
     console.log("setNumberOfEdgesSaved called");
-  }
+  },
+  activeCategoryId: 1
 };
 
 /**
@@ -66,12 +72,22 @@ const query = gql`
 /**
  * Converts Categories to a list of MenuItems
  */
-const categoriesToMenuItems = data => {
+const categoriesToMenuItems = props => {
+  const { data, activeCategoryId } = props;
+
   return data.map((edge, index) => {
     const { categoryId, name } = edge.node;
     const menuItem = { id: categoryId, name: name };
+    const status = setMenuItemStatus(menuItem.id, activeCategoryId);
 
-    return <MenuItem className="menu-item" key={index} {...menuItem} />;
+    return (
+      <MenuItem
+        className="menu-item"
+        key={index}
+        status={status}
+        {...menuItem}
+      />
+    );
   });
 };
 
@@ -96,7 +112,7 @@ const createTemporaryData = props => {
  * Returns the categories as a List of MenuItems
  */
 const Categories = props => {
-  const { numberOfEdgesSaved, setNumberOfEdgesSaved } = props;
+  const { numberOfEdgesSaved, setNumberOfEdgesSaved, activeCategoryId } = props;
   const { numberOfEdges, node } = defaultProps;
 
   /**
@@ -116,7 +132,10 @@ const Categories = props => {
   /**
    * Puts together the data
    */
-  const items = categoriesToMenuItems(data.edges);
+  const items = categoriesToMenuItems({
+    data: data.edges,
+    activeCategoryId: activeCategoryId
+  });
 
   /**
    * Saves the number of categories to local storage

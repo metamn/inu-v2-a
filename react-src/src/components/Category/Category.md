@@ -10,8 +10,6 @@ The component performs the following tasks:
 
 * The category name
 
-* The category status
-
 </details>
 
 <details>
@@ -27,19 +25,7 @@ The component performs the following tasks:
 </details>
 
 <details>
-	<summary>###Styles the Category container
-
-</summary>
-</details>
-
-<details>
-	<summary>###Sets the status of a category
-
-</summary>
-</details>
-
-<details>
-	<summary>###Displays a category
+	<summary>###Returns nothing. Only the props and the query fragment will be reused later from this component.
 
 </summary>
 </details>

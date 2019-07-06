@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
+import { useTheme } from "../../hooks";
+
 import Link from "../Link";
 
 /**
@@ -23,7 +25,11 @@ const propTypes = {
   /**
    * The menu item status
    */
-  status: PropTypes.oneOf(["active", "inactive", "hidden"])
+  status: PropTypes.oneOf(["active", "inactive", "hidden"]),
+  /**
+   * The click handler
+   */
+  clickHandler: PropTypes.func
 };
 
 /**
@@ -33,19 +39,28 @@ const defaultProps = {
   id: 1,
   name: "/ / / / / / / / / ",
   url: "",
-  status: "active"
+  status: "inactive",
+  clickHandler: () => {
+    console.log("Menu item clicked");
+  }
 };
 
 /**
  * Styles the component container
  */
-const Container = styled("li")(props => ({}));
+const Container = styled("li")(props => ({
+  ...props.theme.links.default,
+  textDecoration: props.status === "active" ? "line-through" : "none",
+  display: props.status === "hidden" ? "none" : "flex",
+  cursor: "pointer"
+}));
 
 /**
  * Displays the component
  */
 const MenuItem = props => {
-  const { name, url, status } = props;
+  const { name, url, status, clickHandler } = props;
+  const { theme } = useTheme();
 
   /**
    * Sets up a link if required
@@ -60,7 +75,12 @@ const MenuItem = props => {
     );
 
   return (
-    <Container className="menu-item" status={status}>
+    <Container
+      className="menu-item"
+      status={status}
+      theme={theme}
+      onClick={() => clickHandler(name)}
+    >
       {item}
     </Container>
   );
