@@ -69,7 +69,16 @@ const defaultProps = {
 /**
  * Styles the Menu container
  */
-const Nav = styled(_Nav)(props => ({}));
+const Nav = styled(_Nav)(props => ({
+  display: "flex",
+  flexWrap: "nowrap",
+  alignItems: "center",
+
+  "& .icon-toggle": {
+    order: "2",
+    marginLeft: "var(--lem)"
+  }
+}));
 
 /**
  * Styles the list container
