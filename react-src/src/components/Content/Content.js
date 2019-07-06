@@ -83,7 +83,6 @@ const Content = props => {
     /**
      * Sets the active menu item
      */
-    console.log("id:" + id);
     setActiveMenuItem(id);
   };
 
@@ -94,7 +93,7 @@ const Content = props => {
     <Categories
       numberOfEdgesSaved={numberOfEdgesSaved}
       setNumberOfEdgesSaved={setNumberOfEdgesSaved}
-      activeMenuItem={activeMenuItem}
+      activeCategoryId={activeMenuItem}
       categoryClickHandler={menuItemClickHandler}
     />
   );
@@ -104,6 +103,7 @@ const Content = props => {
       <Menu
         items={menuItemsCustom}
         renderedItems={categories}
+        activeMenuItem={activeMenuItem}
         menuItemClickHandler={menuItemClickHandler}
       />
     </Container>
