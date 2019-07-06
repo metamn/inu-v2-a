@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { stringify } from "flatted";
+
+import { useLocalStorage } from "./../../hooks";
 
 import Categories, {
   categoriesToMenuItems,
@@ -54,8 +56,17 @@ const Container = styled("main")(props => ({}));
 const Content = props => {
   const { menuItemsCustom, menuItemsFromCategories } = props;
 
-  const [numberOfEdgesSaved, setNumberOfEdgesSaved] = useState(0);
+  /**
+   * Saves the number of categories to local storage
+   * At the next load exactly the same number of temporary categories will be displayed as the real number of categories
+   */
+  const [numberOfEdgesSaved, setNumberOfEdgesSaved] = useLocalStorage(
+    "number-of-edges"
+  );
 
+  /**
+   * Loads Categories as a list of MenuItems
+   */
   const categories = (
     <Categories
       numberOfEdgesSaved={numberOfEdgesSaved}
@@ -63,13 +74,9 @@ const Content = props => {
     />
   );
 
-  console.log("categories:" + stringify(categories));
-
-  const renderedItems = categories;
-
   return (
     <Container className="Content">
-      <Menu items={menuItemsCustom} renderedItems={renderedItems} />
+      <Menu items={menuItemsCustom} renderedItems={categories} />
     </Container>
   );
 };

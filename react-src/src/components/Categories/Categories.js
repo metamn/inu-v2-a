@@ -64,10 +64,22 @@ const query = gql`
 `;
 
 /**
+ * Converts Categories to a list of MenuItems
+ */
+const categoriesToMenuItems = data => {
+  return data.map((edge, index) => {
+    const { categoryId, name } = edge.node;
+    const menuItem = { id: categoryId, name: name };
+
+    return <MenuItem className="menu-item" key={index} {...menuItem} />;
+  });
+};
+
+/**
  * Creates temporary data to be displayed while real data is loading
  */
 const createTemporaryData = props => {
-  const { node, numberOfEdges, numberOfEdgesSaved } = props;
+  const { numberOfEdgesSaved, numberOfEdges, node } = props;
 
   /**
    * Defines the number of edges to be displayed either from default props or from the local storage
@@ -81,29 +93,20 @@ const createTemporaryData = props => {
 };
 
 /**
- * Converts Categories to a list of MenuItems
- */
-const categoriesToMenuItems = data => {
-  return data.map((edge, index) => {
-    const { categoryId, name } = edge.node;
-    const menuItem = { id: categoryId, name: name };
-
-    return <MenuItem className="menu-item" key={index} {...menuItem} />;
-  });
-};
-
-/**
  * Returns the categories as a List of MenuItems
  */
 const Categories = props => {
   const { numberOfEdgesSaved, setNumberOfEdgesSaved } = props;
+  const { numberOfEdges, node } = defaultProps;
 
   /**
    * Loads temporary data
    */
-  const tempData = createTemporaryData({ numberOfEdgesSaved, ...defaultProps });
-
-  //console.log("tempData:" + stringify(tempData));
+  const tempData = createTemporaryData({
+    numberOfEdgesSaved,
+    numberOfEdges,
+    node
+  });
 
   /**
    * Loads the real data
