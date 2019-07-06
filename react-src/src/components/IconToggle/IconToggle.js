@@ -19,7 +19,7 @@ const propTypes = {
   /**
    * The component status
    */
-  status: PropTypes.oneOf(["active", "inactive", "hidden"]),
+  status: PropTypes.oneOf(["active", "inactive", "hidden", "invisible"]),
   /**
    * The initial icon toggle status
    */
