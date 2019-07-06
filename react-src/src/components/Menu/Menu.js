@@ -13,7 +13,7 @@ const propTypes = {
   /**
    * An array of items to be rendered as menu items
    */
-  items: PropTypes.arrayOf(MenuItemPropTypes),
+  items: PropTypes.arrayOf(PropTypes.shape({ ...MenuItemPropTypes })),
   /**
    * An set of items already rendered as menu items
    */

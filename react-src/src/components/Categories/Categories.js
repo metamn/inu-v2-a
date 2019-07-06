@@ -15,11 +15,11 @@ const propTypes = {
   /**
    * A category node
    */
-  node: CategoryPropTypes,
+  node: PropTypes.shape({ ...CategoryPropTypes }),
   /**
    * A list of category nodes
    */
-  edges: PropTypes.arrayOf(CategoryPropTypes),
+  edges: PropTypes.arrayOf(PropTypes.shape({ ...CategoryPropTypes })),
   /**
    * The number of initial edges aka. how many loading indicators to display at the first load.
    */
@@ -103,7 +103,7 @@ const Categories = props => {
    */
   const tempData = createTemporaryData({ numberOfEdgesSaved, ...defaultProps });
 
-  console.log("tempData:" + stringify(tempData));
+  //console.log("tempData:" + stringify(tempData));
 
   /**
    * Loads the real data

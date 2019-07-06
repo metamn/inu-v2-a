@@ -11,7 +11,7 @@ const propTypes = {
   /**
    * The link url
    */
-  url: PropTypes.string.isrequired,
+  url: PropTypes.string,
   /**
    * The link title
    */
@@ -19,7 +19,7 @@ const propTypes = {
   /**
    * The link content
    */
-  children: PropTypes.node.isrequired,
+  children: PropTypes.any,
   /**
    * The link style
    */

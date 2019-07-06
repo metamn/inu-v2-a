@@ -21,7 +21,7 @@ const propTypes = {
   /**
    * Custom menu items like Contact and Random
    */
-  menuItemsCustom: PropTypes.arrayOf(MenuItemPropTypes)
+  menuItemsCustom: PropTypes.arrayOf(PropTypes.shape({ ...MenuItemPropTypes }))
 };
 
 /**
@@ -56,12 +56,16 @@ const Content = props => {
 
   const [numberOfEdgesSaved, setNumberOfEdgesSaved] = useState(0);
 
-  const renderedItems = (
+  const categories = (
     <Categories
       numberOfEdgesSaved={numberOfEdgesSaved}
       setNumberOfEdgesSaved={setNumberOfEdgesSaved}
     />
   );
+
+  console.log("categories:" + stringify(categories));
+
+  const renderedItems = categories;
 
   return (
     <Container className="Content">
