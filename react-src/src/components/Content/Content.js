@@ -27,7 +27,11 @@ const propTypes = {
   /**
    * The active menu item id
    */
-  menuItemActiveId: PropTypes.number
+  menuItemActiveId: PropTypes.number,
+  /**
+   * The type of the menu: list, dropdown
+   */
+  menuType: PropTypes.oneOf(["list", "dropdown"])
 };
 
 /**
@@ -48,7 +52,8 @@ const defaultProps = {
       name: "Contact"
     }
   ],
-  menuItemActiveId: 1
+  menuItemActiveId: 1,
+  menuType: "dropdown"
 };
 
 /**
@@ -60,7 +65,7 @@ const Container = styled("main")(props => ({}));
  * Displays the component
  */
 const Content = props => {
-  const { menuItemsCustom, menuItemActiveId } = props;
+  const { menuItemsCustom, menuItemActiveId, menuType } = props;
 
   /**
    * Saves the number of categories to local storage.
@@ -95,6 +100,7 @@ const Content = props => {
       setNumberOfEdgesSaved={setNumberOfEdgesSaved}
       activeCategoryId={activeMenuItem}
       categoryClickHandler={menuItemClickHandler}
+      menuType={menuType}
     />
   );
 
@@ -105,6 +111,7 @@ const Content = props => {
         renderedItems={categories}
         activeMenuItem={activeMenuItem}
         menuItemClickHandler={menuItemClickHandler}
+        menuType={menuType}
       />
     </Container>
   );

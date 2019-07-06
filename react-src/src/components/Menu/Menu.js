@@ -35,7 +35,11 @@ const propTypes = {
   /**
    * The menu item click handler
    */
-  menuItemClickHandler: PropTypes.func
+  menuItemClickHandler: PropTypes.func,
+  /**
+   * The type of the menu: list, dropdown
+   */
+  menuType: PropTypes.oneOf(["list", "dropdown"])
 };
 
 /**
@@ -47,7 +51,8 @@ const defaultProps = {
   activeMenuItem: 1,
   menuItemClickHandler: () => {
     console.log("Menu item clicked");
-  }
+  },
+  menuType: "list"
 };
 
 /**
@@ -63,19 +68,37 @@ const List = styled("ul")(props => ({}));
 /**
  * Sets the status of a menu item
  */
-const setMenuItemStatus = (menuItemId, activeMenuItem) => {
-  return menuItemId == activeMenuItem ? "active" : "inactive";
+const setMenuItemStatus = props => {
+  const { menuItemId, activeMenuItem, menuType } = props;
+
+  switch (menuType) {
+    case "dropdown":
+      return menuItemId == activeMenuItem ? "inactive" : "hidden";
+    case "list":
+    default:
+      return menuItemId == activeMenuItem ? "active" : "inactive";
+  }
 };
 
 /**
  * Displays the Menu
  */
 const Menu = props => {
-  const { items, renderedItems, activeMenuItem, menuItemClickHandler } = props;
+  const {
+    items,
+    renderedItems,
+    activeMenuItem,
+    menuItemClickHandler,
+    menuType
+  } = props;
 
   const menuItems = items.map((item, index) => {
     const { id } = item;
-    const status = setMenuItemStatus(id, activeMenuItem);
+    const status = setMenuItemStatus({
+      menuItemId: id,
+      activeMenuItem: activeMenuItem,
+      menuType: menuType
+    });
 
     return (
       <MenuItem
@@ -90,7 +113,7 @@ const Menu = props => {
 
   return (
     <Nav title="Menu" className="Menu">
-      <List>
+      <List menuType={menuType}>
         {renderedItems}
         {menuItems}
       </List>

@@ -40,7 +40,11 @@ const propTypes = {
   /**
    * The category click handler
    */
-  categoryClickHandler: PropTypes.func
+  categoryClickHandler: PropTypes.func,
+  /**
+   * The type of the menu: list, dropdown
+   */
+  menuType: PropTypes.oneOf(["list", "dropdown"])
 };
 
 /**
@@ -57,7 +61,8 @@ const defaultProps = {
   activeCategoryId: 1,
   categoryClickHandler: () => {
     console.log("Category clicked");
-  }
+  },
+  menuType: "list"
 };
 
 /**
@@ -80,12 +85,16 @@ const query = gql`
  * Converts Categories to a list of MenuItems
  */
 const categoriesToMenuItems = props => {
-  const { data, activeCategoryId, categoryClickHandler } = props;
+  const { data, activeCategoryId, categoryClickHandler, menuType } = props;
 
   return data.map((edge, index) => {
     const { categoryId, name } = edge.node;
     const menuItem = { id: categoryId, name: name };
-    const status = setMenuItemStatus(menuItem.id, activeCategoryId);
+    const status = setMenuItemStatus({
+      menuItemId: menuItem.id,
+      activeMenuItem: activeCategoryId,
+      menuType: menuType
+    });
 
     return (
       <MenuItem
@@ -124,7 +133,8 @@ const Categories = props => {
     numberOfEdgesSaved,
     setNumberOfEdgesSaved,
     activeCategoryId,
-    categoryClickHandler
+    categoryClickHandler,
+    menuType
   } = props;
 
   const { numberOfEdges, node } = defaultProps;
@@ -149,7 +159,8 @@ const Categories = props => {
   const items = categoriesToMenuItems({
     data: data.edges,
     activeCategoryId: activeCategoryId,
-    categoryClickHandler: categoryClickHandler
+    categoryClickHandler: categoryClickHandler,
+    menuType: menuType
   });
 
   /**
