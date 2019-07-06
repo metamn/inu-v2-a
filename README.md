@@ -101,3 +101,4 @@ Ex.: https://dev.to/anssamghezala/you-don-t-have-to-use-redux-32a6 from the 'off
 - Storybook is an enormous help to clean up code and design errors introduced when coding fast an idea. (Ie. in theme.js icons inside color declarations)
 - Styleguide refactors components originally made for a single usage (Category) to a much broader usage (MenuItem)
 - Writing the Styleguide was way easier than for Metamn. This means once the basic components are set up React can be very very productive.
+- React is very expensive: lots of code to be written. For each part of its colocated parts.

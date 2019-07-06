@@ -16,7 +16,7 @@ const propTypes = {
   /**
    * The icon status
    */
-  status: PropTypes.oneOf(["active", "inactive", "hidden"]),
+  status: PropTypes.oneOf(["active", "inactive", "hidden", "invisible"]),
   /**
    * The icon itself. Preferably in SVG format.
    */
@@ -40,7 +40,9 @@ const Container = styled("div")(props => ({
   height: `calc(var(--lem) * ${props.size})`,
 
   cursor: props.status === "active" ? "pointer" : "default",
-  visibility: props.status === "hidden" ? "hidden" : "visible",
+  display: props.status === "hidden" ? "none" : "flex",
+  visibility: props.status === "invisible" ? "hidden" : "visible",
+
   color:
     props.status === "active"
       ? props.theme.colorPairs.default
@@ -57,7 +59,6 @@ const Container = styled("div")(props => ({
 const Icon = props => {
   const { children } = props;
   const { theme } = useTheme();
-  //console.log("icon");
 
   return (
     <Container className="icon" theme={theme} {...props}>

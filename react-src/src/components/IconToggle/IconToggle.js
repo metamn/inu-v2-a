@@ -23,7 +23,11 @@ const propTypes = {
   /**
    * The initial icon toggle status
    */
-  initialIconToggleStatus: PropTypes.boolean
+  initialIconToggleStatus: PropTypes.boolean,
+  /**
+   * The toggle icon click handler
+   */
+  toggleIconClickHandler: PropTypes.func
 };
 
 /**
@@ -33,7 +37,10 @@ const defaultProps = {
   icon1: <div>icon1</div>,
   icon2: <div>icon2</div>,
   status: "active",
-  initialIconToggleStatus: false
+  initialIconToggleStatus: false,
+  toggleIconClickHandler: () => {
+    console.log("Toggle icon clicked");
+  }
 };
 
 /**
@@ -51,7 +58,7 @@ const IconToggle = props => {
   const { icon1, icon2, status, initialIconToggleStatus } = props;
 
   /**
-   * Manages the state of the toggle icon
+   * Saves the state of the toggle icon
    */
   const [iconToggled, setIconToggled] = useState(initialIconToggleStatus);
 
@@ -61,8 +68,19 @@ const IconToggle = props => {
   const icon1Status = iconToggled ? "hidden" : "active";
   const icon2Status = iconToggled ? "active" : "hidden";
 
+  /**
+   * Changes icon status on click
+   */
+  const toggleIconClickHandler = iconToggled => {
+    setIconToggled(!iconToggled);
+  };
+
   return (
-    <Container className="icon-toggle" {...props}>
+    <Container
+      className="icon-toggle"
+      onClick={() => toggleIconClickHandler(iconToggled)}
+      {...props}
+    >
       <Icon status={icon1Status}>{icon1}</Icon>
       <Icon status={icon2Status}>{icon2}</Icon>
     </Container>
