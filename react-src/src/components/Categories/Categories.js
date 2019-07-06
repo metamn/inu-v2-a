@@ -36,7 +36,11 @@ const propTypes = {
   /**
    * The active category id
    */
-  activeCategoryId: PropTypes.number
+  activeCategoryId: PropTypes.number,
+  /**
+   * The category click handler
+   */
+  categoryClickHandler: PropTypes.func
 };
 
 /**
@@ -50,7 +54,10 @@ const defaultProps = {
   setNumberOfEdgesSaved: () => {
     console.log("setNumberOfEdgesSaved called");
   },
-  activeCategoryId: 1
+  activeCategoryId: 1,
+  categoryClickHandler: () => {
+    console.log("Category clicked");
+  }
 };
 
 /**
@@ -73,7 +80,7 @@ const query = gql`
  * Converts Categories to a list of MenuItems
  */
 const categoriesToMenuItems = props => {
-  const { data, activeCategoryId } = props;
+  const { data, activeCategoryId, categoryClickHandler } = props;
 
   return data.map((edge, index) => {
     const { categoryId, name } = edge.node;
@@ -86,6 +93,7 @@ const categoriesToMenuItems = props => {
         key={index}
         status={status}
         {...menuItem}
+        menuItemClickHandler={categoryClickHandler}
       />
     );
   });
@@ -112,7 +120,13 @@ const createTemporaryData = props => {
  * Returns the categories as a List of MenuItems
  */
 const Categories = props => {
-  const { numberOfEdgesSaved, setNumberOfEdgesSaved, activeCategoryId } = props;
+  const {
+    numberOfEdgesSaved,
+    setNumberOfEdgesSaved,
+    activeCategoryId,
+    categoryClickHandler
+  } = props;
+
   const { numberOfEdges, node } = defaultProps;
 
   /**
@@ -134,7 +148,8 @@ const Categories = props => {
    */
   const items = categoriesToMenuItems({
     data: data.edges,
-    activeCategoryId: activeCategoryId
+    activeCategoryId: activeCategoryId,
+    categoryClickHandler: categoryClickHandler
   });
 
   /**

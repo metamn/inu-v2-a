@@ -29,7 +29,7 @@ const propTypes = {
   /**
    * The click handler
    */
-  clickHandler: PropTypes.func
+  menuItemClickHandler: PropTypes.func
 };
 
 /**
@@ -40,7 +40,7 @@ const defaultProps = {
   name: "/ / / / / / / / / ",
   url: "",
   status: "inactive",
-  clickHandler: () => {
+  menuItemClickHandler: () => {
     console.log("Menu item clicked");
   }
 };
@@ -59,7 +59,7 @@ const Container = styled("li")(props => ({
  * Displays the component
  */
 const MenuItem = props => {
-  const { name, url, status, clickHandler } = props;
+  const { id, name, url, status, menuItemClickHandler } = props;
   const { theme } = useTheme();
 
   /**
@@ -79,7 +79,7 @@ const MenuItem = props => {
       className="menu-item"
       status={status}
       theme={theme}
-      onClick={() => clickHandler(name)}
+      onClick={() => menuItemClickHandler(id)}
     >
       {item}
     </Container>

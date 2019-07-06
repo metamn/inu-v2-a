@@ -31,7 +31,11 @@ const propTypes = {
   /**
    * The active menu item
    */
-  activeMenuItem: PropTypes.number
+  activeMenuItem: PropTypes.number,
+  /**
+   * The menu item click handler
+   */
+  menuItemClickHandler: PropTypes.func
 };
 
 /**
@@ -40,7 +44,10 @@ const propTypes = {
 const defaultProps = {
   items: [MenuItemDefaultProps],
   renderedItems: null,
-  activeMenuItem: 1
+  activeMenuItem: 1,
+  menuItemClickHandler: () => {
+    console.log("Menu item clicked");
+  }
 };
 
 /**
@@ -57,8 +64,6 @@ const List = styled("ul")(props => ({}));
  * Sets the status of a menu item
  */
 const setMenuItemStatus = (menuItemId, activeMenuItem) => {
-  //console.log("menuItemId:" + menuItemId);
-  //console.log("activeMenuItem:" + activeMenuItem);
   return menuItemId == activeMenuItem ? "active" : "inactive";
 };
 
@@ -66,7 +71,7 @@ const setMenuItemStatus = (menuItemId, activeMenuItem) => {
  * Displays the Menu
  */
 const Menu = props => {
-  const { items, renderedItems, activeMenuItem, clickHandler } = props;
+  const { items, renderedItems, activeMenuItem, menuItemClickHandler } = props;
 
   const menuItems = items.map((item, index) => {
     const { id } = item;
@@ -77,7 +82,7 @@ const Menu = props => {
         className="menu-item"
         key={index}
         status={status}
-        clickHandler={clickHandler}
+        menuItemClickHandler={menuItemClickHandler}
         {...item}
       />
     );

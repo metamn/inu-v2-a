@@ -77,6 +77,17 @@ const Content = props => {
   const [activeMenuItem, setActiveMenuItem] = useState(menuItemActiveId);
 
   /**
+   * Handles the click on a menu item
+   */
+  const menuItemClickHandler = id => {
+    /**
+     * Sets the active menu item
+     */
+    console.log("id:" + id);
+    setActiveMenuItem(id);
+  };
+
+  /**
    * Loads Categories as a list of MenuItems.
    */
   const categories = (
@@ -84,6 +95,7 @@ const Content = props => {
       numberOfEdgesSaved={numberOfEdgesSaved}
       setNumberOfEdgesSaved={setNumberOfEdgesSaved}
       activeMenuItem={activeMenuItem}
+      categoryClickHandler={menuItemClickHandler}
     />
   );
 
@@ -92,7 +104,7 @@ const Content = props => {
       <Menu
         items={menuItemsCustom}
         renderedItems={categories}
-        clickHandler={setActiveMenuItem}
+        menuItemClickHandler={menuItemClickHandler}
       />
     </Container>
   );
